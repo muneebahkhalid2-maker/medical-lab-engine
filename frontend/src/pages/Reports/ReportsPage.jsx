@@ -28,7 +28,10 @@ export default function ReportsPage() {
               <option>Last Quarter</option>
             </select>
           </div>
-          <button className="btn-primary px-4 py-2 rounded-xl flex items-center gap-2 text-sm shadow-sm">
+          <button 
+            onClick={() => window.print()}
+            className="btn-primary px-4 py-2 rounded-xl flex items-center gap-2 text-sm shadow-sm"
+          >
             <Download className="h-4 w-4" />
             Export Executive PDF
           </button>

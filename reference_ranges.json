@@ -1,0 +1,64 @@
+{
+  "Hemoglobin": {
+    "unit": "g/dL",
+    "ranges": {
+      "male": {
+        "min": 13.8,
+        "max": 17.2
+      },
+      "female": {
+        "min": 12.1,
+        "max": 15.1
+      },
+      "general": {
+        "min": 12.0,
+        "max": 16.0
+      }
+    }
+  },
+  "WBC": {
+    "unit": "10^3/uL",
+    "ranges": {
+      "general": {
+        "min": 4.0,
+        "max": 11.0
+      }
+    }
+  },
+  "Platelets": {
+    "unit": "10^3/uL",
+    "ranges": {
+      "general": {
+        "min": 150.0,
+        "max": 450.0
+      }
+    }
+  },
+  "MCV": {
+    "unit": "fL",
+    "ranges": {
+      "general": {
+        "min": 80.0,
+        "max": 100.0
+      }
+    }
+  },
+  "Blood Glucose": {
+    "unit": "mg/dL",
+    "ranges": {
+      "general": {
+        "min": 70.0,
+        "max": 100.0
+      }
+    }
+  },
+  "HbA1c": {
+    "unit": "%",
+    "ranges": {
+      "general": {
+        "min": 4.0,
+        "max": 5.6
+      }
+    }
+  }
+}

@@ -134,6 +134,29 @@ export default function AnalysisResults() {
   const lowCount = analysisItems.filter(i => i.status === 'LOW').length;
   const normalCount = analysisItems.filter(i => i.status === 'NORMAL').length;
 
+  const handleExportCSV = () => {
+    const headers = ['ID', 'Parameter', 'Measured Value', 'Reference Range', 'Status', 'Patient', 'Document', 'Flag Reason'];
+    const rows = filtered.map(item => [
+      item.id,
+      `"${item.parameter}"`,
+      `"${item.value}"`,
+      `"${item.referenceRange}"`,
+      item.status,
+      `"${item.patientName}"`,
+      `"${item.documentName}"`,
+      `"${item.flagReason}"`
+    ]);
+    const csvContent = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', `Analysis_Results_${new Date().toISOString().slice(0, 10)}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -144,7 +167,10 @@ export default function AnalysisResults() {
           </h1>
           <p className="text-slate-500 mt-1">Rule-based reference numerical range comparison & flag evaluation</p>
         </div>
-        <button className="btn-secondary px-4 py-2 rounded-xl flex items-center justify-center gap-2 text-sm">
+        <button 
+          onClick={handleExportCSV}
+          className="btn-secondary px-4 py-2 rounded-xl flex items-center justify-center gap-2 text-sm"
+        >
           <FileSpreadsheet className="h-4 w-4 text-brand-600" />
           Export Analysis CSV
         </button>

@@ -1,0 +1,13 @@
+{
+  "patient_id": "PAT-M01",
+  "patient_name": "John Doe",
+  "sex": "male",
+  "extraction_verified": true,
+  "lab_results": [
+    {
+      "test_name": "Hemoglobin",
+      "result": 13.0,
+      "unit": "g/dL"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "patient_id": "PAT-999",
+  "sex": "female",
+  "extraction_verified": true,
+  "lab_results": [
+    {
+      "test_name": "WBC",
+      "result": null,
+      "unit": "10^3/uL"
+    }
+  ]
+}

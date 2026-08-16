@@ -1,0 +1,79 @@
+{
+  "document_id": "6a81ef1116af8ccb7fc378bf",
+  "document_type": "laboratory_report",
+  "patient": {
+    "name": "Jane Doe",
+    "age": 35,
+    "sex": "F"
+  },
+  "report": {
+    "date": "2026-07-10",
+    "laboratory": "Clinical Diagnostics Lab"
+  },
+  "tests": [
+    {
+      "testName": "Hemoglobin",
+      "result": 14.5,
+      "unit": "g/dL",
+      "referenceRange": {
+        "raw": "13.0-17.0",
+        "low": 13.0,
+        "high": 17.0
+      },
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          10,
+          70,
+          300,
+          20
+        ]
+      },
+      "needs_verification": false
+    },
+    {
+      "testName": "WBC",
+      "result": 7.2,
+      "unit": "10^3/uL",
+      "referenceRange": {
+        "raw": "4.5-11.0",
+        "low": 4.5,
+        "high": 11.0
+      },
+      "confidence": 0.96,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          10,
+          100,
+          300,
+          20
+        ]
+      },
+      "needs_verification": false
+    },
+    {
+      "testName": "Platelets",
+      "result": 250,
+      "unit": "10^3/uL",
+      "referenceRange": {
+        "raw": "150-450",
+        "low": 150,
+        "high": 450
+      },
+      "confidence": 0.97,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          10,
+          130,
+          300,
+          20
+        ]
+      },
+      "needs_verification": false
+    }
+  ],
+  "extraction_status": "unverified"
+}

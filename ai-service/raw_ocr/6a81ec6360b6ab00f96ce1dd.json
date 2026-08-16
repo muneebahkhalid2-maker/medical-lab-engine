@@ -1,0 +1,57 @@
+[
+  {
+    "text": "PATIENT: Jane Doe",
+    "confidence": 0.98,
+    "page": 1,
+    "bounding_box": [
+      10,
+      10,
+      100,
+      20
+    ]
+  },
+  {
+    "text": "LABORATORY REPORT",
+    "confidence": 0.99,
+    "page": 1,
+    "bounding_box": [
+      10,
+      40,
+      200,
+      20
+    ]
+  },
+  {
+    "text": "Hemoglobin 14.5 g/dL (13.0-17.0)",
+    "confidence": 0.95,
+    "page": 1,
+    "bounding_box": [
+      10,
+      70,
+      300,
+      20
+    ]
+  },
+  {
+    "text": "WBC 7.2 10^3/uL (4.5-11.0)",
+    "confidence": 0.96,
+    "page": 1,
+    "bounding_box": [
+      10,
+      100,
+      300,
+      20
+    ]
+  },
+  {
+    "text": "Platelets 250 10^3/uL (150-450)",
+    "confidence": 0.97,
+    "page": 1,
+    "bounding_box": [
+      10,
+      130,
+      300,
+      20
+    ]
+  }
+]

@@ -58,6 +58,7 @@ export default function PatientsList() {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterRisk, setFilterRisk] = useState('ALL');
+  const [showAddModal, setShowAddModal] = useState(false);
 
   useEffect(() => {
     fetchPatients();
@@ -117,11 +118,50 @@ export default function PatientsList() {
           </h1>
           <p className="text-slate-500 mt-1">Manage patient profiles and linked laboratory extractions</p>
         </div>
-        <button className="btn-primary px-5 py-2.5 rounded-xl flex items-center justify-center gap-2">
+        <button 
+          onClick={() => setShowAddModal(true)}
+          className="btn-primary px-5 py-2.5 rounded-xl flex items-center justify-center gap-2"
+        >
           <Plus className="h-4 w-4" />
           Add New Patient
         </button>
       </div>
+
+      {showAddModal && (
+        <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl p-6 max-w-md w-full shadow-xl space-y-4">
+            <h3 className="text-lg font-bold text-slate-900">Add New Patient Profile</h3>
+            <p className="text-xs text-rose-600 font-semibold bg-rose-50 p-2.5 rounded-lg border border-rose-100">
+              BLOCKED / BACKEND REQUIRED: Live patient registration requires backend database API.
+            </p>
+            <div className="space-y-3 text-sm">
+              <div>
+                <label className="block text-xs font-semibold text-slate-500 mb-1">Full Name</label>
+                <input type="text" placeholder="e.g. Jane Doe" className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm" />
+              </div>
+              <div className="grid grid-cols-2 gap-2">
+                <div>
+                  <label className="block text-xs font-semibold text-slate-500 mb-1">Age</label>
+                  <input type="number" placeholder="45" className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm" />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-slate-500 mb-1">Gender</label>
+                  <select className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm bg-white">
+                    <option>Female</option>
+                    <option>Male</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div className="flex justify-end gap-2 pt-2">
+              <button onClick={() => setShowAddModal(false)} className="btn-secondary px-4 py-2 rounded-xl text-xs font-semibold">
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="glass-panel rounded-2xl overflow-hidden shadow-sm">
         {/* Filters Top Bar */}

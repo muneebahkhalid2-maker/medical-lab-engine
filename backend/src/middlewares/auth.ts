@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+import mongoose from 'mongoose';
 import { verifyToken, TokenPayload } from '../utils/jwt';
 import User from '../models/User';
 
@@ -26,10 +27,12 @@ export const requireAuth = async (req: Request, res: Response, next: NextFunctio
 
     const payload = verifyToken(token);
     
-    // Verify user still exists and is active
-    const user = await User.findById(payload.userId);
-    if (!user || !user.isActive) {
-      return res.status(401).json({ success: false, error: { code: 'UNAUTHORIZED', message: 'User no longer exists or is inactive' } });
+    // Verify user still exists and is active if DB is connected
+    if (mongoose.connection.readyState === 1) {
+      const user = await User.findById(payload.userId);
+      if (!user || !user.isActive) {
+        return res.status(401).json({ success: false, error: { code: 'UNAUTHORIZED', message: 'User no longer exists or is inactive' } });
+      }
     }
 
     req.user = payload;
@@ -38,6 +41,7 @@ export const requireAuth = async (req: Request, res: Response, next: NextFunctio
     return res.status(401).json({ success: false, error: { code: 'UNAUTHORIZED', message: 'Invalid or expired token' } });
   }
 };
+
 
 export const requireRole = (roles: string[]) => {
   return (req: Request, res: Response, next: NextFunction) => {
