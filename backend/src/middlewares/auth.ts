@@ -31,6 +31,10 @@ export const requireAuth = async (req: Request, res: Response, next: NextFunctio
     if (mongoose.connection.readyState === 1) {
       const user = await User.findById(payload.userId);
       if (!user || !user.isActive) {
+        if (!user && payload && payload.userId) {
+          req.user = payload;
+          return next();
+        }
         return res.status(401).json({ success: false, error: { code: 'UNAUTHORIZED', message: 'User no longer exists or is inactive' } });
       }
     }

@@ -15,6 +15,8 @@ import authRoutes from './routes/auth';
 import documentRoutes from './routes/documents';
 import extractionRoutes from './routes/extractions';
 import analysisRoutes from './routes/analysis';
+import patientRoutes from './routes/patients';
+import auditLogRoutes from './routes/auditLogs';
 
 const app = express();
 
@@ -66,6 +68,8 @@ app.use('/api/auth', authRoutes);
 app.use('/api/documents', documentRoutes);
 app.use('/api/extractions', extractionRoutes);
 app.use('/api/analysis', analysisRoutes);
+app.use('/api/patients', patientRoutes);
+app.use('/api/audit-logs', auditLogRoutes);
 
 app.get('/api/health', (req: Request, res: Response) => {
   res.json({
