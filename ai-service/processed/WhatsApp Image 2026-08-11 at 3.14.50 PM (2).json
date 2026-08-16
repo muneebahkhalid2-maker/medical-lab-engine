@@ -1,0 +1,37 @@
+{
+  "document_id": "WhatsApp Image 2026-08-11 at 3.14.50 PM (2)",
+  "document_type": "laboratory_report",
+  "patient": {
+    "name": "M Alzal",
+    "id": "801575",
+    "age": 64,
+    "sex": "Male"
+  },
+  "report": {
+    "date": "08-Jul-26",
+    "laboratory": "ARMY CARDIAC CENTER"
+  },
+  "tests": [
+    {
+      "test_name": "Hemoglobin A1c",
+      "test_name_raw": "HBAIC",
+      "result": 6.0,
+      "unit": "%",
+      "reference_range": "4.2 - 6.5 %",
+      "confidence": 0.9999,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          583,
+          309,
+          18,
+          22
+        ]
+      },
+      "needs_verification": true,
+      "reason": "extraction_disagreement"
+    }
+  ],
+  "extraction_status": "needs_verification"
+}

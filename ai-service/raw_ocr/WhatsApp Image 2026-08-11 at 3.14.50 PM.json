@@ -1,0 +1,981 @@
+[
+  {
+    "text": "Past",
+    "confidence": 0.9931,
+    "page": 1,
+    "bounding_box": [
+      143,
+      0,
+      132,
+      65
+    ]
+  },
+  {
+    "text": "C12",
+    "confidence": 0.2281,
+    "page": 1,
+    "bounding_box": [
+      151,
+      63,
+      60,
+      38
+    ]
+  },
+  {
+    "text": "chest",
+    "confidence": 0.8331,
+    "page": 1,
+    "bounding_box": [
+      281,
+      63,
+      118,
+      44
+    ]
+  },
+  {
+    "text": "Acad )",
+    "confidence": 0.1064,
+    "page": 1,
+    "bounding_box": [
+      661,
+      64,
+      185,
+      64
+    ]
+  },
+  {
+    "text": "Bp",
+    "confidence": 0.613,
+    "page": 1,
+    "bounding_box": [
+      193,
+      105,
+      74,
+      44
+    ]
+  },
+  {
+    "text": "\"Zo/o",
+    "confidence": 0.6042,
+    "page": 1,
+    "bounding_box": [
+      284,
+      102,
+      127,
+      52
+    ]
+  },
+  {
+    "text": "74",
+    "confidence": 0.2152,
+    "page": 1,
+    "bounding_box": [
+      506,
+      122,
+      30,
+      42
+    ]
+  },
+  {
+    "text": "Et7",
+    "confidence": 0.244,
+    "page": 1,
+    "bounding_box": [
+      657,
+      159,
+      104,
+      38
+    ]
+  },
+  {
+    "text": "Noy64",
+    "confidence": 0.2431,
+    "page": 1,
+    "bounding_box": [
+      868,
+      160,
+      147,
+      55
+    ]
+  },
+  {
+    "text": "cLeat",
+    "confidence": 0.2704,
+    "page": 1,
+    "bounding_box": [
+      750,
+      189,
+      99,
+      42
+    ]
+  },
+  {
+    "text": "6l2.94",
+    "confidence": 0.1549,
+    "page": 1,
+    "bounding_box": [
+      38,
+      209,
+      173,
+      61
+    ]
+  },
+  {
+    "text": "Bp_1S/9o",
+    "confidence": 0.1757,
+    "page": 1,
+    "bounding_box": [
+      234,
+      222,
+      183,
+      56
+    ]
+  },
+  {
+    "text": "4",
+    "confidence": 0.4765,
+    "page": 1,
+    "bounding_box": [
+      524,
+      234,
+      50,
+      58
+    ]
+  },
+  {
+    "text": "Urid Acid\" 446",
+    "confidence": 0.4819,
+    "page": 1,
+    "bounding_box": [
+      611,
+      230,
+      330,
+      60
+    ]
+  },
+  {
+    "text": "Rnb Julral_1o",
+    "confidence": 0.111,
+    "page": 1,
+    "bounding_box": [
+      235,
+      269,
+      374,
+      88
+    ]
+  },
+  {
+    "text": "IDS",
+    "confidence": 0.1514,
+    "page": 1,
+    "bounding_box": [
+      720,
+      314,
+      72,
+      30
+    ]
+  },
+  {
+    "text": "~J",
+    "confidence": 0.4077,
+    "page": 1,
+    "bounding_box": [
+      600,
+      314,
+      64,
+      56
+    ]
+  },
+  {
+    "text": "FTab",
+    "confidence": 0.152,
+    "page": 1,
+    "bounding_box": [
+      289,
+      359,
+      72,
+      38
+    ]
+  },
+  {
+    "text": "6",
+    "confidence": 0.1768,
+    "page": 1,
+    "bounding_box": [
+      516,
+      358,
+      24,
+      28
+    ]
+  },
+  {
+    "text": "3o",
+    "confidence": 0.1732,
+    "page": 1,
+    "bounding_box": [
+      560,
+      356,
+      54,
+      32
+    ]
+  },
+  {
+    "text": "d",
+    "confidence": 0.9673,
+    "page": 1,
+    "bounding_box": [
+      648,
+      368,
+      32,
+      46
+    ]
+  },
+  {
+    "text": "Prol Dr ShoukalA6$4",
+    "confidence": 0.0535,
+    "page": 1,
+    "bounding_box": [
+      704,
+      384,
+      394,
+      72
+    ]
+  },
+  {
+    "text": "carcliolodie",
+    "confidence": 0.1212,
+    "page": 1,
+    "bounding_box": [
+      713,
+      432,
+      236,
+      52
+    ]
+  },
+  {
+    "text": "~3 PMC",
+    "confidence": 0.1853,
+    "page": 1,
+    "bounding_box": [
+      965,
+      447,
+      104,
+      38
+    ]
+  },
+  {
+    "text": "2540.97",
+    "confidence": 0.4548,
+    "page": 1,
+    "bounding_box": [
+      29,
+      466,
+      173,
+      50
+    ]
+  },
+  {
+    "text": "73",
+    "confidence": 0.7909,
+    "page": 1,
+    "bounding_box": [
+      267,
+      473,
+      82,
+      42
+    ]
+  },
+  {
+    "text": "14",
+    "confidence": 0.2625,
+    "page": 1,
+    "bounding_box": [
+      426,
+      466,
+      95,
+      51
+    ]
+  },
+  {
+    "text": "TsH",
+    "confidence": 0.4544,
+    "page": 1,
+    "bounding_box": [
+      578,
+      474,
+      91,
+      40
+    ]
+  },
+  {
+    "text": "7.6",
+    "confidence": 0.9013,
+    "page": 1,
+    "bounding_box": [
+      278,
+      518,
+      78,
+      30
+    ]
+  },
+  {
+    "text": "24",
+    "confidence": 0.3092,
+    "page": 1,
+    "bounding_box": [
+      528,
+      518,
+      70,
+      32
+    ]
+  },
+  {
+    "text": "Uxic Acid SzaN",
+    "confidence": 0.2413,
+    "page": 1,
+    "bounding_box": [
+      705,
+      500,
+      331,
+      63
+    ]
+  },
+  {
+    "text": "(42_(2.0)",
+    "confidence": 0.2935,
+    "page": 1,
+    "bounding_box": [
+      239,
+      550,
+      203,
+      54
+    ]
+  },
+  {
+    "text": "(o-4-Sio)",
+    "confidence": 0.7444,
+    "page": 1,
+    "bounding_box": [
+      476,
+      552,
+      192,
+      54
+    ]
+  },
+  {
+    "text": "22 -231(",
+    "confidence": 0.295,
+    "page": 1,
+    "bounding_box": [
+      32,
+      640,
+      177,
+      41
+    ]
+  },
+  {
+    "text": "HTN",
+    "confidence": 0.3041,
+    "page": 1,
+    "bounding_box": [
+      277,
+      639,
+      112,
+      42
+    ]
+  },
+  {
+    "text": "Bp_ISelqo",
+    "confidence": 0.6354,
+    "page": 1,
+    "bounding_box": [
+      496,
+      634,
+      188,
+      54
+    ]
+  },
+  {
+    "text": "Lb",
+    "confidence": 0.1078,
+    "page": 1,
+    "bounding_box": [
+      778,
+      640,
+      54,
+      54
+    ]
+  },
+  {
+    "text": "&",
+    "confidence": 0.8005,
+    "page": 1,
+    "bounding_box": [
+      261,
+      681,
+      66,
+      62
+    ]
+  },
+  {
+    "text": "76",
+    "confidence": 0.3929,
+    "page": 1,
+    "bounding_box": [
+      319,
+      727,
+      94,
+      42
+    ]
+  },
+  {
+    "text": "Losanl~",
+    "confidence": 0.2262,
+    "page": 1,
+    "bounding_box": [
+      449,
+      720,
+      201,
+      53
+    ]
+  },
+  {
+    "text": "So wJ",
+    "confidence": 0.2301,
+    "page": 1,
+    "bounding_box": [
+      667,
+      727,
+      130,
+      60
+    ]
+  },
+  {
+    "text": "(-0)",
+    "confidence": 0.1446,
+    "page": 1,
+    "bounding_box": [
+      840,
+      724,
+      122,
+      48
+    ]
+  },
+  {
+    "text": "ILM a",
+    "confidence": 0.1073,
+    "page": 1,
+    "bounding_box": [
+      33,
+      801,
+      116,
+      40
+    ]
+  },
+  {
+    "text": "BAH",
+    "confidence": 0.1118,
+    "page": 1,
+    "bounding_box": [
+      268,
+      798,
+      116,
+      50
+    ]
+  },
+  {
+    "text": "Pxoslals ",
+    "confidence": 0.545,
+    "page": 1,
+    "bounding_box": [
+      443,
+      805,
+      210,
+      40
+    ]
+  },
+  {
+    "text": "Tas",
+    "confidence": 0.8802,
+    "page": 1,
+    "bounding_box": [
+      307,
+      887,
+      86,
+      38
+    ]
+  },
+  {
+    "text": "Caxduxa",
+    "confidence": 0.418,
+    "page": 1,
+    "bounding_box": [
+      419,
+      882,
+      195,
+      49
+    ]
+  },
+  {
+    "text": "4wS",
+    "confidence": 0.3376,
+    "page": 1,
+    "bounding_box": [
+      642,
+      888,
+      103,
+      53
+    ]
+  },
+  {
+    "text": "HS",
+    "confidence": 0.4634,
+    "page": 1,
+    "bounding_box": [
+      873,
+      885,
+      56,
+      36
+    ]
+  },
+  {
+    "text": "Geu Urine tort",
+    "confidence": 0.2332,
+    "page": 1,
+    "bounding_box": [
+      418,
+      930,
+      330,
+      56
+    ]
+  },
+  {
+    "text": "L RD",
+    "confidence": 0.1272,
+    "page": 1,
+    "bounding_box": [
+      805,
+      931,
+      120,
+      40
+    ]
+  },
+  {
+    "text": "MaUL2",
+    "confidence": 0.0747,
+    "page": 1,
+    "bounding_box": [
+      27,
+      1025,
+      186,
+      40
+    ]
+  },
+  {
+    "text": "Chesl",
+    "confidence": 0.7539,
+    "page": 1,
+    "bounding_box": [
+      275,
+      1011,
+      149,
+      52
+    ]
+  },
+  {
+    "text": "Peciy",
+    "confidence": 0.3391,
+    "page": 1,
+    "bounding_box": [
+      440,
+      1012,
+      136,
+      52
+    ]
+  },
+  {
+    "text": "(Aided )",
+    "confidence": 0.1899,
+    "page": 1,
+    "bounding_box": [
+      599,
+      1004,
+      282,
+      61
+    ]
+  },
+  {
+    "text": "Uie",
+    "confidence": 0.9768,
+    "page": 1,
+    "bounding_box": [
+      581,
+      1055,
+      128,
+      56
+    ]
+  },
+  {
+    "text": "Aeid",
+    "confidence": 0.3596,
+    "page": 1,
+    "bounding_box": [
+      724,
+      1051,
+      110,
+      53
+    ]
+  },
+  {
+    "text": "467",
+    "confidence": 0.9999,
+    "page": 1,
+    "bounding_box": [
+      872,
+      1048,
+      104,
+      52
+    ]
+  },
+  {
+    "text": "1",
+    "confidence": 0.2559,
+    "page": 1,
+    "bounding_box": [
+      989,
+      1049,
+      36,
+      44
+    ]
+  },
+  {
+    "text": "ETT",
+    "confidence": 0.9728,
+    "page": 1,
+    "bounding_box": [
+      259,
+      1103,
+      106,
+      44
+    ]
+  },
+  {
+    "text": "Neative ( Atabcal ekest PeiJ",
+    "confidence": 0.2044,
+    "page": 1,
+    "bounding_box": [
+      396,
+      1099,
+      658,
+      73
+    ]
+  },
+  {
+    "text": "6-12_22",
+    "confidence": 0.5084,
+    "page": 1,
+    "bounding_box": [
+      12,
+      1194,
+      190,
+      52
+    ]
+  },
+  {
+    "text": "LUTS",
+    "confidence": 0.5637,
+    "page": 1,
+    "bounding_box": [
+      250,
+      1176,
+      196,
+      56
+    ]
+  },
+  {
+    "text": "Posk veidUxue",
+    "confidence": 0.1315,
+    "page": 1,
+    "bounding_box": [
+      556,
+      1176,
+      316,
+      52
+    ]
+  },
+  {
+    "text": "Va Lune",
+    "confidence": 0.2392,
+    "page": 1,
+    "bounding_box": [
+      882,
+      1172,
+      147,
+      50
+    ]
+  },
+  {
+    "text": "R",
+    "confidence": 0.846,
+    "page": 1,
+    "bounding_box": [
+      245,
+      1237,
+      42,
+      62
+    ]
+  },
+  {
+    "text": "Tansoline",
+    "confidence": 0.7621,
+    "page": 1,
+    "bounding_box": [
+      304,
+      1266,
+      253,
+      62
+    ]
+  },
+  {
+    "text": "0_.4",
+    "confidence": 0.1385,
+    "page": 1,
+    "bounding_box": [
+      595,
+      1277,
+      78,
+      40
+    ]
+  },
+  {
+    "text": "4",
+    "confidence": 0.1094,
+    "page": 1,
+    "bounding_box": [
+      687,
+      1283,
+      66,
+      42
+    ]
+  },
+  {
+    "text": "1L.3-92",
+    "confidence": 0.2224,
+    "page": 1,
+    "bounding_box": [
+      14,
+      1322,
+      199,
+      68
+    ]
+  },
+  {
+    "text": "Crealne",
+    "confidence": 0.396,
+    "page": 1,
+    "bounding_box": [
+      292,
+      1319,
+      245,
+      44
+    ]
+  },
+  {
+    "text": "Ll2",
+    "confidence": 0.8035,
+    "page": 1,
+    "bounding_box": [
+      585,
+      1322,
+      97,
+      44
+    ]
+  },
+  {
+    "text": "Jwne 23",
+    "confidence": 0.7494,
+    "page": 1,
+    "bounding_box": [
+      24,
+      1386,
+      198,
+      50
+    ]
+  },
+  {
+    "text": "cad",
+    "confidence": 0.361,
+    "page": 1,
+    "bounding_box": [
+      294,
+      1366,
+      129,
+      55
+    ]
+  },
+  {
+    "text": "Pci",
+    "confidence": 0.1473,
+    "page": 1,
+    "bounding_box": [
+      428,
+      1402,
+      104,
+      52
+    ]
+  },
+  {
+    "text": "thxom bsis",
+    "confidence": 0.5662,
+    "page": 1,
+    "bounding_box": [
+      934,
+      1420,
+      174,
+      52
+    ]
+  },
+  {
+    "text": "ISQ/sub",
+    "confidence": 0.7943,
+    "page": 1,
+    "bounding_box": [
+      588,
+      1438,
+      198,
+      52
+    ]
+  },
+  {
+    "text": "Nov",
+    "confidence": 0.9994,
+    "page": 1,
+    "bounding_box": [
+      29,
+      1513,
+      94,
+      42
+    ]
+  },
+  {
+    "text": "2 3",
+    "confidence": 0.5308,
+    "page": 1,
+    "bounding_box": [
+      165,
+      1507,
+      60,
+      36
+    ]
+  },
+  {
+    "text": "Repeal",
+    "confidence": 0.9169,
+    "page": 1,
+    "bounding_box": [
+      293,
+      1493,
+      152,
+      60
+    ]
+  },
+  {
+    "text": "PC 1",
+    "confidence": 0.4265,
+    "page": 1,
+    "bounding_box": [
+      504,
+      1492,
+      108,
+      48
+    ]
+  },
+  {
+    "text": "Hnslox ?x",
+    "confidence": 0.0451,
+    "page": 1,
+    "bounding_box": [
+      271,
+      -14,
+      264,
+      148
+    ]
+  },
+  {
+    "text": "(4",
+    "confidence": 0.8989,
+    "page": 1,
+    "bounding_box": [
+      574,
+      64,
+      86,
+      58
+    ]
+  },
+  {
+    "text": "16q",
+    "confidence": 0.6317,
+    "page": 1,
+    "bounding_box": [
+      651,
+      101,
+      104,
+      64
+    ]
+  },
+  {
+    "text": "XQa |",
+    "confidence": 0.1965,
+    "page": 1,
+    "bounding_box": [
+      644,
+      183,
+      116,
+      68
+    ]
+  },
+  {
+    "text": "2&lovi",
+    "confidence": 0.6003,
+    "page": 1,
+    "bounding_box": [
+      373,
+      334,
+      153,
+      86
+    ]
+  },
+  {
+    "text": "Tab",
+    "confidence": 0.9374,
+    "page": 1,
+    "bounding_box": [
+      300,
+      925,
+      97,
+      62
+    ]
+  },
+  {
+    "text": "LaD",
+    "confidence": 0.4333,
+    "page": 1,
+    "bounding_box": [
+      577,
+      1390,
+      113,
+      65
+    ]
+  },
+  {
+    "text": "Aoquent",
+    "confidence": 0.701,
+    "page": 1,
+    "bounding_box": [
+      776,
+      1425,
+      156,
+      62
+    ]
+  }
+]

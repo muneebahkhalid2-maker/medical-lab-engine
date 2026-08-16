@@ -1,0 +1,849 @@
+[
+  {
+    "text": "Department of Pathology",
+    "confidence": 0.7243,
+    "page": 1,
+    "bounding_box": [
+      278,
+      37,
+      422,
+      53
+    ]
+  },
+  {
+    "text": "LAB !D: 14'104",
+    "confidence": 0.5302,
+    "page": 1,
+    "bounding_box": [
+      756,
+      38,
+      202,
+      32
+    ]
+  },
+  {
+    "text": "ARMY CARDIAC HOSPITAL",
+    "confidence": 0.9377,
+    "page": 1,
+    "bounding_box": [
+      255,
+      79,
+      462,
+      42
+    ]
+  },
+  {
+    "text": "Ent On.08-Jul-26",
+    "confidence": 0.8534,
+    "page": 1,
+    "bounding_box": [
+      750,
+      81,
+      218,
+      31
+    ]
+  },
+  {
+    "text": "Ent By: Khurram",
+    "confidence": 0.9913,
+    "page": 1,
+    "bounding_box": [
+      978,
+      82,
+      208,
+      32
+    ]
+  },
+  {
+    "text": "LAHORE",
+    "confidence": 0.9571,
+    "page": 1,
+    "bounding_box": [
+      420,
+      124,
+      144,
+      32
+    ]
+  },
+  {
+    "text": "Category: Entitled Outdoor",
+    "confidence": 0.9613,
+    "page": 1,
+    "bounding_box": [
+      747,
+      119,
+      340,
+      41
+    ]
+  },
+  {
+    "text": "Phone: 042-36655078 & 9",
+    "confidence": 0.5949,
+    "page": 1,
+    "bounding_box": [
+      303,
+      155,
+      370,
+      41
+    ]
+  },
+  {
+    "text": "Name:",
+    "confidence": 0.9933,
+    "page": 1,
+    "bounding_box": [
+      53,
+      197,
+      93,
+      31
+    ]
+  },
+  {
+    "text": "801575 Pipiofficer",
+    "confidence": 0.9319,
+    "page": 1,
+    "bounding_box": [
+      155,
+      201,
+      268,
+      36
+    ]
+  },
+  {
+    "text": "M Afzal (Age 64 Years-Male)",
+    "confidence": 0.9453,
+    "page": 1,
+    "bounding_box": [
+      431,
+      204,
+      387,
+      37
+    ]
+  },
+  {
+    "text": "Vi",
+    "confidence": 0.2582,
+    "page": 1,
+    "bounding_box": [
+      838,
+      210,
+      30,
+      24
+    ]
+  },
+  {
+    "text": "Blood Complete Picture",
+    "confidence": 0.7479,
+    "page": 1,
+    "bounding_box": [
+      66,
+      250,
+      336,
+      41
+    ]
+  },
+  {
+    "text": "Paraietcr",
+    "confidence": 0.6945,
+    "page": 1,
+    "bounding_box": [
+      73,
+      291,
+      145,
+      32
+    ]
+  },
+  {
+    "text": "Result",
+    "confidence": 0.9995,
+    "page": 1,
+    "bounding_box": [
+      583,
+      295,
+      92,
+      28
+    ]
+  },
+  {
+    "text": "Reference Range",
+    "confidence": 0.947,
+    "page": 1,
+    "bounding_box": [
+      1050,
+      298,
+      237,
+      39
+    ]
+  },
+  {
+    "text": "TLC",
+    "confidence": 0.9992,
+    "page": 1,
+    "bounding_box": [
+      72,
+      332,
+      60,
+      30
+    ]
+  },
+  {
+    "text": "6.3",
+    "confidence": 0.9984,
+    "page": 1,
+    "bounding_box": [
+      582,
+      336,
+      46,
+      28
+    ]
+  },
+  {
+    "text": "4.,0-11.0 X 10^9/L",
+    "confidence": 0.3832,
+    "page": 1,
+    "bounding_box": [
+      1052,
+      338,
+      228,
+      32
+    ]
+  },
+  {
+    "text": "RBC",
+    "confidence": 0.9818,
+    "page": 1,
+    "bounding_box": [
+      70,
+      368,
+      66,
+      30
+    ]
+  },
+  {
+    "text": "4.17",
+    "confidence": 0.9819,
+    "page": 1,
+    "bounding_box": [
+      582,
+      372,
+      62,
+      28
+    ]
+  },
+  {
+    "text": "Male:",
+    "confidence": 0.9538,
+    "page": 1,
+    "bounding_box": [
+      1054,
+      374,
+      68,
+      30
+    ]
+  },
+  {
+    "text": "4.5-6.0 X 10^12/L",
+    "confidence": 0.4144,
+    "page": 1,
+    "bounding_box": [
+      1130,
+      374,
+      228,
+      32
+    ]
+  },
+  {
+    "text": "Female: 3.9-5.6 X 10412/L",
+    "confidence": 0.4974,
+    "page": 1,
+    "bounding_box": [
+      1051,
+      403,
+      342,
+      38
+    ]
+  },
+  {
+    "text": "Hemoglobin",
+    "confidence": 0.9999,
+    "page": 1,
+    "bounding_box": [
+      68,
+      428,
+      159,
+      38
+    ]
+  },
+  {
+    "text": "12.8",
+    "confidence": 0.9816,
+    "page": 1,
+    "bounding_box": [
+      584,
+      434,
+      60,
+      30
+    ]
+  },
+  {
+    "text": "Male: 13-18 g/dl",
+    "confidence": 0.8047,
+    "page": 1,
+    "bounding_box": [
+      1055,
+      435,
+      212,
+      38
+    ]
+  },
+  {
+    "text": "Female:",
+    "confidence": 0.5725,
+    "page": 1,
+    "bounding_box": [
+      1054,
+      466,
+      104,
+      32
+    ]
+  },
+  {
+    "text": "12-16 g/1",
+    "confidence": 0.9734,
+    "page": 1,
+    "bounding_box": [
+      1168,
+      468,
+      116,
+      32
+    ]
+  },
+  {
+    "text": "PCV",
+    "confidence": 0.7844,
+    "page": 1,
+    "bounding_box": [
+      68,
+      492,
+      64,
+      30
+    ]
+  },
+  {
+    "text": "36.9",
+    "confidence": 0.9311,
+    "page": 1,
+    "bounding_box": [
+      582,
+      496,
+      60,
+      30
+    ]
+  },
+  {
+    "text": "Male: 40",
+    "confidence": 0.7056,
+    "page": 1,
+    "bounding_box": [
+      1056,
+      498,
+      116,
+      30
+    ]
+  },
+  {
+    "text": "54 Ii",
+    "confidence": 0.4441,
+    "page": 1,
+    "bounding_box": [
+      1190,
+      498,
+      70,
+      30
+    ]
+  },
+  {
+    "text": "Female: 39-52",
+    "confidence": 0.6981,
+    "page": 1,
+    "bounding_box": [
+      1056,
+      528,
+      190,
+      32
+    ]
+  },
+  {
+    "text": "Il",
+    "confidence": 0.1184,
+    "page": 1,
+    "bounding_box": [
+      1255,
+      531,
+      20,
+      26
+    ]
+  },
+  {
+    "text": "MCV",
+    "confidence": 0.9992,
+    "page": 1,
+    "bounding_box": [
+      66,
+      556,
+      70,
+      30
+    ]
+  },
+  {
+    "text": "88.5",
+    "confidence": 0.9764,
+    "page": 1,
+    "bounding_box": [
+      582,
+      558,
+      62,
+      32
+    ]
+  },
+  {
+    "text": "76-96 fl",
+    "confidence": 0.5176,
+    "page": 1,
+    "bounding_box": [
+      1056,
+      560,
+      100,
+      32
+    ]
+  },
+  {
+    "text": "MCH",
+    "confidence": 0.9239,
+    "page": 1,
+    "bounding_box": [
+      64,
+      592,
+      72,
+      30
+    ]
+  },
+  {
+    "text": "30.7",
+    "confidence": 0.5724,
+    "page": 1,
+    "bounding_box": [
+      582,
+      596,
+      58,
+      30
+    ]
+  },
+  {
+    "text": "27-32 pg",
+    "confidence": 0.8294,
+    "page": 1,
+    "bounding_box": [
+      1055,
+      595,
+      122,
+      40
+    ]
+  },
+  {
+    "text": "MCHC",
+    "confidence": 0.9863,
+    "page": 1,
+    "bounding_box": [
+      64,
+      628,
+      90,
+      32
+    ]
+  },
+  {
+    "text": "34.7",
+    "confidence": 0.9996,
+    "page": 1,
+    "bounding_box": [
+      582,
+      634,
+      58,
+      30
+    ]
+  },
+  {
+    "text": "31.5-34.5 gldl",
+    "confidence": 0.8314,
+    "page": 1,
+    "bounding_box": [
+      1055,
+      633,
+      186,
+      38
+    ]
+  },
+  {
+    "text": "Pialelei Count",
+    "confidence": 0.8607,
+    "page": 1,
+    "bounding_box": [
+      62,
+      668,
+      186,
+      30
+    ]
+  },
+  {
+    "text": "150",
+    "confidence": 1.0,
+    "page": 1,
+    "bounding_box": [
+      584,
+      670,
+      52,
+      32
+    ]
+  },
+  {
+    "text": "7",
+    "confidence": 0.1279,
+    "page": 1,
+    "bounding_box": [
+      920,
+      662,
+      48,
+      48
+    ]
+  },
+  {
+    "text": "150-450 X10n9i1",
+    "confidence": 0.3222,
+    "page": 1,
+    "bounding_box": [
+      1058,
+      672,
+      214,
+      32
+    ]
+  },
+  {
+    "text": "Neutrophils",
+    "confidence": 0.9952,
+    "page": 1,
+    "bounding_box": [
+      61,
+      703,
+      154,
+      36
+    ]
+  },
+  {
+    "text": "66",
+    "confidence": 1.0,
+    "page": 1,
+    "bounding_box": [
+      582,
+      708,
+      38,
+      32
+    ]
+  },
+  {
+    "text": "40-70%",
+    "confidence": 0.984,
+    "page": 1,
+    "bounding_box": [
+      1057,
+      709,
+      104,
+      30
+    ]
+  },
+  {
+    "text": "Lymphocyiles",
+    "confidence": 0.6886,
+    "page": 1,
+    "bounding_box": [
+      59,
+      741,
+      180,
+      36
+    ]
+  },
+  {
+    "text": "25",
+    "confidence": 1.0,
+    "page": 1,
+    "bounding_box": [
+      582,
+      746,
+      38,
+      30
+    ]
+  },
+  {
+    "text": "20-40 %",
+    "confidence": 1.0,
+    "page": 1,
+    "bounding_box": [
+      1058,
+      746,
+      114,
+      32
+    ]
+  },
+  {
+    "text": "Monocytes",
+    "confidence": 0.8405,
+    "page": 1,
+    "bounding_box": [
+      56,
+      778,
+      147,
+      36
+    ]
+  },
+  {
+    "text": "05",
+    "confidence": 0.9997,
+    "page": 1,
+    "bounding_box": [
+      582,
+      784,
+      38,
+      30
+    ]
+  },
+  {
+    "text": "0-10 %",
+    "confidence": 0.9987,
+    "page": 1,
+    "bounding_box": [
+      1056,
+      784,
+      100,
+      32
+    ]
+  },
+  {
+    "text": "Eosinophils",
+    "confidence": 0.9998,
+    "page": 1,
+    "bounding_box": [
+      57,
+      815,
+      158,
+      38
+    ]
+  },
+  {
+    "text": "04",
+    "confidence": 1.0,
+    "page": 1,
+    "bounding_box": [
+      582,
+      820,
+      38,
+      30
+    ]
+  },
+  {
+    "text": "0-6 %",
+    "confidence": 0.9996,
+    "page": 1,
+    "bounding_box": [
+      1058,
+      822,
+      82,
+      30
+    ]
+  },
+  {
+    "text": "Provisional Report By:",
+    "confidence": 0.958,
+    "page": 1,
+    "bounding_box": [
+      51,
+      859,
+      322,
+      39
+    ]
+  },
+  {
+    "text": "Trop",
+    "confidence": 0.3076,
+    "page": 1,
+    "bounding_box": [
+      47,
+      898,
+      77,
+      38
+    ]
+  },
+  {
+    "text": "Hs",
+    "confidence": 0.9901,
+    "page": 1,
+    "bounding_box": [
+      140,
+      902,
+      42,
+      32
+    ]
+  },
+  {
+    "text": "Parameter",
+    "confidence": 0.9992,
+    "page": 1,
+    "bounding_box": [
+      54,
+      944,
+      150,
+      28
+    ]
+  },
+  {
+    "text": "Result",
+    "confidence": 1.0,
+    "page": 1,
+    "bounding_box": [
+      582,
+      946,
+      96,
+      32
+    ]
+  },
+  {
+    "text": "Reference Range",
+    "confidence": 0.9923,
+    "page": 1,
+    "bounding_box": [
+      1059,
+      946,
+      247,
+      40
+    ]
+  },
+  {
+    "text": "Trop",
+    "confidence": 0.9998,
+    "page": 1,
+    "bounding_box": [
+      52,
+      983,
+      71,
+      39
+    ]
+  },
+  {
+    "text": "Hs",
+    "confidence": 0.9947,
+    "page": 1,
+    "bounding_box": [
+      138,
+      988,
+      42,
+      28
+    ]
+  },
+  {
+    "text": "0.02",
+    "confidence": 0.9947,
+    "page": 1,
+    "bounding_box": [
+      580,
+      988,
+      64,
+      30
+    ]
+  },
+  {
+    "text": "0.02",
+    "confidence": 0.7623,
+    "page": 1,
+    "bounding_box": [
+      1058,
+      990,
+      66,
+      30
+    ]
+  },
+  {
+    "text": "0.06 nglml",
+    "confidence": 0.5853,
+    "page": 1,
+    "bounding_box": [
+      1141,
+      989,
+      150,
+      38
+    ]
+  },
+  {
+    "text": "Provisional Report By:",
+    "confidence": 0.9983,
+    "page": 1,
+    "bounding_box": [
+      45,
+      1029,
+      324,
+      39
+    ]
+  },
+  {
+    "text": "Mncds Center LJnone",
+    "confidence": 0.0143,
+    "page": 1,
+    "bounding_box": [
+      582,
+      1034,
+      878,
+      93
+    ]
+  },
+  {
+    "text": "Ennted On 03-07-2026 01.08 Pm",
+    "confidence": 0.2004,
+    "page": 1,
+    "bounding_box": [
+      78,
+      1236,
+      296,
+      24
+    ]
+  },
+  {
+    "text": "Provisionai Report_",
+    "confidence": 0.9034,
+    "page": 1,
+    "bounding_box": [
+      10,
+      1277,
+      212,
+      32
+    ]
+  },
+  {
+    "text": "authenticated Report Please visit in Lab on exact ( ~livery date to 3et Authenticated report.",
+    "confidence": 0.5878,
+    "page": 1,
+    "bounding_box": [
+      273,
+      1274,
+      992,
+      39
+    ]
+  },
+  {
+    "text": "For",
+    "confidence": 0.7672,
+    "page": 1,
+    "bounding_box": [
+      225,
+      1275,
+      50,
+      33
+    ]
+  }
+]

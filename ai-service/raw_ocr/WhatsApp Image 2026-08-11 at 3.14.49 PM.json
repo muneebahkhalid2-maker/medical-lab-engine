@@ -1,0 +1,244 @@
+[
+  {
+    "text": "1",
+    "confidence": 0.1021,
+    "page": 1,
+    "bounding_box": [
+      742,
+      0,
+      90,
+      30
+    ]
+  },
+  {
+    "text": "0",
+    "confidence": 0.2146,
+    "page": 1,
+    "bounding_box": [
+      848,
+      0,
+      108,
+      88
+    ]
+  },
+  {
+    "text": "Cu{ow]l",
+    "confidence": 0.3371,
+    "page": 1,
+    "bounding_box": [
+      1,
+      54,
+      556,
+      176
+    ]
+  },
+  {
+    "text": "T4",
+    "confidence": 0.6418,
+    "page": 1,
+    "bounding_box": [
+      294,
+      311,
+      205,
+      123
+    ]
+  },
+  {
+    "text": "C",
+    "confidence": 0.9851,
+    "page": 1,
+    "bounding_box": [
+      695,
+      329,
+      122,
+      92
+    ]
+  },
+  {
+    "text": "PJuNi",
+    "confidence": 0.0808,
+    "page": 1,
+    "bounding_box": [
+      877,
+      249,
+      304,
+      153
+    ]
+  },
+  {
+    "text": "Ta",
+    "confidence": 0.6562,
+    "page": 1,
+    "bounding_box": [
+      309,
+      494,
+      217,
+      128
+    ]
+  },
+  {
+    "text": "Lovisha 951",
+    "confidence": 0.0598,
+    "page": 1,
+    "bounding_box": [
+      620,
+      466,
+      580,
+      157
+    ]
+  },
+  {
+    "text": "(#J",
+    "confidence": 0.7681,
+    "page": 1,
+    "bounding_box": [
+      934,
+      656,
+      226,
+      120
+    ]
+  },
+  {
+    "text": "> _",
+    "confidence": 0.249,
+    "page": 1,
+    "bounding_box": [
+      102,
+      822,
+      138,
+      80
+    ]
+  },
+  {
+    "text": "Ta",
+    "confidence": 0.666,
+    "page": 1,
+    "bounding_box": [
+      299,
+      748,
+      213,
+      144
+    ]
+  },
+  {
+    "text": "Cnli",
+    "confidence": 0.203,
+    "page": 1,
+    "bounding_box": [
+      596,
+      759,
+      345,
+      127
+    ]
+  },
+  {
+    "text": "2:8",
+    "confidence": 0.1996,
+    "page": 1,
+    "bounding_box": [
+      1008,
+      776,
+      182,
+      120
+    ]
+  },
+  {
+    "text": "U -",
+    "confidence": 0.2925,
+    "page": 1,
+    "bounding_box": [
+      38,
+      990,
+      168,
+      104
+    ]
+  },
+  {
+    "text": "Tol",
+    "confidence": 0.6693,
+    "page": 1,
+    "bounding_box": [
+      289,
+      929,
+      236,
+      156
+    ]
+  },
+  {
+    "text": "Cudt",
+    "confidence": 0.81,
+    "page": 1,
+    "bounding_box": [
+      619,
+      930,
+      508,
+      170
+    ]
+  },
+  {
+    "text": "3_A4b_Zopetk",
+    "confidence": 0.0432,
+    "page": 1,
+    "bounding_box": [
+      30,
+      1115,
+      972,
+      171
+    ]
+  },
+  {
+    "text": "Yo)",
+    "confidence": 0.2918,
+    "page": 1,
+    "bounding_box": [
+      781,
+      1236,
+      269,
+      146
+    ]
+  },
+  {
+    "text": "CpoNu",
+    "confidence": 0.1083,
+    "page": 1,
+    "bounding_box": [
+      151,
+      1313,
+      484,
+      156
+    ]
+  },
+  {
+    "text": "to",
+    "confidence": 0.6587,
+    "page": 1,
+    "bounding_box": [
+      1005,
+      1347,
+      126,
+      86
+    ]
+  },
+  {
+    "text": "Idlnq",
+    "confidence": 0.1172,
+    "page": 1,
+    "bounding_box": [
+      671,
+      16,
+      411,
+      209
+    ]
+  },
+  {
+    "text": "NeXe",
+    "confidence": 0.243,
+    "page": 1,
+    "bounding_box": [
+      571,
+      1277,
+      379,
+      183
+    ]
+  }
+]

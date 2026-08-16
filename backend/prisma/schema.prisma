@@ -1,0 +1,116 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Hospital {
+  id        String   @id @default(uuid())
+  name      String
+  code      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  users      User[]
+  patients   Patient[]
+  encounters Encounter[]
+}
+
+model User {
+  id         String   @id @default(uuid())
+  hospitalId String
+  hospital   Hospital @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
+  email      String   @unique
+  password   String
+  fullName   String
+  role       Role
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Patient {
+  id         String   @id @default(uuid())
+  hospitalId String
+  hospital   Hospital @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
+  mrn        String
+  fullName   String
+  dob        DateTime
+  gender     String
+  phone      String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  encounters Encounter[]
+  documents  MedicalDocument[]
+  vitals     Vital[]
+
+  @@unique([hospitalId, mrn])
+  @@index([hospitalId])
+}
+
+model Encounter {
+  id               String           @id @default(uuid())
+  hospitalId       String
+  hospital         Hospital         @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
+  patientId        String
+  patient          Patient          @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  status           EncounterStatus  @default(REGISTERED)
+  chiefComplaint   String
+  intakeData       Json?
+  redFlagsTriggered Json?
+  clinicalSummary  Json?
+  soapNote         Json?
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+
+  @@index([hospitalId, status])
+  @@index([patientId, createdAt])
+}
+
+model Vital {
+  id          String   @id @default(uuid())
+  patientId   String
+  patient     Patient  @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  encounterId String?
+  bpSystolic  Int?
+  bpDiastolic Int?
+  heartRate   Int?
+  temperature Float?
+  weight      Float?
+  recordedAt  DateTime @default(now())
+
+  @@index([patientId, recordedAt])
+}
+
+model MedicalDocument {
+  id            String   @id @default(uuid())
+  patientId     String
+  patient       Patient  @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  fileKey       String
+  fileType      String
+  extractedData Json?
+  createdAt     DateTime @default(now())
+
+  @@index([patientId, createdAt])
+}
+
+enum Role {
+  DOCTOR
+  NURSE
+  RECEPTIONIST
+  ADMIN
+  PATIENT
+}
+
+enum EncounterStatus {
+  REGISTERED
+  INTAKE_IN_PROGRESS
+  INTAKE_COMPLETE
+  VITALS_RECORDED
+  READY_FOR_DOCTOR
+  IN_CONSULTATION
+  COMPLETED
+}

@@ -1,0 +1,186 @@
+{
+  "document_id": "WhatsApp Image 2026-08-11 at 3.14.50 PM (1)",
+  "document_type": "laboratory_report",
+  "patient": {
+    "id": "801575",
+    "name": "M Afzal",
+    "age": 64,
+    "sex": "Male"
+  },
+  "report": {
+    "date": "2026-07-08",
+    "laboratory": "ARMY CARDIAC CENTER"
+  },
+  "tests": [
+    {
+      "test_name": "Total Bilirubin",
+      "test_name_raw": "Serum Total Bilirubin",
+      "result": 6.0,
+      "unit": "umol/l",
+      "reference_range": "2 - 17",
+      "confidence": 0.8,
+      "verified": false,
+      "source": null,
+      "needs_verification": true,
+      "reason": "extraction_disagreement"
+    },
+    {
+      "test_name": "Alanine Aminotransferase",
+      "test_name_raw": "Serum ALT",
+      "result": 22.0,
+      "unit": "u/l",
+      "reference_range": "up to 42",
+      "confidence": 1.0,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          988,
+          382,
+          24,
+          26
+        ]
+      },
+      "needs_verification": true,
+      "reason": "extraction_disagreement"
+    },
+    {
+      "test_name": "High-Sensitivity Troponin",
+      "test_name_raw": "Hs",
+      "result": 0.02,
+      "unit": "ng/ml",
+      "reference_range": "0.02 - 0.06",
+      "confidence": 1.0,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          988,
+          382,
+          24,
+          26
+        ]
+      },
+      "needs_verification": false
+    },
+    {
+      "test_name": "Urea",
+      "test_name_raw": "Urea",
+      "result": 42.0,
+      "unit": "mg/dl",
+      "reference_range": "18 - 42",
+      "confidence": 1.0,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          988,
+          382,
+          24,
+          26
+        ]
+      },
+      "needs_verification": true,
+      "reason": "extraction_disagreement"
+    },
+    {
+      "test_name": "Creatinine",
+      "test_name_raw": "Serum Creatinine",
+      "result": 1.6,
+      "unit": "mg/dl",
+      "reference_range": "Male: 0.7 - 1.2, Female: 0.6 - 1.0",
+      "confidence": 0.9589,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          552,
+          758,
+          40,
+          28
+        ]
+      },
+      "needs_verification": false
+    },
+    {
+      "test_name": "Sodium",
+      "test_name_raw": "Serum Sodium",
+      "result": 139.0,
+      "unit": "mmol/l",
+      "reference_range": "135 - 150",
+      "confidence": 1.0,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          1177,
+          791,
+          18,
+          22
+        ]
+      },
+      "needs_verification": true,
+      "reason": "extraction_disagreement"
+    },
+    {
+      "test_name": "Potassium",
+      "test_name_raw": "Serum Potassium",
+      "result": 4.6,
+      "unit": "mmol/l",
+      "reference_range": "3.4 - 5.0",
+      "confidence": 0.5111,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          550,
+          852,
+          42,
+          28
+        ]
+      },
+      "needs_verification": false
+    },
+    {
+      "test_name": "Total Cholesterol",
+      "test_name_raw": "Serum Chloesterol",
+      "result": 99.0,
+      "unit": "mg/dl",
+      "reference_range": "Desirable: <200, Borderline: 200 - 240, High: >240",
+      "confidence": 1.0,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          546,
+          1010,
+          38,
+          30
+        ]
+      },
+      "needs_verification": true,
+      "reason": "extraction_disagreement"
+    },
+    {
+      "test_name": "Triglycerides",
+      "test_name_raw": "Serum Triglycerides",
+      "result": 69.0,
+      "unit": "mg/dl",
+      "reference_range": "Desirable: <150, Borderline: 150 - 200, High: >200",
+      "confidence": 1.0,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          544,
+          1104,
+          38,
+          30
+        ]
+      },
+      "needs_verification": true,
+      "reason": "extraction_disagreement"
+    }
+  ],
+  "extraction_status": "needs_verification"
+}

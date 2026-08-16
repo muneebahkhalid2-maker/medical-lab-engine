@@ -1,0 +1,662 @@
+[
+  {
+    "text": "Cardac cinti",
+    "confidence": 0.055,
+    "page": 1,
+    "bounding_box": [
+      114,
+      107,
+      107,
+      18
+    ]
+  },
+  {
+    "text": "Cardia (c\"ter Wahawalpur",
+    "confidence": 0.529,
+    "page": 1,
+    "bounding_box": [
+      349,
+      114,
+      476,
+      39
+    ]
+  },
+  {
+    "text": "Qunid-a-lzm",
+    "confidence": 0.0767,
+    "page": 1,
+    "bounding_box": [
+      374,
+      155,
+      201,
+      36
+    ]
+  },
+  {
+    "text": "Medieol Tollcg\"",
+    "confidence": 0.0998,
+    "page": 1,
+    "bounding_box": [
+      580,
+      151,
+      225,
+      37
+    ]
+  },
+  {
+    "text": "Cath",
+    "confidence": 0.9758,
+    "page": 1,
+    "bounding_box": [
+      396,
+      200,
+      82,
+      30
+    ]
+  },
+  {
+    "text": "Lab Dcpartment",
+    "confidence": 0.1514,
+    "page": 1,
+    "bounding_box": [
+      485,
+      197,
+      282,
+      36
+    ]
+  },
+  {
+    "text": "MiKNos",
+    "confidence": 0.0979,
+    "page": 1,
+    "bounding_box": [
+      71,
+      269,
+      66,
+      20
+    ]
+  },
+  {
+    "text": "002059820",
+    "confidence": 0.9923,
+    "page": 1,
+    "bounding_box": [
+      164,
+      266,
+      98,
+      24
+    ]
+  },
+  {
+    "text": "Ferlorm iIt:",
+    "confidence": 0.0756,
+    "page": 1,
+    "bounding_box": [
+      375,
+      273,
+      112,
+      18
+    ]
+  },
+  {
+    "text": "12-Jur-2023 12 39 PM",
+    "confidence": 0.6369,
+    "page": 1,
+    "bounding_box": [
+      528,
+      264,
+      192,
+      26
+    ]
+  },
+  {
+    "text": "CathW\":",
+    "confidence": 0.2612,
+    "page": 1,
+    "bounding_box": [
+      783,
+      265,
+      74,
+      18
+    ]
+  },
+  {
+    "text": "232622",
+    "confidence": 1.0,
+    "page": 1,
+    "bounding_box": [
+      855,
+      257,
+      67,
+      27
+    ]
+  },
+  {
+    "text": "Nane",
+    "confidence": 0.2937,
+    "page": 1,
+    "bounding_box": [
+      72,
+      304,
+      47,
+      20
+    ]
+  },
+  {
+    "text": "MAFZAL",
+    "confidence": 0.9834,
+    "page": 1,
+    "bounding_box": [
+      167,
+      301,
+      78,
+      20
+    ]
+  },
+  {
+    "text": "Mal",
+    "confidence": 0.9169,
+    "page": 1,
+    "bounding_box": [
+      729,
+      297,
+      44,
+      20
+    ]
+  },
+  {
+    "text": "61 Year(s)",
+    "confidence": 0.7529,
+    "page": 1,
+    "bounding_box": [
+      798,
+      292,
+      92,
+      24
+    ]
+  },
+  {
+    "text": "onsultant: DR FOUZIA GoheR",
+    "confidence": 0.499,
+    "page": 1,
+    "bounding_box": [
+      82,
+      332,
+      256,
+      24
+    ]
+  },
+  {
+    "text": "Rcpricd Oale:",
+    "confidence": 0.1688,
+    "page": 1,
+    "bounding_box": [
+      399,
+      337,
+      120,
+      20
+    ]
+  },
+  {
+    "text": "\"2-Jun-23, 01 20 PM",
+    "confidence": 0.4369,
+    "page": 1,
+    "bounding_box": [
+      558,
+      330,
+      170,
+      24
+    ]
+  },
+  {
+    "text": "Clicut: SEHAT CaRd",
+    "confidence": 0.4485,
+    "page": 1,
+    "bounding_box": [
+      762,
+      324,
+      186,
+      26
+    ]
+  },
+  {
+    "text": "CORONARY ANGIOGRAPHY",
+    "confidence": 0.5416,
+    "page": 1,
+    "bounding_box": [
+      342,
+      365,
+      444,
+      53
+    ]
+  },
+  {
+    "text": "Prcssufe:",
+    "confidence": 0.3369,
+    "page": 1,
+    "bounding_box": [
+      522,
+      432,
+      98,
+      24
+    ]
+  },
+  {
+    "text": "Aonua",
+    "confidence": 0.0825,
+    "page": 1,
+    "bounding_box": [
+      87,
+      471,
+      52,
+      16
+    ]
+  },
+  {
+    "text": "L;",
+    "confidence": 0.7996,
+    "page": 1,
+    "bounding_box": [
+      443,
+      471,
+      32,
+      16
+    ]
+  },
+  {
+    "text": "Nol dcre",
+    "confidence": 0.5895,
+    "page": 1,
+    "bounding_box": [
+      495,
+      467,
+      74,
+      20
+    ]
+  },
+  {
+    "text": "Procedure Findings:",
+    "confidence": 0.7363,
+    "page": 1,
+    "bounding_box": [
+      456,
+      495,
+      208,
+      32
+    ]
+  },
+  {
+    "text": "Left heart catheterization was performed by percutancous lechrique trough rgnt rad al artery Dy using 6F arteria sheath",
+    "confidence": 0.5276,
+    "page": 1,
+    "bounding_box": [
+      67,
+      521,
+      984,
+      36
+    ]
+  },
+  {
+    "text": "under Iocal anesthesia Ccronary Arenography was performed by Judkin\"",
+    "confidence": 0.5484,
+    "page": 1,
+    "bounding_box": [
+      70,
+      556,
+      594,
+      30
+    ]
+  },
+  {
+    "text": "s technique using JL3 5 and JRG 6F Coronary",
+    "confidence": 0.4501,
+    "page": 1,
+    "bounding_box": [
+      672,
+      550,
+      376,
+      30
+    ]
+  },
+  {
+    "text": "catheters",
+    "confidence": 0.8732,
+    "page": 1,
+    "bounding_box": [
+      71,
+      593,
+      80,
+      20
+    ]
+  },
+  {
+    "text": "LV angiogram was",
+    "confidence": 0.6993,
+    "page": 1,
+    "bounding_box": [
+      158,
+      592,
+      164,
+      24
+    ]
+  },
+  {
+    "text": "coi dare",
+    "confidence": 0.1967,
+    "page": 1,
+    "bounding_box": [
+      327,
+      593,
+      76,
+      20
+    ]
+  },
+  {
+    "text": "ncn-iOnic contras:",
+    "confidence": 0.3522,
+    "page": 1,
+    "bounding_box": [
+      413,
+      591,
+      148,
+      20
+    ]
+  },
+  {
+    "text": "UsCC",
+    "confidence": 0.2131,
+    "page": 1,
+    "bounding_box": [
+      583,
+      589,
+      44,
+      20
+    ]
+  },
+  {
+    "text": "Peripneral pulses of rgnt hand",
+    "confidence": 0.5027,
+    "page": 1,
+    "bounding_box": [
+      633,
+      584,
+      263,
+      26
+    ]
+  },
+  {
+    "text": "at 'he crd 0f tte",
+    "confidence": 0.4419,
+    "page": 1,
+    "bounding_box": [
+      900,
+      580,
+      148,
+      24
+    ]
+  },
+  {
+    "text": "procedure wefe rormal",
+    "confidence": 0.7263,
+    "page": 1,
+    "bounding_box": [
+      74,
+      624,
+      191,
+      21
+    ]
+  },
+  {
+    "text": "patient t0 eratec Ihc proceduro #ell",
+    "confidence": 0.383,
+    "page": 1,
+    "bounding_box": [
+      304,
+      620,
+      286,
+      24
+    ]
+  },
+  {
+    "text": "LEELMAINSIEM",
+    "confidence": 0.699,
+    "page": 1,
+    "bounding_box": [
+      72,
+      650,
+      166,
+      24
+    ]
+  },
+  {
+    "text": "Snor bfurcating notra vessel",
+    "confidence": 0.4423,
+    "page": 1,
+    "bounding_box": [
+      72,
+      679,
+      260,
+      27
+    ]
+  },
+  {
+    "text": "LEFT ANTERIOR DECSENDING ARTERY:",
+    "confidence": 0.377,
+    "page": 1,
+    "bounding_box": [
+      74,
+      705,
+      360,
+      29
+    ]
+  },
+  {
+    "text": "Wrap around good Sized vessel Tignt md stenosis followed Dy moderate dista disease",
+    "confidence": 0.4526,
+    "page": 1,
+    "bounding_box": [
+      72,
+      734,
+      698,
+      30
+    ]
+  },
+  {
+    "text": "LEEI CIRCUMELEXARIERY",
+    "confidence": 0.6294,
+    "page": 1,
+    "bounding_box": [
+      74,
+      766,
+      260,
+      26
+    ]
+  },
+  {
+    "text": "Dominan: vessel Mocerale proximal Cisease fcllowed Dy severe distal ciscase",
+    "confidence": 0.5295,
+    "page": 1,
+    "bounding_box": [
+      74,
+      792,
+      628,
+      30
+    ]
+  },
+  {
+    "text": "RIGHL CORONARY ARIERYA",
+    "confidence": 0.4389,
+    "page": 1,
+    "bounding_box": [
+      74,
+      824,
+      264,
+      28
+    ]
+  },
+  {
+    "text": "Non-dotinan: noria  Vessei",
+    "confidence": 0.2526,
+    "page": 1,
+    "bounding_box": [
+      77,
+      859,
+      234,
+      20
+    ]
+  },
+  {
+    "text": "Conculsiema",
+    "confidence": 0.1036,
+    "page": 1,
+    "bounding_box": [
+      510,
+      910,
+      120,
+      24
+    ]
+  },
+  {
+    "text": "Two vessel disease",
+    "confidence": 0.5181,
+    "page": 1,
+    "bounding_box": [
+      75,
+      955,
+      170,
+      21
+    ]
+  },
+  {
+    "text": "Management Plan:",
+    "confidence": 0.7406,
+    "page": 1,
+    "bounding_box": [
+      466,
+      977,
+      205,
+      31
+    ]
+  },
+  {
+    "text": "Pcito LAD:",
+    "confidence": 0.6518,
+    "page": 1,
+    "bounding_box": [
+      76,
+      1018,
+      118,
+      24
+    ]
+  },
+  {
+    "text": "DR SAQIB RIAZ",
+    "confidence": 0.9329,
+    "page": 1,
+    "bounding_box": [
+      92,
+      1418,
+      170,
+      26
+    ]
+  },
+  {
+    "text": "DR IOUZIA GOMR",
+    "confidence": 0.3185,
+    "page": 1,
+    "bounding_box": [
+      642,
+      1419,
+      218,
+      25
+    ]
+  },
+  {
+    "text": "TCPS (CaRDiOI(K,N SNiOR KiGISIRAK",
+    "confidence": 0.0879,
+    "page": 1,
+    "bounding_box": [
+      92,
+      1452,
+      339,
+      24
+    ]
+  },
+  {
+    "text": "Mibiks ic(aKi)",
+    "confidence": 0.1129,
+    "page": 1,
+    "bounding_box": [
+      645,
+      1455,
+      168,
+      20
+    ]
+  },
+  {
+    "text": "412047023",
+    "confidence": 0.1525,
+    "page": 1,
+    "bounding_box": [
+      79,
+      1537,
+      84,
+      20
+    ]
+  },
+  {
+    "text": "22PM",
+    "confidence": 0.191,
+    "page": 1,
+    "bounding_box": [
+      175,
+      1539,
+      50,
+      18
+    ]
+  },
+  {
+    "text": "Llectronicaly verit ed on 12 Jun 2023ro $ionalure requred",
+    "confidence": 0.2648,
+    "page": 1,
+    "bounding_box": [
+      359,
+      1539,
+      435,
+      26
+    ]
+  },
+  {
+    "text": "Pagg",
+    "confidence": 0.2556,
+    "page": 1,
+    "bounding_box": [
+      938,
+      1544,
+      37,
+      18
+    ]
+  },
+  {
+    "text": "6 |",
+    "confidence": 0.3432,
+    "page": 1,
+    "bounding_box": [
+      985,
+      1545,
+      24,
+      16
+    ]
+  },
+  {
+    "text": "Tne",
+    "confidence": 0.9725,
+    "page": 1,
+    "bounding_box": [
+      266,
+      618,
+      38,
+      25
+    ]
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "document_id": "WhatsApp Image 2026-08-11 at 3.14.49 PM",
+  "document_type": "laboratory_report",
+  "patient": {
+    "name": "Lovisha",
+    "age": null,
+    "sex": null
+  },
+  "report": {
+    "date": null,
+    "laboratory": null
+  },
+  "tests": [],
+  "extraction_status": "unverified"
+}

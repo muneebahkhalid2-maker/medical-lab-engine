@@ -1,0 +1,108 @@
+{
+  "document_id": "WhatsApp Image 2026-07-10 at 3.57.53 PM (2) copy",
+  "document_type": "laboratory_report",
+  "patient": {
+    "name": "MAFZAL",
+    "id": "002059820",
+    "age": 61,
+    "sex": "Male"
+  },
+  "report": {
+    "date": "12-Jun-2023 01:20 PM",
+    "laboratory": "Cardiac Center Bahawalpur, Quaid-e-Azam Medical College"
+  },
+  "tests": [
+    {
+      "test_name": "Left Main Coronary Artery",
+      "test_name_raw": "LEFT MAIN STEM",
+      "result": "Short bifurcating normal vessel",
+      "unit": null,
+      "reference_range": null,
+      "confidence": 0.9169,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          729,
+          297,
+          44,
+          20
+        ]
+      },
+      "needs_verification": true,
+      "reason": "extraction_disagreement"
+    },
+    {
+      "test_name": "Left Anterior Descending Artery",
+      "test_name_raw": "LEFT ANTERIOR DECSENDING ARTERY",
+      "result": "Wrap around good sized vessel Tight mid stenosis followed by moderate distal disease",
+      "unit": null,
+      "reference_range": null,
+      "confidence": 0.8,
+      "verified": false,
+      "source": null,
+      "needs_verification": true,
+      "reason": "extraction_disagreement"
+    },
+    {
+      "test_name": "Left Circumflex Artery",
+      "test_name_raw": "LEFT CIRCUMFLEX ARTERY",
+      "result": "Dominant vessel Moderate proximal disease followed by severe distal disease",
+      "unit": null,
+      "reference_range": null,
+      "confidence": 0.9169,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          729,
+          297,
+          44,
+          20
+        ]
+      },
+      "needs_verification": true,
+      "reason": "extraction_disagreement"
+    },
+    {
+      "test_name": "Right Coronary Artery",
+      "test_name_raw": "RIGHT CORONARY ARTERY",
+      "result": "Non-dominant normal vessel",
+      "unit": null,
+      "reference_range": null,
+      "confidence": 0.9169,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          729,
+          297,
+          44,
+          20
+        ]
+      },
+      "needs_verification": true,
+      "reason": "extraction_disagreement"
+    },
+    {
+      "test_name": "Conclusion",
+      "test_name_raw": "Conclusion",
+      "result": "Two vessel disease",
+      "unit": null,
+      "reference_range": null,
+      "confidence": 0.5181,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          75,
+          955,
+          170,
+          21
+        ]
+      },
+      "needs_verification": false
+    }
+  ],
+  "extraction_status": "needs_verification"
+}

@@ -1,0 +1,266 @@
+[
+  {
+    "text": "Department of Pathology",
+    "confidence": 0.7284,
+    "page": 1,
+    "bounding_box": [
+      305,
+      37,
+      389,
+      50
+    ]
+  },
+  {
+    "text": "LAB ID: 145104",
+    "confidence": 0.9595,
+    "page": 1,
+    "bounding_box": [
+      744,
+      38,
+      190,
+      30
+    ]
+  },
+  {
+    "text": "ARMY CARDIAC CENTER",
+    "confidence": 0.9859,
+    "page": 1,
+    "bounding_box": [
+      300,
+      73,
+      391,
+      42
+    ]
+  },
+  {
+    "text": "Ent On 08-Jul-26",
+    "confidence": 0.7335,
+    "page": 1,
+    "bounding_box": [
+      740,
+      76,
+      202,
+      30
+    ]
+  },
+  {
+    "text": "Ent By: Khurram",
+    "confidence": 0.9648,
+    "page": 1,
+    "bounding_box": [
+      950,
+      75,
+      194,
+      33
+    ]
+  },
+  {
+    "text": "LAHORE",
+    "confidence": 0.9998,
+    "page": 1,
+    "bounding_box": [
+      432,
+      114,
+      136,
+      32
+    ]
+  },
+  {
+    "text": "Category",
+    "confidence": 0.702,
+    "page": 1,
+    "bounding_box": [
+      739,
+      113,
+      111,
+      33
+    ]
+  },
+  {
+    "text": "Entitled Outdoor",
+    "confidence": 0.7331,
+    "page": 1,
+    "bounding_box": [
+      858,
+      114,
+      194,
+      26
+    ]
+  },
+  {
+    "text": "Phone: 042-36655078 & 9",
+    "confidence": 0.9531,
+    "page": 1,
+    "bounding_box": [
+      323,
+      143,
+      346,
+      38
+    ]
+  },
+  {
+    "text": "Name:",
+    "confidence": 0.971,
+    "page": 1,
+    "bounding_box": [
+      92,
+      180,
+      86,
+      31
+    ]
+  },
+  {
+    "text": "801575 Pipioniccr",
+    "confidence": 0.3953,
+    "page": 1,
+    "bounding_box": [
+      188,
+      184,
+      246,
+      32
+    ]
+  },
+  {
+    "text": "M Alzal (Age 64 Ycars-Male)",
+    "confidence": 0.743,
+    "page": 1,
+    "bounding_box": [
+      444,
+      190,
+      354,
+      32
+    ]
+  },
+  {
+    "text": "Nho",
+    "confidence": 0.5633,
+    "page": 1,
+    "bounding_box": [
+      816,
+      192,
+      62,
+      26
+    ]
+  },
+  {
+    "text": "Diabetec Profile",
+    "confidence": 0.8432,
+    "page": 1,
+    "bounding_box": [
+      103,
+      227,
+      205,
+      33
+    ]
+  },
+  {
+    "text": "Parametcr",
+    "confidence": 0.7122,
+    "page": 1,
+    "bounding_box": [
+      108,
+      265,
+      133,
+      26
+    ]
+  },
+  {
+    "text": "Result",
+    "confidence": 0.7834,
+    "page": 1,
+    "bounding_box": [
+      584,
+      272,
+      84,
+      26
+    ]
+  },
+  {
+    "text": "Reference Range",
+    "confidence": 0.6102,
+    "page": 1,
+    "bounding_box": [
+      1018,
+      275,
+      218,
+      32
+    ]
+  },
+  {
+    "text": "HBAIC",
+    "confidence": 0.5793,
+    "page": 1,
+    "bounding_box": [
+      104,
+      300,
+      94,
+      30
+    ]
+  },
+  {
+    "text": "6",
+    "confidence": 0.9999,
+    "page": 1,
+    "bounding_box": [
+      583,
+      309,
+      18,
+      22
+    ]
+  },
+  {
+    "text": "4,2",
+    "confidence": 0.3327,
+    "page": 1,
+    "bounding_box": [
+      1018,
+      310,
+      44,
+      28
+    ]
+  },
+  {
+    "text": "6.5 %",
+    "confidence": 0.9637,
+    "page": 1,
+    "bounding_box": [
+      1078,
+      312,
+      74,
+      26
+    ]
+  },
+  {
+    "text": "Provisional Report By:",
+    "confidence": 0.8439,
+    "page": 1,
+    "bounding_box": [
+      96,
+      339,
+      292,
+      33
+    ]
+  },
+  {
+    "text": "Pnnted On 10-08.2026 C9 55 AM",
+    "confidence": 0.2387,
+    "page": 1,
+    "bounding_box": [
+      81,
+      1149,
+      286,
+      20
+    ]
+  },
+  {
+    "text": "Provisional Report , For authenticated Report Please visit in Lab on exact delivery date to get Authenticated report",
+    "confidence": 0.6495,
+    "page": 1,
+    "bounding_box": [
+      17,
+      1186,
+      1208,
+      37
+    ]
+  }
+]

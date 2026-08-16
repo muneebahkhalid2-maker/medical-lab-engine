@@ -1,0 +1,926 @@
+[
+  {
+    "text": "Department of Pathology",
+    "confidence": 0.8356,
+    "page": 1,
+    "bounding_box": [
+      277,
+      101,
+      390,
+      52
+    ]
+  },
+  {
+    "text": "LAB ID: 145104",
+    "confidence": 0.7005,
+    "page": 1,
+    "bounding_box": [
+      716,
+      102,
+      188,
+      32
+    ]
+  },
+  {
+    "text": "ARMY CARDIAC CENTER",
+    "confidence": 0.755,
+    "page": 1,
+    "bounding_box": [
+      269,
+      137,
+      394,
+      43
+    ]
+  },
+  {
+    "text": "Ent On 08-Jul-26",
+    "confidence": 0.8387,
+    "page": 1,
+    "bounding_box": [
+      712,
+      144,
+      200,
+      30
+    ]
+  },
+  {
+    "text": "Ent By: Khurram",
+    "confidence": 0.6558,
+    "page": 1,
+    "bounding_box": [
+      920,
+      145,
+      194,
+      32
+    ]
+  },
+  {
+    "text": "LAHORE",
+    "confidence": 0.9991,
+    "page": 1,
+    "bounding_box": [
+      404,
+      180,
+      136,
+      32
+    ]
+  },
+  {
+    "text": "Category:",
+    "confidence": 0.7222,
+    "page": 1,
+    "bounding_box": [
+      707,
+      178,
+      115,
+      37
+    ]
+  },
+  {
+    "text": "Entitled Outdoor",
+    "confidence": 0.9975,
+    "page": 1,
+    "bounding_box": [
+      830,
+      181,
+      192,
+      29
+    ]
+  },
+  {
+    "text": "Phone: 042-36655078 & 9",
+    "confidence": 0.9415,
+    "page": 1,
+    "bounding_box": [
+      295,
+      209,
+      346,
+      38
+    ]
+  },
+  {
+    "text": "Name: 801575\"Pipiofficer",
+    "confidence": 0.4154,
+    "page": 1,
+    "bounding_box": [
+      60,
+      244,
+      347,
+      42
+    ]
+  },
+  {
+    "text": "M Afzal (Age 64 Ycars-Male)",
+    "confidence": 0.7855,
+    "page": 1,
+    "bounding_box": [
+      415,
+      255,
+      357,
+      36
+    ]
+  },
+  {
+    "text": "NhQ",
+    "confidence": 0.7322,
+    "page": 1,
+    "bounding_box": [
+      788,
+      260,
+      62,
+      28
+    ]
+  },
+  {
+    "text": "Liver Eunction",
+    "confidence": 0.9376,
+    "page": 1,
+    "bounding_box": [
+      71,
+      291,
+      194,
+      39
+    ]
+  },
+  {
+    "text": "Parameter",
+    "confidence": 0.9994,
+    "page": 1,
+    "bounding_box": [
+      77,
+      333,
+      139,
+      32
+    ]
+  },
+  {
+    "text": "Result",
+    "confidence": 0.9996,
+    "page": 1,
+    "bounding_box": [
+      556,
+      342,
+      86,
+      26
+    ]
+  },
+  {
+    "text": "Reference Range",
+    "confidence": 0.7688,
+    "page": 1,
+    "bounding_box": [
+      986,
+      344,
+      220,
+      36
+    ]
+  },
+  {
+    "text": "Serum Total Bilirubin",
+    "confidence": 0.9332,
+    "page": 1,
+    "bounding_box": [
+      75,
+      369,
+      260,
+      36
+    ]
+  },
+  {
+    "text": "06",
+    "confidence": 0.9993,
+    "page": 1,
+    "bounding_box": [
+      554,
+      378,
+      36,
+      26
+    ]
+  },
+  {
+    "text": "2",
+    "confidence": 1.0,
+    "page": 1,
+    "bounding_box": [
+      988,
+      382,
+      24,
+      26
+    ]
+  },
+  {
+    "text": "17 umolll",
+    "confidence": 0.7069,
+    "page": 1,
+    "bounding_box": [
+      1028,
+      381,
+      112,
+      30
+    ]
+  },
+  {
+    "text": "Serum ALT",
+    "confidence": 0.9827,
+    "page": 1,
+    "bounding_box": [
+      73,
+      403,
+      143,
+      31
+    ]
+  },
+  {
+    "text": "22",
+    "confidence": 1.0,
+    "page": 1,
+    "bounding_box": [
+      554,
+      412,
+      36,
+      28
+    ]
+  },
+  {
+    "text": "upto 42 ull",
+    "confidence": 0.7823,
+    "page": 1,
+    "bounding_box": [
+      988,
+      416,
+      130,
+      30
+    ]
+  },
+  {
+    "text": "Provisional Report By:",
+    "confidence": 0.7776,
+    "page": 1,
+    "bounding_box": [
+      65,
+      443,
+      300,
+      40
+    ]
+  },
+  {
+    "text": "Irop",
+    "confidence": 0.8022,
+    "page": 1,
+    "bounding_box": [
+      62,
+      478,
+      67,
+      33
+    ]
+  },
+  {
+    "text": "Hs",
+    "confidence": 0.9987,
+    "page": 1,
+    "bounding_box": [
+      148,
+      482,
+      40,
+      30
+    ]
+  },
+  {
+    "text": "Parameter",
+    "confidence": 0.9997,
+    "page": 1,
+    "bounding_box": [
+      67,
+      517,
+      139,
+      33
+    ]
+  },
+  {
+    "text": "Result",
+    "confidence": 0.9989,
+    "page": 1,
+    "bounding_box": [
+      554,
+      526,
+      86,
+      26
+    ]
+  },
+  {
+    "text": "Reference Range",
+    "confidence": 0.9199,
+    "page": 1,
+    "bounding_box": [
+      992,
+      528,
+      218,
+      33
+    ]
+  },
+  {
+    "text": "Hs",
+    "confidence": 0.9564,
+    "page": 1,
+    "bounding_box": [
+      146,
+      558,
+      36,
+      26
+    ]
+  },
+  {
+    "text": "0.02",
+    "confidence": 0.9878,
+    "page": 1,
+    "bounding_box": [
+      552,
+      562,
+      58,
+      30
+    ]
+  },
+  {
+    "text": "0.02",
+    "confidence": 0.9967,
+    "page": 1,
+    "bounding_box": [
+      990,
+      564,
+      60,
+      30
+    ]
+  },
+  {
+    "text": "0.06 nglml",
+    "confidence": 0.5554,
+    "page": 1,
+    "bounding_box": [
+      1065,
+      563,
+      136,
+      36
+    ]
+  },
+  {
+    "text": "Provisional Report By:",
+    "confidence": 0.991,
+    "page": 1,
+    "bounding_box": [
+      57,
+      595,
+      302,
+      38
+    ]
+  },
+  {
+    "text": "RFIs",
+    "confidence": 0.6112,
+    "page": 1,
+    "bounding_box": [
+      58,
+      638,
+      72,
+      32
+    ]
+  },
+  {
+    "text": "Parameter",
+    "confidence": 0.9997,
+    "page": 1,
+    "bounding_box": [
+      60,
+      678,
+      138,
+      28
+    ]
+  },
+  {
+    "text": "Result",
+    "confidence": 0.5765,
+    "page": 1,
+    "bounding_box": [
+      552,
+      684,
+      88,
+      28
+    ]
+  },
+  {
+    "text": "Reference Range",
+    "confidence": 0.9999,
+    "page": 1,
+    "bounding_box": [
+      993,
+      684,
+      223,
+      36
+    ]
+  },
+  {
+    "text": "Urea",
+    "confidence": 0.6243,
+    "page": 1,
+    "bounding_box": [
+      59,
+      717,
+      61,
+      29
+    ]
+  },
+  {
+    "text": "42",
+    "confidence": 1.0,
+    "page": 1,
+    "bounding_box": [
+      550,
+      722,
+      36,
+      28
+    ]
+  },
+  {
+    "text": "18",
+    "confidence": 1.0,
+    "page": 1,
+    "bounding_box": [
+      994,
+      724,
+      36,
+      30
+    ]
+  },
+  {
+    "text": "42 mgldl",
+    "confidence": 0.8482,
+    "page": 1,
+    "bounding_box": [
+      1045,
+      723,
+      116,
+      36
+    ]
+  },
+  {
+    "text": "Serum Creatinine",
+    "confidence": 0.9892,
+    "page": 1,
+    "bounding_box": [
+      58,
+      751,
+      218,
+      32
+    ]
+  },
+  {
+    "text": "1.6",
+    "confidence": 0.9589,
+    "page": 1,
+    "bounding_box": [
+      552,
+      758,
+      40,
+      28
+    ]
+  },
+  {
+    "text": "Male",
+    "confidence": 0.6405,
+    "page": 1,
+    "bounding_box": [
+      994,
+      758,
+      64,
+      30
+    ]
+  },
+  {
+    "text": "0.7",
+    "confidence": 0.9994,
+    "page": 1,
+    "bounding_box": [
+      1080,
+      758,
+      46,
+      28
+    ]
+  },
+  {
+    "text": "1.2 mgldl",
+    "confidence": 0.8483,
+    "page": 1,
+    "bounding_box": [
+      1143,
+      755,
+      123,
+      41
+    ]
+  },
+  {
+    "text": "Female = 0.6",
+    "confidence": 0.6862,
+    "page": 1,
+    "bounding_box": [
+      992,
+      788,
+      168,
+      30
+    ]
+  },
+  {
+    "text": "1",
+    "confidence": 1.0,
+    "page": 1,
+    "bounding_box": [
+      1177,
+      791,
+      18,
+      22
+    ]
+  },
+  {
+    "text": "mgldl",
+    "confidence": 0.7324,
+    "page": 1,
+    "bounding_box": [
+      1222,
+      788,
+      74,
+      32
+    ]
+  },
+  {
+    "text": "Serum Sodium",
+    "confidence": 0.8345,
+    "page": 1,
+    "bounding_box": [
+      53,
+      810,
+      190,
+      38
+    ]
+  },
+  {
+    "text": "139",
+    "confidence": 1.0,
+    "page": 1,
+    "bounding_box": [
+      552,
+      816,
+      50,
+      30
+    ]
+  },
+  {
+    "text": "135",
+    "confidence": 0.6577,
+    "page": 1,
+    "bounding_box": [
+      994,
+      818,
+      52,
+      30
+    ]
+  },
+  {
+    "text": "150 mmolll",
+    "confidence": 0.8445,
+    "page": 1,
+    "bounding_box": [
+      1064,
+      817,
+      140,
+      31
+    ]
+  },
+  {
+    "text": "Serum Potassium",
+    "confidence": 0.9999,
+    "page": 1,
+    "bounding_box": [
+      52,
+      848,
+      222,
+      30
+    ]
+  },
+  {
+    "text": "4.6",
+    "confidence": 0.5111,
+    "page": 1,
+    "bounding_box": [
+      550,
+      852,
+      42,
+      28
+    ]
+  },
+  {
+    "text": "3.4",
+    "confidence": 0.9428,
+    "page": 1,
+    "bounding_box": [
+      994,
+      854,
+      44,
+      26
+    ]
+  },
+  {
+    "text": "5.0 mmolll",
+    "confidence": 0.5489,
+    "page": 1,
+    "bounding_box": [
+      1056,
+      854,
+      134,
+      26
+    ]
+  },
+  {
+    "text": "Provisional Report By:",
+    "confidence": 0.9105,
+    "page": 1,
+    "bounding_box": [
+      43,
+      889,
+      308,
+      38
+    ]
+  },
+  {
+    "text": "Lipid Profile",
+    "confidence": 0.9993,
+    "page": 1,
+    "bounding_box": [
+      41,
+      927,
+      168,
+      36
+    ]
+  },
+  {
+    "text": "Parameter",
+    "confidence": 0.9999,
+    "page": 1,
+    "bounding_box": [
+      46,
+      970,
+      142,
+      28
+    ]
+  },
+  {
+    "text": "Result",
+    "confidence": 1.0,
+    "page": 1,
+    "bounding_box": [
+      547,
+      970,
+      90,
+      30
+    ]
+  },
+  {
+    "text": "Reference Range",
+    "confidence": 0.7696,
+    "page": 1,
+    "bounding_box": [
+      997,
+      969,
+      229,
+      40
+    ]
+  },
+  {
+    "text": "Serum Chloesterol",
+    "confidence": 0.9757,
+    "page": 1,
+    "bounding_box": [
+      43,
+      1008,
+      240,
+      36
+    ]
+  },
+  {
+    "text": "99",
+    "confidence": 1.0,
+    "page": 1,
+    "bounding_box": [
+      546,
+      1010,
+      38,
+      30
+    ]
+  },
+  {
+    "text": "Desireable",
+    "confidence": 0.9999,
+    "page": 1,
+    "bounding_box": [
+      998,
+      1010,
+      134,
+      30
+    ]
+  },
+  {
+    "text": "<200 mgldl",
+    "confidence": 0.9464,
+    "page": 1,
+    "bounding_box": [
+      1157,
+      1009,
+      144,
+      36
+    ]
+  },
+  {
+    "text": "Borderline",
+    "confidence": 0.9999,
+    "page": 1,
+    "bounding_box": [
+      1006,
+      1042,
+      130,
+      30
+    ]
+  },
+  {
+    "text": "200",
+    "confidence": 0.9999,
+    "page": 1,
+    "bounding_box": [
+      1160,
+      1040,
+      54,
+      32
+    ]
+  },
+  {
+    "text": "240 mgldl",
+    "confidence": 0.6419,
+    "page": 1,
+    "bounding_box": [
+      1229,
+      1041,
+      130,
+      36
+    ]
+  },
+  {
+    "text": "High = >240",
+    "confidence": 0.8566,
+    "page": 1,
+    "bounding_box": [
+      998,
+      1072,
+      156,
+      32
+    ]
+  },
+  {
+    "text": "Serum Triglycerides",
+    "confidence": 0.8397,
+    "page": 1,
+    "bounding_box": [
+      33,
+      1102,
+      264,
+      39
+    ]
+  },
+  {
+    "text": "69",
+    "confidence": 1.0,
+    "page": 1,
+    "bounding_box": [
+      544,
+      1104,
+      38,
+      30
+    ]
+  },
+  {
+    "text": "Desireable",
+    "confidence": 0.9989,
+    "page": 1,
+    "bounding_box": [
+      1000,
+      1102,
+      136,
+      32
+    ]
+  },
+  {
+    "text": "150 mgldl",
+    "confidence": 0.9284,
+    "page": 1,
+    "bounding_box": [
+      1183,
+      1101,
+      130,
+      36
+    ]
+  },
+  {
+    "text": "Borderline",
+    "confidence": 0.9952,
+    "page": 1,
+    "bounding_box": [
+      1000,
+      1134,
+      132,
+      30
+    ]
+  },
+  {
+    "text": "150",
+    "confidence": 0.9999,
+    "page": 1,
+    "bounding_box": [
+      1156,
+      1134,
+      54,
+      30
+    ]
+  },
+  {
+    "text": "200 mgldl",
+    "confidence": 0.6657,
+    "page": 1,
+    "bounding_box": [
+      1225,
+      1133,
+      130,
+      36
+    ]
+  },
+  {
+    "text": "High",
+    "confidence": 0.9785,
+    "page": 1,
+    "bounding_box": [
+      999,
+      1163,
+      66,
+      36
+    ]
+  },
+  {
+    "text": "= >",
+    "confidence": 0.3661,
+    "page": 1,
+    "bounding_box": [
+      1067,
+      1171,
+      40,
+      18
+    ]
+  },
+  {
+    "text": "200",
+    "confidence": 0.9999,
+    "page": 1,
+    "bounding_box": [
+      1112,
+      1164,
+      52,
+      32
+    ]
+  },
+  {
+    "text": "Provisional Report By:",
+    "confidence": 0.7038,
+    "page": 1,
+    "bounding_box": [
+      21,
+      1206,
+      320,
+      38
+    ]
+  },
+  {
+    "text": "Iest",
+    "confidence": 0.5349,
+    "page": 1,
+    "bounding_box": [
+      264,
+      299,
+      65,
+      34
+    ]
+  },
+  {
+    "text": "Trop",
+    "confidence": 0.6483,
+    "page": 1,
+    "bounding_box": [
+      64,
+      553,
+      65,
+      34
+    ]
+  }
+]

@@ -1,0 +1,93 @@
+{
+  "document_id": "WhatsApp Image 2026-08-11 at 3.14.50 PM",
+  "document_type": "laboratory_report",
+  "patient": {
+    "name": null,
+    "age": null,
+    "sex": null
+  },
+  "report": {
+    "date": null,
+    "laboratory": null
+  },
+  "tests": [
+    {
+      "test_name": "Uric Acid",
+      "test_name_raw": "Urid Acid",
+      "result": 446,
+      "unit": null,
+      "reference_range": null,
+      "confidence": 0.4765,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          524,
+          234,
+          50,
+          58
+        ]
+      },
+      "needs_verification": false
+    },
+    {
+      "test_name": "Thyroid Stimulating Hormone",
+      "test_name_raw": "TSH",
+      "result": 7.6,
+      "unit": null,
+      "reference_range": "0.4-5.0",
+      "confidence": 0.1768,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          516,
+          358,
+          24,
+          28
+        ]
+      },
+      "needs_verification": false
+    },
+    {
+      "test_name": "Uric Acid",
+      "test_name_raw": "Uie Aeid",
+      "result": 467,
+      "unit": null,
+      "reference_range": null,
+      "confidence": 0.4765,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          524,
+          234,
+          50,
+          58
+        ]
+      },
+      "needs_verification": false
+    },
+    {
+      "test_name": "Creatinine",
+      "test_name_raw": "Crealne",
+      "result": 1.12,
+      "unit": null,
+      "reference_range": null,
+      "confidence": 0.2559,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          989,
+          1049,
+          36,
+          44
+        ]
+      },
+      "needs_verification": true,
+      "reason": "extraction_disagreement"
+    }
+  ],
+  "extraction_status": "needs_verification"
+}

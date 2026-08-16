@@ -1,0 +1,101 @@
+[
+  {
+    "text": "12z2",
+    "confidence": 0.2468,
+    "page": 1,
+    "bounding_box": [
+      58,
+      69,
+      338,
+      97
+    ]
+  },
+  {
+    "text": "KH",
+    "confidence": 0.1285,
+    "page": 1,
+    "bounding_box": [
+      503,
+      43,
+      339,
+      168
+    ]
+  },
+  {
+    "text": "06/09/20171091291 16|",
+    "confidence": 0.0751,
+    "page": 1,
+    "bounding_box": [
+      1487,
+      70,
+      344,
+      51
+    ]
+  },
+  {
+    "text": "62| Dp",
+    "confidence": 0.487,
+    "page": 1,
+    "bounding_box": [
+      2069,
+      92,
+      109,
+      38
+    ]
+  },
+  {
+    "text": "VI",
+    "confidence": 0.6935,
+    "page": 1,
+    "bounding_box": [
+      184,
+      214,
+      44,
+      39
+    ]
+  },
+  {
+    "text": "V2",
+    "confidence": 0.7925,
+    "page": 1,
+    "bounding_box": [
+      179,
+      369,
+      49,
+      39
+    ]
+  },
+  {
+    "text": "E5us",
+    "confidence": 0.4376,
+    "page": 1,
+    "bounding_box": [
+      307,
+      1084,
+      108,
+      39
+    ]
+  },
+  {
+    "text": "bnoVELP:_25H2IAC.6Hz",
+    "confidence": 0.0647,
+    "page": 1,
+    "bounding_box": [
+      441,
+      1074,
+      437,
+      45
+    ]
+  },
+  {
+    "text": "Eacdibline ECG109LE2L2049990",
+    "confidence": 0.0655,
+    "page": 1,
+    "bounding_box": [
+      989,
+      1062,
+      504,
+      44
+    ]
+  }
+]

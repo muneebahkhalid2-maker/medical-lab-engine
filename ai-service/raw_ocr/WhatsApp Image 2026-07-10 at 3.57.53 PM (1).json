@@ -1,0 +1,904 @@
+[
+  {
+    "text": "carducclntlr",
+    "confidence": 0.0324,
+    "page": 1,
+    "bounding_box": [
+      82,
+      68,
+      103,
+      19
+    ]
+  },
+  {
+    "text": "Cardiae Ceuter Iahawalpur",
+    "confidence": 0.47,
+    "page": 1,
+    "bounding_box": [
+      306,
+      76,
+      448,
+      32
+    ]
+  },
+  {
+    "text": "Quaid-e- Izum Medicul College",
+    "confidence": 0.1101,
+    "page": 1,
+    "bounding_box": [
+      329,
+      111,
+      407,
+      33
+    ]
+  },
+  {
+    "text": "Cath",
+    "confidence": 0.9647,
+    "page": 1,
+    "bounding_box": [
+      349,
+      151,
+      75,
+      30
+    ]
+  },
+  {
+    "text": "Lab Departmen",
+    "confidence": 0.4627,
+    "page": 1,
+    "bounding_box": [
+      433,
+      148,
+      264,
+      37
+    ]
+  },
+  {
+    "text": "MiNu:",
+    "confidence": 0.1132,
+    "page": 1,
+    "bounding_box": [
+      41,
+      225,
+      60,
+      18
+    ]
+  },
+  {
+    "text": "002059820",
+    "confidence": 0.8886,
+    "page": 1,
+    "bounding_box": [
+      141,
+      221,
+      90,
+      20
+    ]
+  },
+  {
+    "text": "relurm DJte:",
+    "confidence": 0.0675,
+    "page": 1,
+    "bounding_box": [
+      427,
+      221,
+      106,
+      18
+    ]
+  },
+  {
+    "text": "Cath No: 232648",
+    "confidence": 0.6921,
+    "page": 1,
+    "bounding_box": [
+      706,
+      210,
+      134,
+      24
+    ]
+  },
+  {
+    "text": "Ma \u20ac / 6\" Yeaf",
+    "confidence": 0.3476,
+    "page": 1,
+    "bounding_box": [
+      733,
+      245,
+      120,
+      20
+    ]
+  },
+  {
+    "text": "NaMt",
+    "confidence": 0.0359,
+    "page": 1,
+    "bounding_box": [
+      43,
+      263,
+      44,
+      16
+    ]
+  },
+  {
+    "text": "MAFZAL",
+    "confidence": 0.9268,
+    "page": 1,
+    "bounding_box": [
+      140,
+      252,
+      78,
+      24
+    ]
+  },
+  {
+    "text": "Cunsuliant:",
+    "confidence": 0.2295,
+    "page": 1,
+    "bounding_box": [
+      41,
+      295,
+      88,
+      16
+    ]
+  },
+  {
+    "text": "WR Fouzia GOHER",
+    "confidence": 0.4213,
+    "page": 1,
+    "bounding_box": [
+      140,
+      288,
+      166,
+      24
+    ]
+  },
+  {
+    "text": "Rcforicd DJlc:",
+    "confidence": 0.1761,
+    "page": 1,
+    "bounding_box": [
+      427,
+      289,
+      112,
+      20
+    ]
+  },
+  {
+    "text": "19 Jur ?023",
+    "confidence": 0.69,
+    "page": 1,
+    "bounding_box": [
+      550,
+      282,
+      104,
+      24
+    ]
+  },
+  {
+    "text": "Clicut: SEHAT CARD",
+    "confidence": 0.7182,
+    "page": 1,
+    "bounding_box": [
+      734,
+      274,
+      168,
+      26
+    ]
+  },
+  {
+    "text": "Tc",
+    "confidence": 0.9828,
+    "page": 1,
+    "bounding_box": [
+      55,
+      325,
+      42,
+      16
+    ]
+  },
+  {
+    "text": "16 8 Min",
+    "confidence": 0.7416,
+    "page": 1,
+    "bounding_box": [
+      143,
+      321,
+      68,
+      20
+    ]
+  },
+  {
+    "text": "Contrast Vol:",
+    "confidence": 0.6905,
+    "page": 1,
+    "bounding_box": [
+      425,
+      317,
+      110,
+      20
+    ]
+  },
+  {
+    "text": "'20 mi",
+    "confidence": 0.2248,
+    "page": 1,
+    "bounding_box": [
+      560,
+      314,
+      50,
+      24
+    ]
+  },
+  {
+    "text": "TABLE PCI",
+    "confidence": 0.7253,
+    "page": 1,
+    "bounding_box": [
+      412,
+      346,
+      172,
+      48
+    ]
+  },
+  {
+    "text": "PCHQLAD",
+    "confidence": 0.6448,
+    "page": 1,
+    "bounding_box": [
+      442,
+      398,
+      86,
+      24
+    ]
+  },
+  {
+    "text": "Pedtenba Dadon",
+    "confidence": 0.137,
+    "page": 1,
+    "bounding_box": [
+      37,
+      457,
+      152,
+      20
+    ]
+  },
+  {
+    "text": "Cr Sog & Rit C Aqtel",
+    "confidence": 0.0749,
+    "page": 1,
+    "bounding_box": [
+      105,
+      479,
+      174,
+      20
+    ]
+  },
+  {
+    "text": "eqwpinana *",
+    "confidence": 0.0129,
+    "page": 1,
+    "bounding_box": [
+      35,
+      535,
+      102,
+      18
+    ]
+  },
+  {
+    "text": "Cuidc Calrtctcr ,",
+    "confidence": 0.0559,
+    "page": 1,
+    "bounding_box": [
+      35,
+      559,
+      118,
+      18
+    ]
+  },
+  {
+    "text": "CF Ebu 3 $",
+    "confidence": 0.1326,
+    "page": 1,
+    "bounding_box": [
+      167,
+      553,
+      84,
+      20
+    ]
+  },
+  {
+    "text": "Gujc Wira:",
+    "confidence": 0.1932,
+    "page": 1,
+    "bounding_box": [
+      35,
+      585,
+      90,
+      16
+    ]
+  },
+  {
+    "text": "8vw",
+    "confidence": 0.5291,
+    "page": 1,
+    "bounding_box": [
+      139,
+      583,
+      42,
+      16
+    ]
+  },
+  {
+    "text": "#rc0014",
+    "confidence": 0.1082,
+    "page": 1,
+    "bounding_box": [
+      221,
+      579,
+      76,
+      18
+    ]
+  },
+  {
+    "text": "190 Gin",
+    "confidence": 0.1381,
+    "page": 1,
+    "bounding_box": [
+      311,
+      579,
+      52,
+      16
+    ]
+  },
+  {
+    "text": "\"avcfck Moco W ? 0 * 1? Mm AC Ovarlut Apex J 0",
+    "confidence": 0.0214,
+    "page": 1,
+    "bounding_box": [
+      112,
+      600,
+      382,
+      26
+    ]
+  },
+  {
+    "text": "12 MmNC Euprct# 3 0 * 06 Mt",
+    "confidence": 0.0628,
+    "page": 1,
+    "bounding_box": [
+      504,
+      594,
+      226,
+      24
+    ]
+  },
+  {
+    "text": "Oalloon",
+    "confidence": 0.6078,
+    "page": 1,
+    "bounding_box": [
+      35,
+      611,
+      64,
+      16
+    ]
+  },
+  {
+    "text": "Steni",
+    "confidence": 0.3056,
+    "page": 1,
+    "bounding_box": [
+      35,
+      637,
+      46,
+      16
+    ]
+  },
+  {
+    "text": "Pror $ Prenxt 2 75",
+    "confidence": 0.1541,
+    "page": 1,
+    "bounding_box": [
+      94,
+      628,
+      152,
+      24
+    ]
+  },
+  {
+    "text": "38 Mm",
+    "confidence": 0.303,
+    "page": 1,
+    "bounding_box": [
+      255,
+      629,
+      52,
+      20
+    ]
+  },
+  {
+    "text": "PROCEDURE (Itau2 Radlall",
+    "confidence": 0.1965,
+    "page": 1,
+    "bounding_box": [
+      32,
+      680,
+      218,
+      27
+    ]
+  },
+  {
+    "text": "Ustc lc Ccs} Ino Esct",
+    "confidence": 0.0306,
+    "page": 1,
+    "bounding_box": [
+      666,
+      697,
+      171,
+      18
+    ]
+  },
+  {
+    "text": "plaecd",
+    "confidence": 0.6806,
+    "page": 1,
+    "bounding_box": [
+      870,
+      692,
+      49,
+      19
+    ]
+  },
+  {
+    "text": "n \u20acol",
+    "confidence": 0.1349,
+    "page": 1,
+    "bounding_box": [
+      923,
+      693,
+      56,
+      16
+    ]
+  },
+  {
+    "text": "@alnutor Wo? Plocoa",
+    "confidence": 0.0622,
+    "page": 1,
+    "bounding_box": [
+      251,
+      704,
+      142,
+      19
+    ]
+  },
+  {
+    "text": "In (\u20ac^ Curonjy Osint",
+    "confidence": 0.0356,
+    "page": 1,
+    "bounding_box": [
+      397,
+      703,
+      156,
+      18
+    ]
+  },
+  {
+    "text": "Duwmtl wIs",
+    "confidence": 0.042,
+    "page": 1,
+    "bounding_box": [
+      559,
+      699,
+      106,
+      18
+    ]
+  },
+  {
+    "text": "LOU 3a",
+    "confidence": 0.0954,
+    "page": 1,
+    "bounding_box": [
+      101,
+      709,
+      66,
+      20
+    ]
+  },
+  {
+    "text": "94*n",
+    "confidence": 0.1334,
+    "page": 1,
+    "bounding_box": [
+      195,
+      711,
+      54,
+      18
+    ]
+  },
+  {
+    "text": "tuan J1 12 ATM From * Pretk 2 75",
+    "confidence": 0.1041,
+    "page": 1,
+    "bounding_box": [
+      578,
+      716,
+      294,
+      26
+    ]
+  },
+  {
+    "text": "38",
+    "confidence": 0.7311,
+    "page": 1,
+    "bounding_box": [
+      885,
+      717,
+      22,
+      18
+    ]
+  },
+  {
+    "text": "Stcnt",
+    "confidence": 0.2669,
+    "page": 1,
+    "bounding_box": [
+      942,
+      716,
+      39,
+      19
+    ]
+  },
+  {
+    "text": "Tnz Icson",
+    "confidence": 0.1866,
+    "page": 1,
+    "bounding_box": [
+      75,
+      737,
+      76,
+      16
+    ]
+  },
+  {
+    "text": "LAD wus Pfe-& Alud valh \"avarics Mcnora | 2 0 * 12",
+    "confidence": 0.1198,
+    "page": 1,
+    "bounding_box": [
+      168,
+      724,
+      378,
+      28
+    ]
+  },
+  {
+    "text": "Nm",
+    "confidence": 0.3712,
+    "page": 1,
+    "bounding_box": [
+      549,
+      727,
+      28,
+      14
+    ]
+  },
+  {
+    "text": "I",
+    "confidence": 0.2918,
+    "page": 1,
+    "bounding_box": [
+      33,
+      739,
+      34,
+      16
+    ]
+  },
+  {
+    "text": "ncst Cialcj",
+    "confidence": 0.1322,
+    "page": 1,
+    "bounding_box": [
+      481,
+      751,
+      82,
+      18
+    ]
+  },
+  {
+    "text": "NC Own-ium Ade J0",
+    "confidence": 0.1093,
+    "page": 1,
+    "bounding_box": [
+      595,
+      745,
+      162,
+      20
+    ]
+  },
+  {
+    "text": "12 mT anc (rcn ^C ( Uprcta",
+    "confidence": 0.1584,
+    "page": 1,
+    "bounding_box": [
+      770,
+      740,
+      212,
+      24
+    ]
+  },
+  {
+    "text": "Jus Oyvd #",
+    "confidence": 0.0428,
+    "page": 1,
+    "bounding_box": [
+      35,
+      765,
+      84,
+      16
+    ]
+  },
+  {
+    "text": "ATv Io\" 30 #uconc:",
+    "confidence": 0.1103,
+    "page": 1,
+    "bounding_box": [
+      141,
+      757,
+      146,
+      20
+    ]
+  },
+  {
+    "text": "Stecicd sogmeni #J} #ln",
+    "confidence": 0.0075,
+    "page": 1,
+    "bounding_box": [
+      293,
+      755,
+      186,
+      19
+    ]
+  },
+  {
+    "text": "chcaod ^0 fC3 0raton",
+    "confidence": 0.0017,
+    "page": 1,
+    "bounding_box": [
+      443,
+      777,
+      178,
+      18
+    ]
+  },
+  {
+    "text": "sontrd sc",
+    "confidence": 0.2288,
+    "page": 1,
+    "bounding_box": [
+      638,
+      772,
+      83,
+      19
+    ]
+  },
+  {
+    "text": "TiviRmndsJLu",
+    "confidence": 0.0164,
+    "page": 1,
+    "bounding_box": [
+      753,
+      769,
+      172,
+      18
+    ]
+  },
+  {
+    "text": "30,08TMDalat>",
+    "confidence": 0.0877,
+    "page": 1,
+    "bounding_box": [
+      33,
+      787,
+      150,
+      20
+    ]
+  },
+  {
+    "text": "14*0 20 ATY",
+    "confidence": 0.1684,
+    "page": 1,
+    "bounding_box": [
+      203,
+      781,
+      94,
+      20
+    ]
+  },
+  {
+    "text": "Ful chac njcclon",
+    "confidence": 0.2342,
+    "page": 1,
+    "bounding_box": [
+      301,
+      781,
+      142,
+      16
+    ]
+  },
+  {
+    "text": "Concuhion",
+    "confidence": 0.7965,
+    "page": 1,
+    "bounding_box": [
+      454,
+      818,
+      98,
+      24
+    ]
+  },
+  {
+    "text": "Succcssiui Pci to LAD,",
+    "confidence": 0.2403,
+    "page": 1,
+    "bounding_box": [
+      34,
+      848,
+      188,
+      26
+    ]
+  },
+  {
+    "text": "Posi Pci cafc",
+    "confidence": 0.542,
+    "page": 1,
+    "bounding_box": [
+      35,
+      873,
+      112,
+      20
+    ]
+  },
+  {
+    "text": "DR FOUZIA GOHR",
+    "confidence": 0.559,
+    "page": 1,
+    "bounding_box": [
+      582,
+      1316,
+      204,
+      30
+    ]
+  },
+  {
+    "text": "i} SAQIR RIAZ",
+    "confidence": 0.1634,
+    "page": 1,
+    "bounding_box": [
+      46,
+      1336,
+      162,
+      24
+    ]
+  },
+  {
+    "text": "MBLS, TCFS ICARDA",
+    "confidence": 0.1404,
+    "page": 1,
+    "bounding_box": [
+      582,
+      1350,
+      158,
+      26
+    ]
+  },
+  {
+    "text": "1(P\"S (CARIDII OGY) S7 VIOR RLGISTIAK",
+    "confidence": 0.0307,
+    "page": 1,
+    "bounding_box": [
+      50,
+      1363,
+      322,
+      27
+    ]
+  },
+  {
+    "text": "7",
+    "confidence": 0.0317,
+    "page": 1,
+    "bounding_box": [
+      845,
+      1417,
+      32,
+      16
+    ]
+  },
+  {
+    "text": "7*057023",
+    "confidence": 0.383,
+    "page": 1,
+    "bounding_box": [
+      33,
+      1435,
+      80,
+      18
+    ]
+  },
+  {
+    "text": "53P",
+    "confidence": 0.0641,
+    "page": 1,
+    "bounding_box": [
+      125,
+      1435,
+      48,
+      18
+    ]
+  },
+  {
+    "text": "Electroricaly verited on 19 Jun. 2023n9 signalure requred",
+    "confidence": 0.2565,
+    "page": 1,
+    "bounding_box": [
+      298,
+      1419,
+      414,
+      37
+    ]
+  },
+  {
+    "text": "O-C0",
+    "confidence": 0.1091,
+    "page": 1,
+    "bounding_box": [
+      178,
+      581,
+      43,
+      19
+    ]
+  },
+  {
+    "text": "Tnd",
+    "confidence": 0.33,
+    "page": 1,
+    "bounding_box": [
+      837,
+      693,
+      32,
+      18
+    ]
+  },
+  {
+    "text": "Mn",
+    "confidence": 0.8485,
+    "page": 1,
+    "bounding_box": [
+      909,
+      718,
+      31,
+      15
+    ]
+  },
+  {
+    "text": "Mn",
+    "confidence": 0.0798,
+    "page": 1,
+    "bounding_box": [
+      563,
+      749,
+      31,
+      17
+    ]
+  },
+  {
+    "text": "4nd",
+    "confidence": 0.1142,
+    "page": 1,
+    "bounding_box": [
+      719,
+      771,
+      32,
+      18
+    ]
+  }
+]

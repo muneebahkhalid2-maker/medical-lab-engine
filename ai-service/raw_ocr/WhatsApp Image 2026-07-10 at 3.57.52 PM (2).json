@@ -1,0 +1,981 @@
+[
+  {
+    "text": "Balawalpwv Heatt Centewv",
+    "confidence": 0.207,
+    "page": 1,
+    "bounding_box": [
+      240,
+      24,
+      770,
+      102
+    ]
+  },
+  {
+    "text": "Noor MEHAL ROAD; Opposite R.G SCHOOL, BAHAWALPUR",
+    "confidence": 0.3945,
+    "page": 1,
+    "bounding_box": [
+      273,
+      122,
+      700,
+      37
+    ]
+  },
+  {
+    "text": "Ph: 062-2305005, Cell: 0301-0981562 , E-mail: bhc bwp@gmall.com",
+    "confidence": 0.501,
+    "page": 1,
+    "bounding_box": [
+      255,
+      145,
+      737,
+      40
+    ]
+  },
+  {
+    "text": "Name",
+    "confidence": 1.0,
+    "page": 1,
+    "bounding_box": [
+      104,
+      278,
+      60,
+      24
+    ]
+  },
+  {
+    "text": "M. Afzal",
+    "confidence": 0.3865,
+    "page": 1,
+    "bounding_box": [
+      216,
+      278,
+      84,
+      24
+    ]
+  },
+  {
+    "text": "Age/Sex: 6Oyrs/male",
+    "confidence": 0.8892,
+    "page": 1,
+    "bounding_box": [
+      543,
+      276,
+      207,
+      30
+    ]
+  },
+  {
+    "text": "L.D #",
+    "confidence": 0.8309,
+    "page": 1,
+    "bounding_box": [
+      850,
+      284,
+      48,
+      24
+    ]
+  },
+  {
+    "text": "6489/21634947",
+    "confidence": 0.9999,
+    "page": 1,
+    "bounding_box": [
+      914,
+      284,
+      150,
+      26
+    ]
+  },
+  {
+    "text": "Operator:",
+    "confidence": 0.9971,
+    "page": 1,
+    "bounding_box": [
+      101,
+      303,
+      99,
+      29
+    ]
+  },
+  {
+    "text": "Dr. Suqib Riaz, Dr.",
+    "confidence": 0.802,
+    "page": 1,
+    "bounding_box": [
+      214,
+      302,
+      188,
+      28
+    ]
+  },
+  {
+    "text": "Umar",
+    "confidence": 0.8831,
+    "page": 1,
+    "bounding_box": [
+      409,
+      307,
+      58,
+      18
+    ]
+  },
+  {
+    "text": "Htlwt:",
+    "confidence": 0.2631,
+    "page": 1,
+    "bounding_box": [
+      545,
+      307,
+      70,
+      20
+    ]
+  },
+  {
+    "text": "73 kB",
+    "confidence": 0.538,
+    "page": 1,
+    "bounding_box": [
+      640,
+      306,
+      56,
+      28
+    ]
+  },
+  {
+    "text": "Date:",
+    "confidence": 0.9996,
+    "page": 1,
+    "bounding_box": [
+      852,
+      310,
+      56,
+      24
+    ]
+  },
+  {
+    "text": "02-11.2023",
+    "confidence": 0.8679,
+    "page": 1,
+    "bounding_box": [
+      916,
+      310,
+      112,
+      24
+    ]
+  },
+  {
+    "text": "Route:",
+    "confidence": 0.9988,
+    "page": 1,
+    "bounding_box": [
+      102,
+      330,
+      66,
+      24
+    ]
+  },
+  {
+    "text": "Truns-Radial",
+    "confidence": 0.5252,
+    "page": 1,
+    "bounding_box": [
+      217,
+      331,
+      130,
+      20
+    ]
+  },
+  {
+    "text": "Shift Time:",
+    "confidence": 0.8712,
+    "page": 1,
+    "bounding_box": [
+      544,
+      330,
+      108,
+      26
+    ]
+  },
+  {
+    "text": "03.30pm",
+    "confidence": 0.7465,
+    "page": 1,
+    "bounding_box": [
+      658,
+      334,
+      88,
+      24
+    ]
+  },
+  {
+    "text": "Contrast: Ultravist 100 mi",
+    "confidence": 0.9145,
+    "page": 1,
+    "bounding_box": [
+      850,
+      336,
+      246,
+      26
+    ]
+  },
+  {
+    "text": "Angioplasty Report",
+    "confidence": 0.628,
+    "page": 1,
+    "bounding_box": [
+      420,
+      360,
+      352,
+      52
+    ]
+  },
+  {
+    "text": "PCI to LAD)",
+    "confidence": 0.5982,
+    "page": 1,
+    "bounding_box": [
+      483,
+      405,
+      222,
+      42
+    ]
+  },
+  {
+    "text": "Scout Film:",
+    "confidence": 0.7033,
+    "page": 1,
+    "bounding_box": [
+      82,
+      447,
+      135,
+      31
+    ]
+  },
+  {
+    "text": "LAD; Severe focol diseose %t inlet %f previously placed stent: Mild ISR at aistal part oj stent.",
+    "confidence": 0.4729,
+    "page": 1,
+    "bounding_box": [
+      79,
+      497,
+      946,
+      40
+    ]
+  },
+  {
+    "text": "Moderate disease at outlet of stent;",
+    "confidence": 0.6968,
+    "page": 1,
+    "bounding_box": [
+      78,
+      520,
+      376,
+      28
+    ]
+  },
+  {
+    "text": "Equipment:",
+    "confidence": 0.9266,
+    "page": 1,
+    "bounding_box": [
+      76,
+      572,
+      142,
+      28
+    ]
+  },
+  {
+    "text": "Guide Catheter:",
+    "confidence": 0.7947,
+    "page": 1,
+    "bounding_box": [
+      72,
+      616,
+      168,
+      26
+    ]
+  },
+  {
+    "text": "XB 3 6f",
+    "confidence": 0.8764,
+    "page": 1,
+    "bounding_box": [
+      248,
+      618,
+      82,
+      24
+    ]
+  },
+  {
+    "text": "Wires:",
+    "confidence": 0.8444,
+    "page": 1,
+    "bounding_box": [
+      71,
+      658,
+      71,
+      27
+    ]
+  },
+  {
+    "text": "RMW",
+    "confidence": 0.8572,
+    "page": 1,
+    "bounding_box": [
+      222,
+      660,
+      64,
+      24
+    ]
+  },
+  {
+    "text": "Bolloons:",
+    "confidence": 0.9671,
+    "page": 1,
+    "bounding_box": [
+      67,
+      698,
+      103,
+      28
+    ]
+  },
+  {
+    "text": "Conqueror NC 2.50 x 12 mm, NC Euphora 3.25 x 15 mm",
+    "confidence": 0.4812,
+    "page": 1,
+    "bounding_box": [
+      219,
+      701,
+      587,
+      29
+    ]
+  },
+  {
+    "text": "Stent:",
+    "confidence": 0.9925,
+    "page": 1,
+    "bounding_box": [
+      62,
+      741,
+      72,
+      31
+    ]
+  },
+  {
+    "text": "Promis Prerier Select 3.00 * 28 mm",
+    "confidence": 0.6466,
+    "page": 1,
+    "bounding_box": [
+      217,
+      743,
+      391,
+      27
+    ]
+  },
+  {
+    "text": "Procedue:",
+    "confidence": 0.6823,
+    "page": 1,
+    "bounding_box": [
+      63,
+      794,
+      139,
+      30
+    ]
+  },
+  {
+    "text": "Xb 3 6F",
+    "confidence": 0.4264,
+    "page": 1,
+    "bounding_box": [
+      118,
+      844,
+      84,
+      24
+    ]
+  },
+  {
+    "text": "guide wos engaged in left coronary ostium;",
+    "confidence": 0.5808,
+    "page": 1,
+    "bounding_box": [
+      197,
+      839,
+      468,
+      37
+    ]
+  },
+  {
+    "text": "BMW wire was used t0 crojs :he lesion",
+    "confidence": 0.3413,
+    "page": 1,
+    "bounding_box": [
+      670,
+      846,
+      420,
+      28
+    ]
+  },
+  {
+    "text": "ond was Placed in distal (AD. LAD lesion was pre dilated with Conqueror NC 2.50 * 12 mm bolloon",
+    "confidence": 0.3288,
+    "page": 1,
+    "bounding_box": [
+      58,
+      866,
+      1050,
+      32
+    ]
+  },
+  {
+    "text": "at 12 ATM Stented with Promus Premier Select 3.00 x 28 mm stent deployed at 12 ATM: Stented",
+    "confidence": 0.676,
+    "page": 1,
+    "bounding_box": [
+      58,
+      886,
+      1040,
+      33
+    ]
+  },
+  {
+    "text": "segment was Post-dilated with NC Euphora 3.25 X 15 mm balloon at 22-24 A-",
+    "confidence": 0.6719,
+    "page": 1,
+    "bounding_box": [
+      56,
+      906,
+      828,
+      31
+    ]
+  },
+  {
+    "text": "Final check",
+    "confidence": 0.8358,
+    "page": 1,
+    "bounding_box": [
+      926,
+      914,
+      124,
+      26
+    ]
+  },
+  {
+    "text": "injection showed well expanded/apposed stent with TIMI Ill distal flow,no clot and dissection etc",
+    "confidence": 0.7694,
+    "page": 1,
+    "bounding_box": [
+      53,
+      929,
+      1049,
+      33
+    ]
+  },
+  {
+    "text": "Conclusion:",
+    "confidence": 0.9997,
+    "page": 1,
+    "bounding_box": [
+      54,
+      984,
+      146,
+      28
+    ]
+  },
+  {
+    "text": "Successful PCI to LAD",
+    "confidence": 0.6507,
+    "page": 1,
+    "bounding_box": [
+      50,
+      1034,
+      234,
+      28
+    ]
+  },
+  {
+    "text": "Routine Post PCiI care:",
+    "confidence": 0.27,
+    "page": 1,
+    "bounding_box": [
+      49,
+      1080,
+      239,
+      28
+    ]
+  },
+  {
+    "text": "NC Euphora'",
+    "confidence": 0.4855,
+    "page": 1,
+    "bounding_box": [
+      15,
+      1139,
+      166,
+      42
+    ]
+  },
+  {
+    "text": "T",
+    "confidence": 0.2052,
+    "page": 1,
+    "bounding_box": [
+      173,
+      1147,
+      22,
+      14
+    ]
+  },
+  {
+    "text": "RX",
+    "confidence": 0.9995,
+    "page": 1,
+    "bounding_box": [
+      198,
+      1150,
+      44,
+      30
+    ]
+  },
+  {
+    "text": "3.25 mmx 15 mm",
+    "confidence": 0.7543,
+    "page": 1,
+    "bounding_box": [
+      22,
+      1180,
+      160,
+      30
+    ]
+  },
+  {
+    "text": "Bostcn Scientfic",
+    "confidence": 0.7891,
+    "page": 1,
+    "bounding_box": [
+      284,
+      1184,
+      134,
+      29
+    ]
+  },
+  {
+    "text": "{",
+    "confidence": 0.1378,
+    "page": 1,
+    "bounding_box": [
+      229,
+      1201,
+      14,
+      40
+    ]
+  },
+  {
+    "text": "PDe mieriv Select",
+    "confidence": 0.1727,
+    "page": 1,
+    "bounding_box": [
+      344,
+      1206,
+      146,
+      26
+    ]
+  },
+  {
+    "text": "NCEUP32s1SX",
+    "confidence": 0.341,
+    "page": 1,
+    "bounding_box": [
+      57,
+      1220,
+      139,
+      31
+    ]
+  },
+  {
+    "text": "Cjac",
+    "confidence": 0.1477,
+    "page": 1,
+    "bounding_box": [
+      307,
+      1227,
+      48,
+      16
+    ]
+  },
+  {
+    "text": "289m",
+    "confidence": 0.2115,
+    "page": 1,
+    "bounding_box": [
+      387,
+      1229,
+      48,
+      18
+    ]
+  },
+  {
+    "text": "225626985",
+    "confidence": 1.0,
+    "page": 1,
+    "bounding_box": [
+      53,
+      1247,
+      113,
+      30
+    ]
+  },
+  {
+    "text": "Gn6 08",
+    "confidence": 0.081,
+    "page": 1,
+    "bounding_box": [
+      285,
+      1243,
+      56,
+      20
+    ]
+  },
+  {
+    "text": "1716729967675",
+    "confidence": 0.1958,
+    "page": 1,
+    "bounding_box": [
+      335,
+      1240,
+      143,
+      29
+    ]
+  },
+  {
+    "text": "47493939928300",
+    "confidence": 0.701,
+    "page": 1,
+    "bounding_box": [
+      313,
+      1258,
+      165,
+      29
+    ]
+  },
+  {
+    "text": "2024-12-07",
+    "confidence": 0.9834,
+    "page": 1,
+    "bounding_box": [
+      53,
+      1274,
+      105,
+      29
+    ]
+  },
+  {
+    "text": "{1075286",
+    "confidence": 0.5981,
+    "page": 1,
+    "bounding_box": [
+      311,
+      1277,
+      99,
+      27
+    ]
+  },
+  {
+    "text": "CONQUEROR",
+    "confidence": 0.9945,
+    "page": 1,
+    "bounding_box": [
+      16,
+      1324,
+      111,
+      31
+    ]
+  },
+  {
+    "text": "NC PFCA Ba lo\" Cothete;",
+    "confidence": 0.1066,
+    "page": 1,
+    "bounding_box": [
+      140,
+      1334,
+      180,
+      30
+    ]
+  },
+  {
+    "text": "C",
+    "confidence": 0.185,
+    "page": 1,
+    "bounding_box": [
+      387,
+      1337,
+      24,
+      18
+    ]
+  },
+  {
+    "text": "50 .",
+    "confidence": 0.348,
+    "page": 1,
+    "bounding_box": [
+      29,
+      1349,
+      34,
+      18
+    ]
+  },
+  {
+    "text": "mn",
+    "confidence": 0.1325,
+    "page": 1,
+    "bounding_box": [
+      89,
+      1355,
+      26,
+      14
+    ]
+  },
+  {
+    "text": "48m",
+    "confidence": 0.6159,
+    "page": 1,
+    "bounding_box": [
+      138,
+      1353,
+      40,
+      20
+    ]
+  },
+  {
+    "text": "Hi Toroue BALARCE",
+    "confidence": 0.3306,
+    "page": 1,
+    "bounding_box": [
+      387,
+      1359,
+      158,
+      21
+    ]
+  },
+  {
+    "text": "mioolewlightt",
+    "confidence": 0.1614,
+    "page": 1,
+    "bounding_box": [
+      387,
+      1375,
+      128,
+      18
+    ]
+  },
+  {
+    "text": "(a10",
+    "confidence": 0.0367,
+    "page": 1,
+    "bounding_box": [
+      0,
+      1397,
+      29,
+      16
+    ]
+  },
+  {
+    "text": "0949480",
+    "confidence": 0.1099,
+    "page": 1,
+    "bounding_box": [
+      38,
+      1398,
+      59,
+      19
+    ]
+  },
+  {
+    "text": "M",
+    "confidence": 0.3542,
+    "page": 1,
+    "bounding_box": [
+      166,
+      1376,
+      36,
+      30
+    ]
+  },
+  {
+    "text": "Ooro#mti",
+    "confidence": 0.0245,
+    "page": 1,
+    "bounding_box": [
+      385,
+      1393,
+      100,
+      18
+    ]
+  },
+  {
+    "text": "Ied \u20ac7",
+    "confidence": 0.1083,
+    "page": 1,
+    "bounding_box": [
+      493,
+      1397,
+      44,
+      16
+    ]
+  },
+  {
+    "text": "71072",
+    "confidence": 0.1314,
+    "page": 1,
+    "bounding_box": [
+      105,
+      1403,
+      34,
+      16
+    ]
+  },
+  {
+    "text": "#ioi",
+    "confidence": 0.0953,
+    "page": 1,
+    "bounding_box": [
+      151,
+      1407,
+      28,
+      14
+    ]
+  },
+  {
+    "text": "584127070504 (171250704",
+    "confidence": 0.2417,
+    "page": 1,
+    "bounding_box": [
+      179,
+      1405,
+      177,
+      29
+    ]
+  },
+  {
+    "text": "ReF",
+    "confidence": 0.0966,
+    "page": 1,
+    "bounding_box": [
+      387,
+      1413,
+      30,
+      16
+    ]
+  },
+  {
+    "text": "1cio+C",
+    "confidence": 0.0643,
+    "page": 1,
+    "bounding_box": [
+      428,
+      1413,
+      73,
+      20
+    ]
+  },
+  {
+    "text": "44250120",
+    "confidence": 0.3849,
+    "page": 1,
+    "bounding_box": [
+      41,
+      1429,
+      70,
+      18
+    ]
+  },
+  {
+    "text": "5p41270703c4",
+    "confidence": 0.2798,
+    "page": 1,
+    "bounding_box": [
+      151,
+      1432,
+      105,
+      27
+    ]
+  },
+  {
+    "text": "7025 07 04",
+    "confidence": 0.9589,
+    "page": 1,
+    "bounding_box": [
+      279,
+      1441,
+      78,
+      20
+    ]
+  },
+  {
+    "text": "Loy 2121n2",
+    "confidence": 0.2234,
+    "page": 1,
+    "bounding_box": [
+      384,
+      1436,
+      96,
+      24
+    ]
+  },
+  {
+    "text": "Dr \"mar",
+    "confidence": 0.8581,
+    "page": 1,
+    "bounding_box": [
+      926,
+      1422,
+      142,
+      32
+    ]
+  },
+  {
+    "text": "Iqbul",
+    "confidence": 0.7714,
+    "page": 1,
+    "bounding_box": [
+      1062,
+      1412,
+      88,
+      52
+    ]
+  },
+  {
+    "text": "FCPs !Cardiolcgy)",
+    "confidence": 0.8403,
+    "page": 1,
+    "bounding_box": [
+      956,
+      1460,
+      186,
+      32
+    ]
+  },
+  {
+    "text": "Tm",
+    "confidence": 0.3983,
+    "page": 1,
+    "bounding_box": [
+      875,
+      909,
+      46,
+      30
+    ]
+  },
+  {
+    "text": "Promls",
+    "confidence": 0.7376,
+    "page": 1,
+    "bounding_box": [
+      284,
+      1205,
+      64,
+      27
+    ]
+  }
+]

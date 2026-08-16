@@ -1,0 +1,849 @@
+[
+  {
+    "text": "carduc clater",
+    "confidence": 0.0326,
+    "page": 1,
+    "bounding_box": [
+      128,
+      106,
+      109,
+      20
+    ]
+  },
+  {
+    "text": "Curdiue Ccuter Iahawalpur",
+    "confidence": 0.2101,
+    "page": 1,
+    "bounding_box": [
+      361,
+      115,
+      476,
+      37
+    ]
+  },
+  {
+    "text": "Qunid--Azum Medicel College",
+    "confidence": 0.1757,
+    "page": 1,
+    "bounding_box": [
+      388,
+      149,
+      431,
+      37
+    ]
+  },
+  {
+    "text": "Cath",
+    "confidence": 0.5079,
+    "page": 1,
+    "bounding_box": [
+      410,
+      188,
+      82,
+      26
+    ]
+  },
+  {
+    "text": "Lab Depertment",
+    "confidence": 0.2167,
+    "page": 1,
+    "bounding_box": [
+      501,
+      187,
+      280,
+      37
+    ]
+  },
+  {
+    "text": "MR No:",
+    "confidence": 0.5042,
+    "page": 1,
+    "bounding_box": [
+      83,
+      259,
+      64,
+      18
+    ]
+  },
+  {
+    "text": "002059820",
+    "confidence": 0.9986,
+    "page": 1,
+    "bounding_box": [
+      187,
+      250,
+      99,
+      26
+    ]
+  },
+  {
+    "text": "crlormn Dulc:",
+    "confidence": 0.1633,
+    "page": 1,
+    "bounding_box": [
+      495,
+      257,
+      114,
+      16
+    ]
+  },
+  {
+    "text": "Calh, No: 232648",
+    "confidence": 0.3344,
+    "page": 1,
+    "bounding_box": [
+      795,
+      253,
+      136,
+      20
+    ]
+  },
+  {
+    "text": "VMc",
+    "confidence": 0.0485,
+    "page": 1,
+    "bounding_box": [
+      83,
+      295,
+      46,
+      16
+    ]
+  },
+  {
+    "text": "MAFZAL",
+    "confidence": 0.9078,
+    "page": 1,
+    "bounding_box": [
+      188,
+      284,
+      82,
+      24
+    ]
+  },
+  {
+    "text": "Male / 6 : Yejr",
+    "confidence": 0.3966,
+    "page": 1,
+    "bounding_box": [
+      823,
+      285,
+      124,
+      20
+    ]
+  },
+  {
+    "text": "C\"llu",
+    "confidence": 0.1425,
+    "page": 1,
+    "bounding_box": [
+      81,
+      327,
+      94,
+      16
+    ]
+  },
+  {
+    "text": "DR FOUZIiA GoheR",
+    "confidence": 0.2402,
+    "page": 1,
+    "bounding_box": [
+      188,
+      320,
+      178,
+      24
+    ]
+  },
+  {
+    "text": "Rcporied Djtc:",
+    "confidence": 0.1126,
+    "page": 1,
+    "bounding_box": [
+      497,
+      323,
+      122,
+      18
+    ]
+  },
+  {
+    "text": "19 Jun 2023",
+    "confidence": 0.7638,
+    "page": 1,
+    "bounding_box": [
+      628,
+      318,
+      112,
+      24
+    ]
+  },
+  {
+    "text": "Client: SeMAT CARD",
+    "confidence": 0.4263,
+    "page": 1,
+    "bounding_box": [
+      825,
+      317,
+      176,
+      20
+    ]
+  },
+  {
+    "text": "Tunc:",
+    "confidence": 0.5937,
+    "page": 1,
+    "bounding_box": [
+      95,
+      357,
+      52,
+      16
+    ]
+  },
+  {
+    "text": "18 8 (rtin",
+    "confidence": 0.2191,
+    "page": 1,
+    "bounding_box": [
+      189,
+      353,
+      74,
+      20
+    ]
+  },
+  {
+    "text": "Contrast Vol:",
+    "confidence": 0.9828,
+    "page": 1,
+    "bounding_box": [
+      494,
+      350,
+      120,
+      24
+    ]
+  },
+  {
+    "text": "120 mi",
+    "confidence": 0.8843,
+    "page": 1,
+    "bounding_box": [
+      633,
+      351,
+      58,
+      20
+    ]
+  },
+  {
+    "text": "IABLE PCI",
+    "confidence": 0.5852,
+    "page": 1,
+    "bounding_box": [
+      483,
+      383,
+      182,
+      44
+    ]
+  },
+  {
+    "text": "ecLto LAD",
+    "confidence": 0.5018,
+    "page": 1,
+    "bounding_box": [
+      517,
+      435,
+      90,
+      20
+    ]
+  },
+  {
+    "text": "Pettonng Dedory:",
+    "confidence": 0.2271,
+    "page": 1,
+    "bounding_box": [
+      73,
+      491,
+      166,
+      20
+    ]
+  },
+  {
+    "text": "Df",
+    "confidence": 0.4375,
+    "page": 1,
+    "bounding_box": [
+      147,
+      517,
+      22,
+      16
+    ]
+  },
+  {
+    "text": "Sagib) Riz",
+    "confidence": 0.2967,
+    "page": 1,
+    "bounding_box": [
+      175,
+      514,
+      83,
+      19
+    ]
+  },
+  {
+    "text": "D:  Aseel",
+    "confidence": 0.2,
+    "page": 1,
+    "bounding_box": [
+      265,
+      514,
+      74,
+      20
+    ]
+  },
+  {
+    "text": "Equpucnts",
+    "confidence": 0.1719,
+    "page": 1,
+    "bounding_box": [
+      73,
+      571,
+      104,
+      18
+    ]
+  },
+  {
+    "text": "Guido Cathetcr",
+    "confidence": 0.2607,
+    "page": 1,
+    "bounding_box": [
+      73,
+      595,
+      128,
+      18
+    ]
+  },
+  {
+    "text": "6F Crj3s",
+    "confidence": 0.1044,
+    "page": 1,
+    "bounding_box": [
+      217,
+      591,
+      90,
+      20
+    ]
+  },
+  {
+    "text": "Guidc Wirc:",
+    "confidence": 0.453,
+    "page": 1,
+    "bounding_box": [
+      71,
+      623,
+      98,
+      18
+    ]
+  },
+  {
+    "text": "BNW glice # e0ct4 * 190 \u20ac7",
+    "confidence": 0.042,
+    "page": 1,
+    "bounding_box": [
+      182,
+      618,
+      252,
+      24
+    ]
+  },
+  {
+    "text": "Bjlloon",
+    "confidence": 0.6844,
+    "page": 1,
+    "bounding_box": [
+      71,
+      651,
+      66,
+      16
+    ]
+  },
+  {
+    "text": "Maver ck Monorau 2 0 x 12 mm NC Quanlum Accx 3 0 x 12 rmNC Euphora 3 0 x 08 Mm",
+    "confidence": 0.1108,
+    "page": 1,
+    "bounding_box": [
+      158,
+      636,
+      674,
+      30
+    ]
+  },
+  {
+    "text": "Stcnt\"",
+    "confidence": 0.3211,
+    "page": 1,
+    "bounding_box": [
+      71,
+      677,
+      50,
+      18
+    ]
+  },
+  {
+    "text": "Prcnus Premier 2 75 * 38 mm",
+    "confidence": 0.2526,
+    "page": 1,
+    "bounding_box": [
+      135,
+      670,
+      237,
+      24
+    ]
+  },
+  {
+    "text": "PROCCDURE (Iruns Radial}:",
+    "confidence": 0.5443,
+    "page": 1,
+    "bounding_box": [
+      68,
+      724,
+      238,
+      26
+    ]
+  },
+  {
+    "text": "Ic\"",
+    "confidence": 0.5096,
+    "page": 1,
+    "bounding_box": [
+      489,
+      751,
+      28,
+      14
+    ]
+  },
+  {
+    "text": "ostium @MW wre wJs Usd % Coss Inc Iosin and placed",
+    "confidence": 0.1535,
+    "page": 1,
+    "bounding_box": [
+      588,
+      740,
+      452,
+      26
+    ]
+  },
+  {
+    "text": "In diuol",
+    "confidence": 0.1656,
+    "page": 1,
+    "bounding_box": [
+      1043,
+      739,
+      62,
+      16
+    ]
+  },
+  {
+    "text": "EBU",
+    "confidence": 0.2281,
+    "page": 1,
+    "bounding_box": [
+      145,
+      753,
+      40,
+      20
+    ]
+  },
+  {
+    "text": "35",
+    "confidence": 0.4421,
+    "page": 1,
+    "bounding_box": [
+      189,
+      755,
+      26,
+      16
+    ]
+  },
+  {
+    "text": "{F glieng catraler was Diaccd 1",
+    "confidence": 0.14,
+    "page": 1,
+    "bounding_box": [
+      220,
+      749,
+      268,
+      25
+    ]
+  },
+  {
+    "text": "cuoron",
+    "confidence": 0.1758,
+    "page": 1,
+    "bounding_box": [
+      519,
+      751,
+      66,
+      16
+    ]
+  },
+  {
+    "text": "Monora| 2 0",
+    "confidence": 0.4161,
+    "page": 1,
+    "bounding_box": [
+      499,
+      775,
+      96,
+      18
+    ]
+  },
+  {
+    "text": "12",
+    "confidence": 0.9681,
+    "page": 1,
+    "bounding_box": [
+      613,
+      771,
+      22,
+      20
+    ]
+  },
+  {
+    "text": "(m Daioon",
+    "confidence": 0.1121,
+    "page": 1,
+    "bounding_box": [
+      639,
+      773,
+      90,
+      16
+    ]
+  },
+  {
+    "text": "0 12 Atv",
+    "confidence": 0.2055,
+    "page": 1,
+    "bounding_box": [
+      733,
+      767,
+      84,
+      20
+    ]
+  },
+  {
+    "text": "Pramus Pretvgr ? 75 x 38",
+    "confidence": 0.1463,
+    "page": 1,
+    "bounding_box": [
+      824,
+      762,
+      204,
+      25
+    ]
+  },
+  {
+    "text": "nfn Sieri",
+    "confidence": 0.2599,
+    "page": 1,
+    "bounding_box": [
+      1031,
+      765,
+      74,
+      16
+    ]
+  },
+  {
+    "text": "LAL)",
+    "confidence": 0.1873,
+    "page": 1,
+    "bounding_box": [
+      69,
+      783,
+      38,
+      18
+    ]
+  },
+  {
+    "text": "Tnc cyon",
+    "confidence": 0.2146,
+    "page": 1,
+    "bounding_box": [
+      115,
+      785,
+      84,
+      16
+    ]
+  },
+  {
+    "text": "LAD",
+    "confidence": 0.6098,
+    "page": 1,
+    "bounding_box": [
+      221,
+      779,
+      38,
+      20
+    ]
+  },
+  {
+    "text": "7i:",
+    "confidence": 0.0055,
+    "page": 1,
+    "bounding_box": [
+      263,
+      783,
+      34,
+      14
+    ]
+  },
+  {
+    "text": "~c-diaud wilh Mavenca",
+    "confidence": 0.1966,
+    "page": 1,
+    "bounding_box": [
+      301,
+      777,
+      194,
+      20
+    ]
+  },
+  {
+    "text": "Inen post & Ialod wih NC Olanljm Apex 3 0 * 12",
+    "confidence": 0.238,
+    "page": 1,
+    "bounding_box": [
+      526,
+      794,
+      378,
+      26
+    ]
+  },
+  {
+    "text": "J Iron NC Lephara",
+    "confidence": 0.2629,
+    "page": 1,
+    "bounding_box": [
+      938,
+      788,
+      170,
+      24
+    ]
+  },
+  {
+    "text": "deployed ot 11 ATM tor 30 srconds",
+    "confidence": 0.2203,
+    "page": 1,
+    "bounding_box": [
+      70,
+      804,
+      282,
+      26
+    ]
+  },
+  {
+    "text": "Stentcd wgrent wJs",
+    "confidence": 0.3258,
+    "page": 1,
+    "bounding_box": [
+      358,
+      801,
+      168,
+      24
+    ]
+  },
+  {
+    "text": "shawed n tes Oual Icsion at steatcd sile and TIMI I fow in 9 sia' |AD",
+    "confidence": 0.0799,
+    "page": 1,
+    "bounding_box": [
+      524,
+      816,
+      526,
+      30
+    ]
+  },
+  {
+    "text": "3,0 * 06 mm halloos &'",
+    "confidence": 0.2172,
+    "page": 1,
+    "bounding_box": [
+      70,
+      834,
+      186,
+      24
+    ]
+  },
+  {
+    "text": "4 Io 20 ATM,",
+    "confidence": 0.3989,
+    "page": 1,
+    "bounding_box": [
+      264,
+      828,
+      100,
+      24
+    ]
+  },
+  {
+    "text": "Fina] cncck iniccicn",
+    "confidence": 0.2606,
+    "page": 1,
+    "bounding_box": [
+      369,
+      831,
+      154,
+      18
+    ]
+  },
+  {
+    "text": "concuhion;",
+    "confidence": 0.5178,
+    "page": 1,
+    "bounding_box": [
+      535,
+      867,
+      115,
+      28
+    ]
+  },
+  {
+    "text": "Successful Pcito LAD,",
+    "confidence": 0.6773,
+    "page": 1,
+    "bounding_box": [
+      69,
+      900,
+      211,
+      28
+    ]
+  },
+  {
+    "text": "Post PCI carc",
+    "confidence": 0.6339,
+    "page": 1,
+    "bounding_box": [
+      70,
+      924,
+      126,
+      24
+    ]
+  },
+  {
+    "text": "DR FOUZIA GOHFR",
+    "confidence": 0.6888,
+    "page": 1,
+    "bounding_box": [
+      691,
+      1400,
+      228,
+      37
+    ]
+  },
+  {
+    "text": "DJR SAQIK RIAZ",
+    "confidence": 0.674,
+    "page": 1,
+    "bounding_box": [
+      92,
+      1428,
+      180,
+      26
+    ]
+  },
+  {
+    "text": "(CARDA",
+    "confidence": 0.8214,
+    "page": 1,
+    "bounding_box": [
+      795,
+      1437,
+      75,
+      25
+    ]
+  },
+  {
+    "text": "MBLS, TCPS",
+    "confidence": 0.1979,
+    "page": 1,
+    "bounding_box": [
+      694,
+      1442,
+      104,
+      26
+    ]
+  },
+  {
+    "text": "TCTS (CARIIOLOGY) SENIOR RLGISIRAI",
+    "confidence": 0.2027,
+    "page": 1,
+    "bounding_box": [
+      92,
+      1458,
+      364,
+      28
+    ]
+  },
+  {
+    "text": "Pa",
+    "confidence": 0.3365,
+    "page": 1,
+    "bounding_box": [
+      987,
+      1509,
+      34,
+      16
+    ]
+  },
+  {
+    "text": "Electronically verified on 19 Jun; 2023no",
+    "confidence": 0.3238,
+    "page": 1,
+    "bounding_box": [
+      375,
+      1521,
+      322,
+      36
+    ]
+  },
+  {
+    "text": "rcquirad",
+    "confidence": 0.4155,
+    "page": 1,
+    "bounding_box": [
+      768,
+      1515,
+      70,
+      24
+    ]
+  },
+  {
+    "text": "21/062023 1 53 PM",
+    "confidence": 0.5362,
+    "page": 1,
+    "bounding_box": [
+      74,
+      1536,
+      160,
+      24
+    ]
+  },
+  {
+    "text": "Mm",
+    "confidence": 0.5348,
+    "page": 1,
+    "bounding_box": [
+      905,
+      793,
+      32,
+      18
+    ]
+  },
+  {
+    "text": "sOnalure",
+    "confidence": 0.4436,
+    "page": 1,
+    "bounding_box": [
+      694,
+      1518,
+      77,
+      26
+    ]
+  }
+]

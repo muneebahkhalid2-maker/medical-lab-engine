@@ -1,0 +1,15 @@
+{
+  "document_id": "WhatsApp Image 2026-07-10 at 3.57.53 PM (1) copy",
+  "document_type": "laboratory_report",
+  "patient": {
+    "name": "M AFZAL",
+    "age": 60,
+    "sex": "Male"
+  },
+  "report": {
+    "date": "19 Jun 2023",
+    "laboratory": "Cardiac Center Bahawalpur, Quaid-e-Azam Medical College"
+  },
+  "tests": [],
+  "extraction_status": "unverified"
+}

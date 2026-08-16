@@ -1,0 +1,1080 @@
+[
+  {
+    "text": "Army Cardiac Hospital",
+    "confidence": 0.9958,
+    "page": 1,
+    "bounding_box": [
+      230,
+      66,
+      657,
+      90
+    ]
+  },
+  {
+    "text": "Echocardiography Report",
+    "confidence": 0.997,
+    "page": 1,
+    "bounding_box": [
+      232,
+      136,
+      519,
+      69
+    ]
+  },
+  {
+    "text": "801575 Fioier AFZAL",
+    "confidence": 0.2951,
+    "page": 1,
+    "bounding_box": [
+      222,
+      214,
+      200,
+      24
+    ]
+  },
+  {
+    "text": "Referred By:",
+    "confidence": 0.8557,
+    "page": 1,
+    "bounding_box": [
+      634,
+      226,
+      167,
+      39
+    ]
+  },
+  {
+    "text": "Name:",
+    "confidence": 0.8956,
+    "page": 1,
+    "bounding_box": [
+      32,
+      248,
+      86,
+      26
+    ]
+  },
+  {
+    "text": "Years",
+    "confidence": 0.9993,
+    "page": 1,
+    "bounding_box": [
+      232,
+      258,
+      69,
+      31
+    ]
+  },
+  {
+    "text": "MAHAM",
+    "confidence": 0.9487,
+    "page": 1,
+    "bounding_box": [
+      857,
+      277,
+      82,
+      20
+    ]
+  },
+  {
+    "text": "Age:",
+    "confidence": 0.9964,
+    "page": 1,
+    "bounding_box": [
+      29,
+      295,
+      62,
+      36
+    ]
+  },
+  {
+    "text": "10",
+    "confidence": 0.9999,
+    "page": 1,
+    "bounding_box": [
+      218,
+      310,
+      32,
+      24
+    ]
+  },
+  {
+    "text": "AUG",
+    "confidence": 0.9372,
+    "page": 1,
+    "bounding_box": [
+      259,
+      311,
+      46,
+      20
+    ]
+  },
+  {
+    "text": "2026",
+    "confidence": 1.0,
+    "page": 1,
+    "bounding_box": [
+      312,
+      308,
+      60,
+      24
+    ]
+  },
+  {
+    "text": "Date & Time:",
+    "confidence": 0.8899,
+    "page": 1,
+    "bounding_box": [
+      27,
+      337,
+      166,
+      38
+    ]
+  },
+  {
+    "text": "Echocardiographer",
+    "confidence": 0.9925,
+    "page": 1,
+    "bounding_box": [
+      635,
+      319,
+      255,
+      48
+    ]
+  },
+  {
+    "text": "INDICAIION",
+    "confidence": 0.5126,
+    "page": 1,
+    "bounding_box": [
+      848,
+      386,
+      158,
+      26
+    ]
+  },
+  {
+    "text": "M",
+    "confidence": 0.7302,
+    "page": 1,
+    "bounding_box": [
+      731,
+      419,
+      24,
+      18
+    ]
+  },
+  {
+    "text": "Mode Measurements & Calculations",
+    "confidence": 0.8265,
+    "page": 1,
+    "bounding_box": [
+      762,
+      415,
+      370,
+      29
+    ]
+  },
+  {
+    "text": "Mcasutement",
+    "confidence": 0.4623,
+    "page": 1,
+    "bounding_box": [
+      733,
+      449,
+      118,
+      18
+    ]
+  },
+  {
+    "text": "Obsencd",
+    "confidence": 0.8375,
+    "page": 1,
+    "bounding_box": [
+      916,
+      448,
+      83,
+      20
+    ]
+  },
+  {
+    "text": "Range",
+    "confidence": 0.6154,
+    "page": 1,
+    "bounding_box": [
+      1018,
+      447,
+      62,
+      26
+    ]
+  },
+  {
+    "text": "Aortic Root",
+    "confidence": 0.5705,
+    "page": 1,
+    "bounding_box": [
+      733,
+      469,
+      102,
+      20
+    ]
+  },
+  {
+    "text": "28",
+    "confidence": 1.0,
+    "page": 1,
+    "bounding_box": [
+      947,
+      467,
+      24,
+      20
+    ]
+  },
+  {
+    "text": "20 M7mm",
+    "confidence": 0.2642,
+    "page": 1,
+    "bounding_box": [
+      1023,
+      471,
+      78,
+      18
+    ]
+  },
+  {
+    "text": "Diameter",
+    "confidence": 0.5618,
+    "page": 1,
+    "bounding_box": [
+      735,
+      491,
+      78,
+      16
+    ]
+  },
+  {
+    "text": "Lelt Atrium (End",
+    "confidence": 0.6267,
+    "page": 1,
+    "bounding_box": [
+      733,
+      509,
+      144,
+      20
+    ]
+  },
+  {
+    "text": "30",
+    "confidence": 0.8487,
+    "page": 1,
+    "bounding_box": [
+      947,
+      509,
+      24,
+      18
+    ]
+  },
+  {
+    "text": "75*40 mm",
+    "confidence": 0.3339,
+    "page": 1,
+    "bounding_box": [
+      1023,
+      509,
+      86,
+      20
+    ]
+  },
+  {
+    "text": "Observation and Comments:",
+    "confidence": 0.7316,
+    "page": 1,
+    "bounding_box": [
+      20,
+      519,
+      349,
+      36
+    ]
+  },
+  {
+    "text": "Systolo)",
+    "confidence": 0.819,
+    "page": 1,
+    "bounding_box": [
+      732,
+      528,
+      76,
+      26
+    ]
+  },
+  {
+    "text": "Septal Thickness",
+    "confidence": 0.74,
+    "page": 1,
+    "bounding_box": [
+      732,
+      548,
+      152,
+      26
+    ]
+  },
+  {
+    "text": "10",
+    "confidence": 0.5767,
+    "page": 1,
+    "bounding_box": [
+      949,
+      549,
+      24,
+      20
+    ]
+  },
+  {
+    "text": "6.12mm",
+    "confidence": 0.5793,
+    "page": 1,
+    "bounding_box": [
+      1025,
+      549,
+      76,
+      20
+    ]
+  },
+  {
+    "text": "at R Wave",
+    "confidence": 0.3215,
+    "page": 1,
+    "bounding_box": [
+      735,
+      571,
+      88,
+      20
+    ]
+  },
+  {
+    "text": "Postcrior Wali",
+    "confidence": 0.5783,
+    "page": 1,
+    "bounding_box": [
+      734,
+      590,
+      126,
+      24
+    ]
+  },
+  {
+    "text": "LV ejection fraction",
+    "confidence": 0.9954,
+    "page": 1,
+    "bounding_box": [
+      48,
+      600,
+      228,
+      30
+    ]
+  },
+  {
+    "text": "608",
+    "confidence": 0.9812,
+    "page": 1,
+    "bounding_box": [
+      332,
+      600,
+      48,
+      26
+    ]
+  },
+  {
+    "text": "Thickness",
+    "confidence": 0.3049,
+    "page": 1,
+    "bounding_box": [
+      735,
+      615,
+      90,
+      18
+    ]
+  },
+  {
+    "text": "Diastole",
+    "confidence": 0.9596,
+    "page": 1,
+    "bounding_box": [
+      823,
+      635,
+      74,
+      18
+    ]
+  },
+  {
+    "text": "10",
+    "confidence": 0.4546,
+    "page": 1,
+    "bounding_box": [
+      953,
+      633,
+      22,
+      18
+    ]
+  },
+  {
+    "text": "6-12Mm",
+    "confidence": 0.562,
+    "page": 1,
+    "bounding_box": [
+      1029,
+      633,
+      74,
+      20
+    ]
+  },
+  {
+    "text": "Systole",
+    "confidence": 0.9902,
+    "page": 1,
+    "bounding_box": [
+      820,
+      654,
+      72,
+      24
+    ]
+  },
+  {
+    "text": "1418 Mmn",
+    "confidence": 0.2571,
+    "page": 1,
+    "bounding_box": [
+      1029,
+      655,
+      82,
+      20
+    ]
+  },
+  {
+    "text": "Leht Ventricle",
+    "confidence": 0.7346,
+    "page": 1,
+    "bounding_box": [
+      732,
+      674,
+      122,
+      24
+    ]
+  },
+  {
+    "text": "Systolic Diameter",
+    "confidence": 0.8231,
+    "page": 1,
+    "bounding_box": [
+      736,
+      696,
+      162,
+      24
+    ]
+  },
+  {
+    "text": "28",
+    "confidence": 1.0,
+    "page": 1,
+    "bounding_box": [
+      953,
+      697,
+      24,
+      18
+    ]
+  },
+  {
+    "text": "2541",
+    "confidence": 0.7647,
+    "page": 1,
+    "bounding_box": [
+      1029,
+      697,
+      48,
+      20
+    ]
+  },
+  {
+    "text": "Mm",
+    "confidence": 0.5978,
+    "page": 1,
+    "bounding_box": [
+      1081,
+      703,
+      32,
+      14
+    ]
+  },
+  {
+    "text": "Normal sized cardiac chambers",
+    "confidence": 0.7744,
+    "page": 1,
+    "bounding_box": [
+      46,
+      708,
+      348,
+      28
+    ]
+  },
+  {
+    "text": "(DsL",
+    "confidence": 0.3487,
+    "page": 1,
+    "bounding_box": [
+      730,
+      716,
+      44,
+      24
+    ]
+  },
+  {
+    "text": "Good LV systolic function",
+    "confidence": 0.8859,
+    "page": 1,
+    "bounding_box": [
+      43,
+      737,
+      284,
+      37
+    ]
+  },
+  {
+    "text": "Diastolic Diameter",
+    "confidence": 0.8231,
+    "page": 1,
+    "bounding_box": [
+      733,
+      739,
+      166,
+      20
+    ]
+  },
+  {
+    "text": "43",
+    "confidence": 0.9653,
+    "page": 1,
+    "bounding_box": [
+      955,
+      741,
+      22,
+      16
+    ]
+  },
+  {
+    "text": "35.56 mm",
+    "confidence": 0.5246,
+    "page": 1,
+    "bounding_box": [
+      1029,
+      739,
+      84,
+      20
+    ]
+  },
+  {
+    "text": "(Os)",
+    "confidence": 0.6104,
+    "page": 1,
+    "bounding_box": [
+      730,
+      758,
+      44,
+      24
+    ]
+  },
+  {
+    "text": "Trace MRITrace TR",
+    "confidence": 0.5521,
+    "page": 1,
+    "bounding_box": [
+      42,
+      772,
+      222,
+      32
+    ]
+  },
+  {
+    "text": "Frctionai",
+    "confidence": 0.7229,
+    "page": 1,
+    "bounding_box": [
+      735,
+      783,
+      90,
+      18
+    ]
+  },
+  {
+    "text": "2575",
+    "confidence": 0.8566,
+    "page": 1,
+    "bounding_box": [
+      1029,
+      779,
+      67,
+      25
+    ]
+  },
+  {
+    "text": "Mild AR",
+    "confidence": 0.969,
+    "page": 1,
+    "bounding_box": [
+      42,
+      808,
+      88,
+      26
+    ]
+  },
+  {
+    "text": "Shortening",
+    "confidence": 0.9978,
+    "page": 1,
+    "bounding_box": [
+      731,
+      799,
+      105,
+      27
+    ]
+  },
+  {
+    "text": "Right Vcntriclo",
+    "confidence": 0.5864,
+    "page": 1,
+    "bounding_box": [
+      732,
+      821,
+      136,
+      28
+    ]
+  },
+  {
+    "text": "Jo mm",
+    "confidence": 0.6087,
+    "page": 1,
+    "bounding_box": [
+      1047,
+      825,
+      58,
+      20
+    ]
+  },
+  {
+    "text": "Normal sized RV with good RV function",
+    "confidence": 0.8803,
+    "page": 1,
+    "bounding_box": [
+      41,
+      836,
+      438,
+      37
+    ]
+  },
+  {
+    "text": "Mcasurcmcnt",
+    "confidence": 0.8374,
+    "page": 1,
+    "bounding_box": [
+      736,
+      848,
+      123,
+      20
+    ]
+  },
+  {
+    "text": "Obsened",
+    "confidence": 0.9726,
+    "page": 1,
+    "bounding_box": [
+      927,
+      849,
+      84,
+      18
+    ]
+  },
+  {
+    "text": "Range",
+    "confidence": 0.7646,
+    "page": 1,
+    "bounding_box": [
+      1031,
+      844,
+      61,
+      27
+    ]
+  },
+  {
+    "text": "MK-ElAntio",
+    "confidence": 0.3325,
+    "page": 1,
+    "bounding_box": [
+      737,
+      869,
+      116,
+      20
+    ]
+  },
+  {
+    "text": "122",
+    "confidence": 0.6291,
+    "page": 1,
+    "bounding_box": [
+      1037,
+      871,
+      26,
+      16
+    ]
+  },
+  {
+    "text": "No clot seen,",
+    "confidence": 0.5114,
+    "page": 1,
+    "bounding_box": [
+      40,
+      874,
+      142,
+      26
+    ]
+  },
+  {
+    "text": "M EVclocity _",
+    "confidence": 0.2095,
+    "page": 1,
+    "bounding_box": [
+      734,
+      887,
+      128,
+      27
+    ]
+  },
+  {
+    "text": "50.12smM",
+    "confidence": 0.2385,
+    "page": 1,
+    "bounding_box": [
+      1035,
+      891,
+      86,
+      20
+    ]
+  },
+  {
+    "text": "No pericardial effusion seen.",
+    "confidence": 0.8477,
+    "page": 1,
+    "bounding_box": [
+      38,
+      904,
+      314,
+      30
+    ]
+  },
+  {
+    "text": "MAvelocity",
+    "confidence": 0.6925,
+    "page": 1,
+    "bounding_box": [
+      734,
+      910,
+      126,
+      26
+    ]
+  },
+  {
+    "text": "60-2o0mm",
+    "confidence": 0.2868,
+    "page": 1,
+    "bounding_box": [
+      1034,
+      910,
+      90,
+      24
+    ]
+  },
+  {
+    "text": "Deccleration time ",
+    "confidence": 0.5411,
+    "page": 1,
+    "bounding_box": [
+      734,
+      932,
+      160,
+      24
+    ]
+  },
+  {
+    "text": "80.zo0mm",
+    "confidence": 0.1973,
+    "page": 1,
+    "bounding_box": [
+      1034,
+      932,
+      90,
+      24
+    ]
+  },
+  {
+    "text": "Ivrt",
+    "confidence": 0.5138,
+    "page": 1,
+    "bounding_box": [
+      735,
+      957,
+      46,
+      20
+    ]
+  },
+  {
+    "text": "50-10omm",
+    "confidence": 0.4439,
+    "page": 1,
+    "bounding_box": [
+      1035,
+      957,
+      90,
+      20
+    ]
+  },
+  {
+    "text": "[Lv end systolic",
+    "confidence": 0.5638,
+    "page": 1,
+    "bounding_box": [
+      734,
+      977,
+      142,
+      27
+    ]
+  },
+  {
+    "text": "min",
+    "confidence": 0.586,
+    "page": 1,
+    "bounding_box": [
+      1037,
+      985,
+      34,
+      14
+    ]
+  },
+  {
+    "text": "volume",
+    "confidence": 0.9986,
+    "page": 1,
+    "bounding_box": [
+      737,
+      1003,
+      68,
+      18
+    ]
+  },
+  {
+    "text": "(vanable)",
+    "confidence": 0.6509,
+    "page": 1,
+    "bounding_box": [
+      1034,
+      998,
+      86,
+      24
+    ]
+  },
+  {
+    "text": "Lv end diastolic",
+    "confidence": 0.6641,
+    "page": 1,
+    "bounding_box": [
+      734,
+      1020,
+      150,
+      26
+    ]
+  },
+  {
+    "text": "inmn",
+    "confidence": 0.1802,
+    "page": 1,
+    "bounding_box": [
+      1039,
+      1029,
+      34,
+      14
+    ]
+  },
+  {
+    "text": "wolume",
+    "confidence": 0.8435,
+    "page": 1,
+    "bounding_box": [
+      735,
+      1045,
+      70,
+      20
+    ]
+  },
+  {
+    "text": "(vanable)",
+    "confidence": 0.9589,
+    "page": 1,
+    "bounding_box": [
+      1036,
+      1042,
+      86,
+      24
+    ]
+  },
+  {
+    "text": "Rv Function",
+    "confidence": 0.8334,
+    "page": 1,
+    "bounding_box": [
+      736,
+      1066,
+      116,
+      24
+    ]
+  },
+  {
+    "text": "18.22mm",
+    "confidence": 0.6561,
+    "page": 1,
+    "bounding_box": [
+      1039,
+      1067,
+      80,
+      20
+    ]
+  },
+  {
+    "text": "@APSE",
+    "confidence": 0.2439,
+    "page": 1,
+    "bounding_box": [
+      736,
+      1086,
+      68,
+      24
+    ]
+  },
+  {
+    "text": "MVInflow Velocity",
+    "confidence": 0.4472,
+    "page": 1,
+    "bounding_box": [
+      736,
+      1108,
+      170,
+      28
+    ]
+  },
+  {
+    "text": "cmsec",
+    "confidence": 0.9015,
+    "page": 1,
+    "bounding_box": [
+      1041,
+      1115,
+      64,
+      16
+    ]
+  },
+  {
+    "text": "fricuspid Inflow",
+    "confidence": 0.5301,
+    "page": 1,
+    "bounding_box": [
+      735,
+      1131,
+      151,
+      26
+    ]
+  },
+  {
+    "text": "cisec",
+    "confidence": 0.5025,
+    "page": 1,
+    "bounding_box": [
+      1042,
+      1135,
+      63,
+      20
+    ]
+  },
+  {
+    "text": "Velocity _",
+    "confidence": 0.445,
+    "page": 1,
+    "bounding_box": [
+      734,
+      1150,
+      80,
+      30
+    ]
+  },
+  {
+    "text": "Ejection Fraction",
+    "confidence": 0.9782,
+    "page": 1,
+    "bounding_box": [
+      736,
+      1175,
+      158,
+      27
+    ]
+  },
+  {
+    "text": "60*",
+    "confidence": 0.2819,
+    "page": 1,
+    "bounding_box": [
+      955,
+      1179,
+      40,
+      20
+    ]
+  },
+  {
+    "text": "552",
+    "confidence": 0.1808,
+    "page": 1,
+    "bounding_box": [
+      1040,
+      1176,
+      44,
+      24
+    ]
+  },
+  {
+    "text": "752",
+    "confidence": 0.6182,
+    "page": 1,
+    "bounding_box": [
+      1093,
+      1177,
+      42,
+      20
+    ]
+  },
+  {
+    "text": "Consulsions and Recommendations:",
+    "confidence": 0.9751,
+    "page": 1,
+    "bounding_box": [
+      9,
+      1343,
+      455,
+      48
+    ]
+  },
+  {
+    "text": "Consultant Cardiologist & Physician",
+    "confidence": 0.7671,
+    "page": 1,
+    "bounding_box": [
+      3,
+      1448,
+      366,
+      48
+    ]
+  }
+]

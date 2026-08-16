@@ -1,0 +1,14 @@
+{
+  "name": "medadoc",
+  "version": "1.0.0",
+  "description": "Medical Extraction Full Stack",
+  "scripts": {
+    "frontend": "npm run dev --prefix frontend",
+    "backend": "npm run dev --prefix backend",
+    "ai-service": "cd ai-service && python -m uvicorn fastapi_app:app --reload --port 8000",
+    "dev": "concurrently -c \"cyan,magenta,green\" -n \"FRONTEND,BACKEND,AI-SERVICE\" \"npm run frontend\" \"npm run backend\" \"npm run ai-service\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

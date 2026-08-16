@@ -1,0 +1,307 @@
+{
+  "document_id": "WhatsApp Image 2026-08-11 at 3.14.49 PM (1)",
+  "document_type": "laboratory_report",
+  "patient": {
+    "name": "MAHAM",
+    "age": 10,
+    "sex": null
+  },
+  "report": {
+    "date": "2026-08-10",
+    "laboratory": "Army Cardiac Hospital"
+  },
+  "tests": [
+    {
+      "test_name": "Aortic Root Diameter",
+      "test_name_raw": "Aortic Root Diameter",
+      "result": 28,
+      "unit": "mm",
+      "reference_range": "20-37 mm",
+      "confidence": 1.0,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          947,
+          467,
+          24,
+          20
+        ]
+      },
+      "needs_verification": false
+    },
+    {
+      "test_name": "Left Atrium End-Systolic Diameter",
+      "test_name_raw": "Left Atrium (End Systolo)",
+      "result": 30,
+      "unit": "mm",
+      "reference_range": "15-40 mm",
+      "confidence": 0.8487,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          947,
+          509,
+          24,
+          18
+        ]
+      },
+      "needs_verification": false
+    },
+    {
+      "test_name": "Interventricular Septal Thickness at Diastole",
+      "test_name_raw": "Septal Thickness at R Wave",
+      "result": 10,
+      "unit": "mm",
+      "reference_range": "6-12 mm",
+      "confidence": 0.9999,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          218,
+          310,
+          32,
+          24
+        ]
+      },
+      "needs_verification": false
+    },
+    {
+      "test_name": "Left Ventricular Posterior Wall Thickness at Diastole",
+      "test_name_raw": "Posterior Wall Thickness Diastole",
+      "result": 10,
+      "unit": "mm",
+      "reference_range": "6-12 mm",
+      "confidence": 0.9999,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          218,
+          310,
+          32,
+          24
+        ]
+      },
+      "needs_verification": false
+    },
+    {
+      "test_name": "Left Ventricular Posterior Wall Thickness at Systole",
+      "test_name_raw": "Posterior Wall Thickness Systole",
+      "result": null,
+      "unit": "mm",
+      "reference_range": "14-18 mm",
+      "confidence": 0.8,
+      "verified": false,
+      "source": null,
+      "needs_verification": true,
+      "reason": "extraction_disagreement"
+    },
+    {
+      "test_name": "Left Ventricular End-Systolic Dimension",
+      "test_name_raw": "Left Ventricle Systolic Diameter (DsL)",
+      "result": 28,
+      "unit": "mm",
+      "reference_range": "25-41 mm",
+      "confidence": 1.0,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          947,
+          467,
+          24,
+          20
+        ]
+      },
+      "needs_verification": false
+    },
+    {
+      "test_name": "Left Ventricular End-Diastolic Dimension",
+      "test_name_raw": "Left Ventricle Diastolic Diameter (Os)",
+      "result": 43,
+      "unit": "mm",
+      "reference_range": "35-56 mm",
+      "confidence": 0.9653,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          955,
+          741,
+          22,
+          16
+        ]
+      },
+      "needs_verification": false
+    },
+    {
+      "test_name": "Fractional Shortening",
+      "test_name_raw": "Frctionai Shortening",
+      "result": 25.75,
+      "unit": "%",
+      "reference_range": null,
+      "confidence": 0.8,
+      "verified": false,
+      "source": null,
+      "needs_verification": true,
+      "reason": "extraction_disagreement"
+    },
+    {
+      "test_name": "Right Ventricular Dimension",
+      "test_name_raw": "Right Ventriclo",
+      "result": 30,
+      "unit": "mm",
+      "reference_range": null,
+      "confidence": 0.8487,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          947,
+          509,
+          24,
+          18
+        ]
+      },
+      "needs_verification": false
+    },
+    {
+      "test_name": "Mitral Valve E/A Ratio",
+      "test_name_raw": "MK-ElAntio",
+      "result": 1.22,
+      "unit": null,
+      "reference_range": null,
+      "confidence": 0.8,
+      "verified": false,
+      "source": null,
+      "needs_verification": true,
+      "reason": "extraction_disagreement"
+    },
+    {
+      "test_name": "Mitral Valve E-Wave Velocity",
+      "test_name_raw": "M EVclocity",
+      "result": null,
+      "unit": "cm/s",
+      "reference_range": "50-120 cm/s",
+      "confidence": 0.8,
+      "verified": false,
+      "source": null,
+      "needs_verification": true,
+      "reason": "extraction_disagreement"
+    },
+    {
+      "test_name": "Mitral Valve A-Wave Velocity",
+      "test_name_raw": "MAvelocity",
+      "result": null,
+      "unit": "mm",
+      "reference_range": "60-200 mm",
+      "confidence": 0.8,
+      "verified": false,
+      "source": null,
+      "needs_verification": true,
+      "reason": "extraction_disagreement"
+    },
+    {
+      "test_name": "Mitral Deceleration Time",
+      "test_name_raw": "Deceleration time",
+      "result": null,
+      "unit": "mm",
+      "reference_range": "80-200 mm",
+      "confidence": 0.8,
+      "verified": false,
+      "source": null,
+      "needs_verification": true,
+      "reason": "extraction_disagreement"
+    },
+    {
+      "test_name": "Isovolumetric Relaxation Time",
+      "test_name_raw": "Ivrt",
+      "result": null,
+      "unit": "mm",
+      "reference_range": "50-100 mm",
+      "confidence": 0.8,
+      "verified": false,
+      "source": null,
+      "needs_verification": true,
+      "reason": "extraction_disagreement"
+    },
+    {
+      "test_name": "Left Ventricular End-Systolic Volume",
+      "test_name_raw": "Lv end systolic volume",
+      "result": null,
+      "unit": null,
+      "reference_range": null,
+      "confidence": 0.8,
+      "verified": false,
+      "source": null,
+      "needs_verification": true,
+      "reason": "extraction_disagreement"
+    },
+    {
+      "test_name": "Left Ventricular End-Diastolic Volume",
+      "test_name_raw": "Lv end diastolic volume",
+      "result": null,
+      "unit": null,
+      "reference_range": null,
+      "confidence": 0.8,
+      "verified": false,
+      "source": null,
+      "needs_verification": true,
+      "reason": "extraction_disagreement"
+    },
+    {
+      "test_name": "Tricuspid Annular Plane Systolic Excursion",
+      "test_name_raw": "Rv Function @TAPSE",
+      "result": null,
+      "unit": "mm",
+      "reference_range": "18-22 mm",
+      "confidence": 0.8,
+      "verified": false,
+      "source": null,
+      "needs_verification": true,
+      "reason": "extraction_disagreement"
+    },
+    {
+      "test_name": "Left Ventricular Ejection Fraction",
+      "test_name_raw": "LV ejection fraction",
+      "result": 60,
+      "unit": "%",
+      "reference_range": null,
+      "confidence": 0.9812,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          332,
+          600,
+          48,
+          26
+        ]
+      },
+      "needs_verification": false
+    },
+    {
+      "test_name": "Left Ventricular Ejection Fraction",
+      "test_name_raw": "Ejection Fraction",
+      "result": 60,
+      "unit": "%",
+      "reference_range": "55-75 %",
+      "confidence": 0.9812,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          332,
+          600,
+          48,
+          26
+        ]
+      },
+      "needs_verification": false
+    }
+  ],
+  "extraction_status": "needs_verification"
+}

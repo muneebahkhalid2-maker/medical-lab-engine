@@ -1,0 +1,101 @@
+[
+  {
+    "text": "90023[L0ENST 0860+03+7 Huut93]zeutotfje)",
+    "confidence": 0.0076,
+    "page": 1,
+    "bounding_box": [
+      1527,
+      21,
+      747,
+      53
+    ]
+  },
+  {
+    "text": "2i09 JyZiez_d) Nttttrot",
+    "confidence": 0.0243,
+    "page": 1,
+    "bounding_box": [
+      2385,
+      36,
+      456,
+      48
+    ]
+  },
+  {
+    "text": "3thniga",
+    "confidence": 0.0927,
+    "page": 1,
+    "bounding_box": [
+      2859,
+      47,
+      121,
+      36
+    ]
+  },
+  {
+    "text": "Je",
+    "confidence": 0.5406,
+    "page": 1,
+    "bounding_box": [
+      3058,
+      143,
+      56,
+      31
+    ]
+  },
+  {
+    "text": "Iae",
+    "confidence": 0.3027,
+    "page": 1,
+    "bounding_box": [
+      3049,
+      307,
+      61,
+      38
+    ]
+  },
+  {
+    "text": "dae",
+    "confidence": 0.5834,
+    "page": 1,
+    "bounding_box": [
+      3035,
+      460,
+      67,
+      39
+    ]
+  },
+  {
+    "text": "LL02/60v901",
+    "confidence": 0.0527,
+    "page": 1,
+    "bounding_box": [
+      1521,
+      1018,
+      197,
+      56
+    ]
+  },
+  {
+    "text": "DWae",
+    "confidence": 0.0252,
+    "page": 1,
+    "bounding_box": [
+      159,
+      1055,
+      173,
+      92
+    ]
+  },
+  {
+    "text": "9p:68 # GUr",
+    "confidence": 0.0139,
+    "page": 1,
+    "bounding_box": [
+      1364,
+      1018,
+      159,
+      55
+    ]
+  }
+]

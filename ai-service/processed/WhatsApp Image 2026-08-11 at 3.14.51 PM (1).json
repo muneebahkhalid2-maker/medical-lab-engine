@@ -1,0 +1,264 @@
+{
+  "document_id": "WhatsApp Image 2026-08-11 at 3.14.51 PM (1)",
+  "document_type": "laboratory_report",
+  "patient": {
+    "name": "M Afzal",
+    "id": "801575",
+    "age": 64,
+    "sex": "Male"
+  },
+  "report": {
+    "date": "2026-07-08",
+    "laboratory": "ARMY CARDIAC HOSPITAL"
+  },
+  "tests": [
+    {
+      "test_name": "Total Leukocyte Count",
+      "test_name_raw": "TLC",
+      "result": 6.3,
+      "unit": "10^9/L",
+      "reference_range": "4.0-11.0 X 10^9/L",
+      "confidence": 0.9984,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          582,
+          336,
+          46,
+          28
+        ]
+      },
+      "needs_verification": false
+    },
+    {
+      "test_name": "Red Blood Cell Count",
+      "test_name_raw": "RBC",
+      "result": 4.17,
+      "unit": "10^12/L",
+      "reference_range": "Male: 4.5-6.0 X 10^12/L, Female: 3.9-5.6 X 10^12/L",
+      "confidence": 0.9819,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          582,
+          372,
+          62,
+          28
+        ]
+      },
+      "needs_verification": false
+    },
+    {
+      "test_name": "Hemoglobin",
+      "test_name_raw": "Hemoglobin",
+      "result": 12.8,
+      "unit": "g/dl",
+      "reference_range": "Male: 13-18 g/dl, Female: 12-16 g/dl",
+      "confidence": 0.9816,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          584,
+          434,
+          60,
+          30
+        ]
+      },
+      "needs_verification": false
+    },
+    {
+      "test_name": "Packed Cell Volume",
+      "test_name_raw": "PCV",
+      "result": 36.9,
+      "unit": "%",
+      "reference_range": "Male: 40-54 %, Female: 39-52 %",
+      "confidence": 0.9311,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          582,
+          496,
+          60,
+          30
+        ]
+      },
+      "needs_verification": false
+    },
+    {
+      "test_name": "Mean Corpuscular Volume",
+      "test_name_raw": "MCV",
+      "result": 88.5,
+      "unit": "fl",
+      "reference_range": "76-96 fl",
+      "confidence": 0.9764,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          582,
+          558,
+          62,
+          32
+        ]
+      },
+      "needs_verification": false
+    },
+    {
+      "test_name": "Mean Corpuscular Hemoglobin",
+      "test_name_raw": "MCH",
+      "result": 30.7,
+      "unit": "pg",
+      "reference_range": "27-32 pg",
+      "confidence": 0.5724,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          582,
+          596,
+          58,
+          30
+        ]
+      },
+      "needs_verification": false
+    },
+    {
+      "test_name": "Mean Corpuscular Hemoglobin Concentration",
+      "test_name_raw": "MCHC",
+      "result": 34.7,
+      "unit": "g/dl",
+      "reference_range": "31.5-34.5 g/dl",
+      "confidence": 0.9996,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          582,
+          634,
+          58,
+          30
+        ]
+      },
+      "needs_verification": false
+    },
+    {
+      "test_name": "Platelet Count",
+      "test_name_raw": "Pialelei Count",
+      "result": 150,
+      "unit": "10^9/L",
+      "reference_range": "150-450 X 10^9/L",
+      "confidence": 1.0,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          584,
+          670,
+          52,
+          32
+        ]
+      },
+      "needs_verification": false
+    },
+    {
+      "test_name": "Neutrophils",
+      "test_name_raw": "Neutrophils",
+      "result": 66,
+      "unit": "%",
+      "reference_range": "40-70%",
+      "confidence": 0.5949,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          303,
+          155,
+          370,
+          41
+        ]
+      },
+      "needs_verification": false
+    },
+    {
+      "test_name": "Lymphocytes",
+      "test_name_raw": "Lymphocyiles",
+      "result": 25,
+      "unit": "%",
+      "reference_range": "20-40%",
+      "confidence": 1.0,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          582,
+          746,
+          38,
+          30
+        ]
+      },
+      "needs_verification": false
+    },
+    {
+      "test_name": "Monocytes",
+      "test_name_raw": "Monocytes",
+      "result": 5,
+      "unit": "%",
+      "reference_range": "0-10%",
+      "confidence": 0.5949,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          303,
+          155,
+          370,
+          41
+        ]
+      },
+      "needs_verification": false
+    },
+    {
+      "test_name": "Eosinophils",
+      "test_name_raw": "Eosinophils",
+      "result": 4,
+      "unit": "%",
+      "reference_range": "0-6%",
+      "confidence": 0.5302,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          756,
+          38,
+          202,
+          32
+        ]
+      },
+      "needs_verification": false
+    },
+    {
+      "test_name": "High-Sensitivity Troponin",
+      "test_name_raw": "Trop Hs",
+      "result": 0.02,
+      "unit": "ng/ml",
+      "reference_range": "0.02-0.06 ng/ml",
+      "confidence": 0.9947,
+      "verified": false,
+      "source": {
+        "page": 1,
+        "bounding_box": [
+          580,
+          988,
+          64,
+          30
+        ]
+      },
+      "needs_verification": false
+    }
+  ],
+  "extraction_status": "unverified"
+}

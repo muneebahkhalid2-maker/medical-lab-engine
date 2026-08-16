@@ -1,0 +1,15 @@
+{
+  "document_id": "WhatsApp Image 2026-07-10 at 3.57.52 PM (2) copy",
+  "document_type": "laboratory_report",
+  "patient": {
+    "name": "M. Afzal",
+    "age": 60,
+    "sex": "male"
+  },
+  "report": {
+    "date": "2023-11-02",
+    "laboratory": "Bahawalpur Heart Center"
+  },
+  "tests": [],
+  "extraction_status": "unverified"
+}
