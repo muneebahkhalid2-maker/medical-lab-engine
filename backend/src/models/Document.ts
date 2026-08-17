@@ -11,6 +11,12 @@ export interface IDoc extends MongooseDocument {
   documentType: string;
   pageCount: number;
   
+  cloudinaryUrl?: string;
+  cloudinaryPublicId?: string;
+
+  extractedData?: any;
+  verifiedData?: any;
+
   processingStatus: 'QUEUED' | 'PROCESSING' | 'COMPLETED' | 'FAILED';
   uploadStatus: 'UPLOADING' | 'UPLOADED' | 'FAILED';
   ocrStatus: 'PENDING' | 'PROCESSING' | 'COMPLETED' | 'FAILED';
@@ -37,6 +43,11 @@ const DocumentSchema: Schema = new Schema(
     storagePath: { type: String, required: true },
     documentType: { type: String, default: 'UNKNOWN' },
     pageCount: { type: Number, default: 1 },
+
+    cloudinaryUrl: { type: String },
+    cloudinaryPublicId: { type: String },
+    extractedData: { type: Schema.Types.Mixed },
+    verifiedData: { type: Schema.Types.Mixed },
     
     processingStatus: { type: String, enum: ['QUEUED', 'PROCESSING', 'COMPLETED', 'FAILED'], default: 'QUEUED' },
     uploadStatus: { type: String, enum: ['UPLOADING', 'UPLOADED', 'FAILED'], default: 'UPLOADED' },

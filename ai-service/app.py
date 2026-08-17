@@ -2,6 +2,7 @@ import streamlit as st
 import json
 import os
 from PIL import Image
+from reference_range_system.engine import MedicalLabStatusEngine
 
 def load_data(doc_id):
     processed_path = os.path.join("processed", f"{doc_id}.json")
@@ -12,6 +13,12 @@ def load_data(doc_id):
 
 def save_verified(doc_id, data):
     data["extraction_status"] = "verified"
+    data["extraction_verified"] = True
+    
+    # Re-run reference range status engine with verified = True
+    status_engine = MedicalLabStatusEngine()
+    data = status_engine.analyze_report(data)
+
     verified_dir = "verified"
     os.makedirs(verified_dir, exist_ok=True)
     verified_path = os.path.join(verified_dir, f"{doc_id}.json")
@@ -29,7 +36,7 @@ def save_verified(doc_id, data):
     st.success(f"Verified data saved to {verified_path}")
 
 st.set_page_config(layout="wide")
-st.title("Medical Document Extraction - Verification")
+st.title("Medical Document Extraction & Clinical Reference Range Engine")
 
 doc_id = st.text_input("Enter Document ID (e.g., sample_report):", "sample_report")
 
@@ -40,16 +47,11 @@ if doc_id:
         
         with col1:
             st.subheader("Original Document")
-            # In a real app, you'd map doc_id to the exact image file.
-            # Here we just look for a .jpeg with that name in the original folder.
-            # For this demo, let's assume the user passes the exact image name or we have a DB.
-            # We'll just try to load a known image from LabReports for demonstration.
             image_path = os.path.join("..", "LabReports", f"{doc_id}.jpeg")
             if os.path.exists(image_path):
                 img = Image.open(image_path)
                 st.image(img, use_column_width=True)
             else:
-                # Try .jpg
                 image_path = os.path.join("..", "LabReports", f"{doc_id}.jpg")
                 if os.path.exists(image_path):
                      img = Image.open(image_path)
@@ -58,24 +60,34 @@ if doc_id:
                     st.warning(f"Could not find original image for {doc_id} in LabReports folder.")
                 
         with col2:
-            st.subheader("Extracted Tests")
+            st.subheader("Extracted Tests & Status Evaluation")
+            st.write(f"**Overall Report Status:** `{data.get('overall_status', 'UNKNOWN')}`")
             
-            if "extraction_status" in data and data["extraction_status"] == "needs_verification":
-                st.error("Some fields require your attention!")
+            if data.get("extraction_status") == "unverified":
+                st.info("Status shows NEEDS_REVIEW until human verification.")
                 
             for i, test in enumerate(data.get("tests", [])):
-                st.markdown(f"**Test:** {test.get('test_name', test.get('test_name_raw', 'Unknown'))}")
+                tname = test.get('testName') or test.get('test_name') or test.get('test_name_raw') or 'Unknown'
+                st.markdown(f"### **Test:** {tname}")
                 
-                # Check for anomaly flag
-                needs_verification = test.get("needs_verification", False)
-                if needs_verification:
-                    st.warning(f"Flagged: {test.get('reason')}")
+                # Check for status
+                tstatus = test.get("status", "UNKNOWN")
+                ref_range = test.get("reference_range", "N/A")
+                ref_src = test.get("reference_source", "N/A")
+                
+                if tstatus == "NORMAL":
+                    st.success(f"Status: **NORMAL** | Ref Range: {ref_range} | Source: {ref_src}")
+                elif tstatus in ["HIGH", "LOW"]:
+                    st.error(f"Status: **{tstatus}** | Ref Range: {ref_range} | Source: {ref_src}")
+                else:
+                    st.warning(f"Status: **{tstatus}** | Reason: {test.get('status_reason', 'N/A')}")
                     
-                st.write(f"**AI Result:** {test.get('result')} {test.get('unit', '')}")
-                st.write(f"**Confidence:** {test.get('confidence', 0)*100:.1f}%")
+                st.write(f"**Result:** {test.get('result')} {test.get('unit', '')}")
+                if "confidence" in test:
+                    st.write(f"**Confidence:** {test.get('confidence', 0)*100:.1f}%")
                 
                 # Allow user to edit
-                correct_val = st.text_input(f"Correct value for {test.get('test_name')}:", value=str(test.get('result', '')), key=f"test_{i}")
+                correct_val = st.text_input(f"Correct value for {tname}:", value=str(test.get('result', '')), key=f"test_{i}")
                 
                 if correct_val != str(test.get('result', '')):
                     test["ai_result"] = test["result"] # Save original AI result

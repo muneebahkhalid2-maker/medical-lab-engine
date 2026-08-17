@@ -2,54 +2,40 @@ import { Request, Response } from 'express';
 import mongoose from 'mongoose';
 import Patient from '../models/Patient';
 
+const DEFAULT_ORG_ID = new mongoose.Types.ObjectId("60c72b2f9b1d8b0015b6d910");
+
 const MOCK_PATIENTS = [
   {
-    id: 'P-1001',
+    _id: '60c72b2f9b1d8b0015b6d911',
+    patientId: 'P-1001',
     name: 'Eleanor Vance',
     age: 42,
-    gender: 'Female',
-    phone: '+1 (555) 234-5678',
-    email: 'eleanor.vance@example.com',
+    sex: 'Female',
+    contactPhone: '+1 (555) 234-5678',
+    emergencyContact: '+1 (555) 999-1111',
+    address: '742 Evergreen Terrace, Springfield',
+    contactEmail: 'eleanor.vance@example.com',
+    encounterStatus: 'VERIFICATION_COMPLETE',
     lastReportDate: '2026-08-12',
     reportsCount: 4,
     riskLevel: 'LOW',
     primaryCondition: 'Routine Checkup / Lipid Panel'
   },
   {
-    id: 'P-1002',
+    _id: '60c72b2f9b1d8b0015b6d912',
+    patientId: 'P-1002',
     name: 'Marcus Brody',
     age: 58,
-    gender: 'Male',
-    phone: '+1 (555) 876-5432',
-    email: 'm.brody@example.com',
+    sex: 'Male',
+    contactPhone: '+1 (555) 876-5432',
+    emergencyContact: '+1 (555) 888-2222',
+    address: '123 Baker Street, London',
+    contactEmail: 'm.brody@example.com',
+    encounterStatus: 'DOCUMENTS_UPLOADED',
     lastReportDate: '2026-08-10',
     reportsCount: 7,
     riskLevel: 'HIGH',
     primaryCondition: 'Elevated Hemoglobin & Glucose'
-  },
-  {
-    id: 'P-1003',
-    name: 'Sophia Martinez',
-    age: 29,
-    gender: 'Female',
-    phone: '+1 (555) 432-1098',
-    email: 'sophia.m@example.com',
-    lastReportDate: '2026-08-08',
-    reportsCount: 2,
-    riskLevel: 'MEDIUM',
-    primaryCondition: 'Mild Anemia (Low RBC)'
-  },
-  {
-    id: 'P-1004',
-    name: 'Arthur Pendelton',
-    age: 64,
-    gender: 'Male',
-    phone: '+1 (555) 901-2345',
-    email: 'a.pendelton@example.com',
-    lastReportDate: '2026-08-04',
-    reportsCount: 5,
-    riskLevel: 'LOW',
-    primaryCondition: 'Post-Op Comprehensive Metabolic'
   }
 ];
 
@@ -67,34 +53,87 @@ export const getPatients = async (req: Request, res: Response) => {
   }
 };
 
+export const getPatientById = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    if (mongoose.connection.readyState === 1) {
+      let patient = null;
+      if (mongoose.Types.ObjectId.isValid(id)) {
+        patient = await Patient.findById(id);
+      } else {
+        patient = await Patient.findOne({ patientId: id });
+      }
+      if (patient) {
+        return res.json({ success: true, data: patient });
+      }
+    }
+    const found = MOCK_PATIENTS.find(p => p._id === id || p.patientId === id) || MOCK_PATIENTS[0];
+    return res.json({ success: true, data: found });
+  } catch (error: any) {
+    return res.status(500).json({ success: false, error: { message: error.message } });
+  }
+};
+
 export const createPatient = async (req: Request, res: Response) => {
   try {
-    const { name, age, gender, phone, email, primaryCondition } = req.body;
+    const { name, age, sex, gender, phone, contactPhone, emergencyContact, emergencyPhone, address, email } = req.body;
+    
+    const finalSex = sex || gender || 'Unknown';
+    const finalPhone = phone || contactPhone || '';
+    const finalEmergency = emergencyContact || emergencyPhone || '';
+
     if (mongoose.connection.readyState === 1) {
       const patient = await Patient.create({
-        organizationId: new mongoose.Types.ObjectId(),
+        organizationId: DEFAULT_ORG_ID,
         patientId: `P-${Math.floor(1000 + Math.random() * 9000)}`,
         name: name || 'New Patient',
         age: age ? Number(age) : 30,
-        sex: (gender as any) || 'Unknown',
-        contactPhone: phone,
-        contactEmail: email
+        sex: finalSex,
+        contactPhone: finalPhone,
+        emergencyContact: finalEmergency,
+        address: address || '',
+        contactEmail: email || '',
+        encounterStatus: 'REGISTERED'
       });
       return res.status(201).json({ success: true, data: patient });
     }
+
     const newPatient = {
-      id: `P-${Math.floor(1000 + Math.random() * 9000)}`,
+      _id: new mongoose.Types.ObjectId().toString(),
+      patientId: `P-${Math.floor(1000 + Math.random() * 9000)}`,
       name: name || 'New Patient',
-      age: age || 30,
-      gender: gender || 'Unspecified',
-      phone: phone || '+1 (555) 000-0000',
-      email: email || 'patient@example.com',
-      lastReportDate: new Date().toISOString().split('T')[0],
-      reportsCount: 1,
-      riskLevel: 'LOW',
-      primaryCondition: primaryCondition || 'General Consultation'
+      age: age ? Number(age) : 30,
+      sex: finalSex,
+      contactPhone: finalPhone,
+      emergencyContact: finalEmergency,
+      address: address || '',
+      contactEmail: email || '',
+      encounterStatus: 'REGISTERED',
+      createdAt: new Date().toISOString()
     };
     return res.status(201).json({ success: true, data: newPatient });
+  } catch (error: any) {
+    return res.status(500).json({ success: false, error: { message: error.message } });
+  }
+};
+
+export const updateEncounterStatus = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const { encounterStatus } = req.body;
+
+    if (mongoose.connection.readyState === 1) {
+      let patient = null;
+      if (mongoose.Types.ObjectId.isValid(id)) {
+        patient = await Patient.findByIdAndUpdate(id, { encounterStatus }, { new: true });
+      } else {
+        patient = await Patient.findOneAndUpdate({ patientId: id }, { encounterStatus }, { new: true });
+      }
+      if (patient) {
+        return res.json({ success: true, data: patient });
+      }
+    }
+    return res.json({ success: true, data: { _id: id, encounterStatus } });
   } catch (error: any) {
     return res.status(500).json({ success: false, error: { message: error.message } });
   }

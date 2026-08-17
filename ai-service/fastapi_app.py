@@ -7,6 +7,7 @@ from ingestion import DocumentIngestion
 from preprocessing import Preprocessor
 from ocr import OCREngine
 from extraction import ExtractionEngine
+from reference_range_system.engine import MedicalLabStatusEngine
 from anomaly import AnomalyDetector
 import json
 
@@ -53,7 +54,17 @@ def extract_document(request: ExtractRequest):
         if not processed_json_path or not os.path.exists(processed_json_path):
              raise HTTPException(status_code=500, detail="Extraction failed to produce output JSON")
 
-        # 5. Anomaly Detection
+        # 5. Reference Range Engine & Status Evaluation
+        with open(processed_json_path, 'r', encoding='utf-8') as f:
+            extracted_data = json.load(f)
+
+        status_engine = MedicalLabStatusEngine()
+        evaluated_data = status_engine.analyze_report(extracted_data)
+
+        with open(processed_json_path, 'w', encoding='utf-8') as f:
+            json.dump(evaluated_data, f, indent=2)
+
+        # 6. Anomaly Detection
         anomaly_detector = AnomalyDetector()
         anomaly_detector.detect_anomalies(doc_id)
 

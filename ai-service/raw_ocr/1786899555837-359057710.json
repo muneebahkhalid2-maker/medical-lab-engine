@@ -1,0 +1,376 @@
+[
+  {
+    "text": "Bahawalpu Heatt Centew",
+    "confidence": 0.3369,
+    "page": 1,
+    "bounding_box": [
+      211,
+      97,
+      792,
+      112
+    ]
+  },
+  {
+    "text": "Noor MEHAL ROAD; Opposite F.G SCHOOL, BAHAWALPUR",
+    "confidence": 0.4463,
+    "page": 1,
+    "bounding_box": [
+      249,
+      205,
+      716,
+      38
+    ]
+  },
+  {
+    "text": "Ph: 062-2305005, Coll: 0301-0981562 , E-mall: bhc bwp@gmail.com",
+    "confidence": 0.4146,
+    "page": 1,
+    "bounding_box": [
+      229,
+      235,
+      752,
+      36
+    ]
+  },
+  {
+    "text": "Angiography Report",
+    "confidence": 1.0,
+    "page": 1,
+    "bounding_box": [
+      347,
+      324,
+      451,
+      64
+    ]
+  },
+  {
+    "text": "Name",
+    "confidence": 0.9999,
+    "page": 1,
+    "bounding_box": [
+      92,
+      416,
+      62,
+      24
+    ]
+  },
+  {
+    "text": "M: Afzol",
+    "confidence": 0.4638,
+    "page": 1,
+    "bounding_box": [
+      216,
+      414,
+      90,
+      26
+    ]
+  },
+  {
+    "text": "Age/Sex: 6Oyrs/male",
+    "confidence": 0.7317,
+    "page": 1,
+    "bounding_box": [
+      564,
+      410,
+      221,
+      36
+    ]
+  },
+  {
+    "text": "L.D #",
+    "confidence": 0.6483,
+    "page": 1,
+    "bounding_box": [
+      892,
+      416,
+      50,
+      24
+    ]
+  },
+  {
+    "text": "6489/21634947",
+    "confidence": 0.9967,
+    "page": 1,
+    "bounding_box": [
+      958,
+      416,
+      160,
+      28
+    ]
+  },
+  {
+    "text": "Operator:",
+    "confidence": 0.9997,
+    "page": 1,
+    "bounding_box": [
+      89,
+      443,
+      103,
+      31
+    ]
+  },
+  {
+    "text": "Dr. Saqib Riaz, Dr. Umar",
+    "confidence": 0.6616,
+    "page": 1,
+    "bounding_box": [
+      216,
+      442,
+      270,
+      30
+    ]
+  },
+  {
+    "text": "Ht/Wt:",
+    "confidence": 0.7917,
+    "page": 1,
+    "bounding_box": [
+      566,
+      444,
+      76,
+      26
+    ]
+  },
+  {
+    "text": "73 ke",
+    "confidence": 0.6133,
+    "page": 1,
+    "bounding_box": [
+      668,
+      444,
+      60,
+      32
+    ]
+  },
+  {
+    "text": "Date:",
+    "confidence": 0.9951,
+    "page": 1,
+    "bounding_box": [
+      892,
+      446,
+      60,
+      24
+    ]
+  },
+  {
+    "text": "02-11-2023",
+    "confidence": 0.908,
+    "page": 1,
+    "bounding_box": [
+      962,
+      446,
+      116,
+      26
+    ]
+  },
+  {
+    "text": "Route:",
+    "confidence": 0.9998,
+    "page": 1,
+    "bounding_box": [
+      90,
+      474,
+      72,
+      24
+    ]
+  },
+  {
+    "text": "Trans-Radial",
+    "confidence": 0.8282,
+    "page": 1,
+    "bounding_box": [
+      220,
+      472,
+      140,
+      26
+    ]
+  },
+  {
+    "text": "Contrast: Ultravist 40 mi",
+    "confidence": 0.5468,
+    "page": 1,
+    "bounding_box": [
+      892,
+      476,
+      246,
+      26
+    ]
+  },
+  {
+    "text": "LMS:",
+    "confidence": 0.7211,
+    "page": 1,
+    "bounding_box": [
+      78,
+      558,
+      58,
+      24
+    ]
+  },
+  {
+    "text": "Normal Bifurcating vessel",
+    "confidence": 0.9849,
+    "page": 1,
+    "bounding_box": [
+      154,
+      609,
+      280,
+      33
+    ]
+  },
+  {
+    "text": "LAD:",
+    "confidence": 0.9996,
+    "page": 1,
+    "bounding_box": [
+      76,
+      666,
+      56,
+      24
+    ]
+  },
+  {
+    "text": "Severe focal disease at inlet of previously placed stent Mild ISR at distol part of stent",
+    "confidence": 0.3974,
+    "page": 1,
+    "bounding_box": [
+      144,
+      720,
+      904,
+      30
+    ]
+  },
+  {
+    "text": "Moderate disease at outlet of stent",
+    "confidence": 0.8685,
+    "page": 1,
+    "bounding_box": [
+      144,
+      752,
+      382,
+      28
+    ]
+  },
+  {
+    "text": "LCX:",
+    "confidence": 0.3952,
+    "page": 1,
+    "bounding_box": [
+      76,
+      806,
+      52,
+      24
+    ]
+  },
+  {
+    "text": "Domingnt vesse:. Moderate {0 severe distai disease:",
+    "confidence": 0.3085,
+    "page": 1,
+    "bounding_box": [
+      151,
+      837,
+      555,
+      28
+    ]
+  },
+  {
+    "text": "RCA;",
+    "confidence": 0.6764,
+    "page": 1,
+    "bounding_box": [
+      76,
+      892,
+      56,
+      24
+    ]
+  },
+  {
+    "text": "Non-dominant normal vessel",
+    "confidence": 0.9519,
+    "page": 1,
+    "bounding_box": [
+      158,
+      956,
+      314,
+      29
+    ]
+  },
+  {
+    "text": "Conclusion:",
+    "confidence": 0.7935,
+    "page": 1,
+    "bounding_box": [
+      76,
+      1010,
+      126,
+      26
+    ]
+  },
+  {
+    "text": "Two vessei disease.",
+    "confidence": 0.906,
+    "page": 1,
+    "bounding_box": [
+      204,
+      1064,
+      215,
+      31
+    ]
+  },
+  {
+    "text": "Management:",
+    "confidence": 0.7667,
+    "page": 1,
+    "bounding_box": [
+      77,
+      1153,
+      153,
+      33
+    ]
+  },
+  {
+    "text": "Pci to LAD_",
+    "confidence": 0.3582,
+    "page": 1,
+    "bounding_box": [
+      250,
+      1200,
+      122,
+      26
+    ]
+  },
+  {
+    "text": "Dr Umur",
+    "confidence": 0.4345,
+    "page": 1,
+    "bounding_box": [
+      888,
+      1412,
+      142,
+      32
+    ]
+  },
+  {
+    "text": "Iqbal",
+    "confidence": 0.9994,
+    "page": 1,
+    "bounding_box": [
+      1024,
+      1403,
+      90,
+      50
+    ]
+  },
+  {
+    "text": "FCPS (Cardiologv)",
+    "confidence": 0.7089,
+    "page": 1,
+    "bounding_box": [
+      920,
+      1448,
+      178,
+      30
+    ]
+  }
+]

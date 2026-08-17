@@ -129,6 +129,7 @@ app.post('/api/upload', upload.array('documents', 10), async (req: Request, res:
 
 // Serve uploaded files statically
 app.use('/api/uploads', express.static(uploadDir));
+app.use('/uploads', express.static(uploadDir));
 
 // Global error handler
 app.use((err: any, req: Request, res: Response, next: express.NextFunction) => {
