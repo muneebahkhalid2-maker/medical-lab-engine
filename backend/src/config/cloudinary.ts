@@ -1,12 +1,19 @@
-import { v2 as cloudinary } from 'cloudinary';
 import fs from 'fs';
 import path from 'path';
 
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME || '',
-  api_key: process.env.CLOUDINARY_API_KEY || '',
-  api_secret: process.env.CLOUDINARY_API_SECRET || ''
-});
+let cloudinary: any = null;
+try {
+  cloudinary = require('cloudinary').v2;
+  if (cloudinary) {
+    cloudinary.config({
+      cloud_name: process.env.CLOUDINARY_CLOUD_NAME || '',
+      api_key: process.env.CLOUDINARY_API_KEY || '',
+      api_secret: process.env.CLOUDINARY_API_SECRET || ''
+    });
+  }
+} catch (e) {
+  // Cloudinary module optional
+}
 
 export const isCloudinaryConfigured = (): boolean => {
   return !!(

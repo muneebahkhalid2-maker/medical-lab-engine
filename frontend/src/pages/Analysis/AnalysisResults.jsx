@@ -83,12 +83,23 @@ export default function AnalysisResults() {
     try {
       setLoading(true);
       const res = await fetch('http://localhost:5000/api/analysis', {
-        headers: { 'Authorization': `Bearer ${localStorage.getItem('token') || ''}` }
+        headers: { 'Authorization': `Bearer ${localStorage.getItem('token') || 'demo-token'}` }
       });
       if (!res.ok) throw new Error('API unavailable');
       const data = await res.json();
       if (data && data.data && data.data.length > 0) {
-        setAnalysisItems(data.data);
+        const mapped = data.data.map((item, idx) => ({
+          id: item.id || item._id || `ANA-${idx}`,
+          parameter: item.parameter || item.testName || 'Unknown Parameter',
+          value: item.value || (item.result !== undefined ? `${item.result} ${item.unit || ''}`.trim() : 'N/A'),
+          referenceRange: item.referenceRange || (item.referenceLow !== undefined ? `${item.referenceLow} - ${item.referenceHigh} ${item.unit || ''}`.trim() : 'N/A'),
+          status: item.status || 'UNKNOWN',
+          patientName: item.patientName || 'Patient (Uploaded PDF)',
+          documentName: item.documentName || 'Laboratory Report PDF',
+          category: item.category || (String(item.parameter || item.testName).toLowerCase().includes('glucose') ? 'Biochemistry' : 'Hematology'),
+          flagReason: item.flagReason || (item.status === 'HIGH' ? 'Exceeds upper limit threshold' : (item.status === 'LOW' ? 'Below lower limit threshold' : 'Within normal physiological range'))
+        }));
+        setAnalysisItems(mapped);
       } else {
         setAnalysisItems(MOCK_ANALYSIS_DATA);
       }
@@ -100,7 +111,7 @@ export default function AnalysisResults() {
   };
 
   const filtered = analysisItems.filter(item => {
-    const matchesSearch = 
+    const matchesSearch =
       item.parameter.toLowerCase().includes(searchTerm.toLowerCase()) ||
       item.patientName.toLowerCase().includes(searchTerm.toLowerCase()) ||
       item.category.toLowerCase().includes(searchTerm.toLowerCase());
@@ -167,7 +178,7 @@ export default function AnalysisResults() {
           </h1>
           <p className="text-slate-500 mt-1">Rule-based reference numerical range comparison & flag evaluation</p>
         </div>
-        <button 
+        <button
           onClick={handleExportCSV}
           className="btn-secondary px-4 py-2 rounded-xl flex items-center justify-center gap-2 text-sm"
         >
@@ -214,9 +225,9 @@ export default function AnalysisResults() {
         <div className="p-4 border-b border-slate-200/60 bg-white/50 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="relative max-w-sm w-full">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
-            <input 
-              type="text" 
-              placeholder="Filter by parameter, patient, category..." 
+            <input
+              type="text"
+              placeholder="Filter by parameter, patient, category..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full pl-10 pr-4 py-2 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 bg-white shadow-sm"
@@ -225,8 +236,8 @@ export default function AnalysisResults() {
 
           <div className="flex items-center gap-2 w-full md:w-auto">
             <Filter className="h-4 w-4 text-slate-400" />
-            <select 
-              value={selectedStatus} 
+            <select
+              value={selectedStatus}
               onChange={(e) => setSelectedStatus(e.target.value)}
               className="px-3 py-2 border border-slate-200 rounded-xl text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/20"
             >

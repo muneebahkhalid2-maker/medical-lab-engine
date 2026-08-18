@@ -28,13 +28,9 @@ export const requireAuth = async (req: Request, res: Response, next: NextFunctio
     const payload = verifyToken(token);
     
     // Verify user still exists and is active if DB is connected
-    if (mongoose.connection.readyState === 1) {
+    if (mongoose.connection.readyState === 1 && mongoose.Types.ObjectId.isValid(payload.userId)) {
       const user = await User.findById(payload.userId);
-      if (!user || !user.isActive) {
-        if (!user && payload && payload.userId) {
-          req.user = payload;
-          return next();
-        }
+      if (user && !user.isActive) {
         return res.status(401).json({ success: false, error: { code: 'UNAUTHORIZED', message: 'User no longer exists or is inactive' } });
       }
     }

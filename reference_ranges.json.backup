@@ -1,0 +1,30 @@
+{
+  "WBC": {
+    "canonical_name": "wbc",
+    "aliases": [
+      "wbc",
+      "white blood cell count"
+    ],
+    "unit": "10^3/uL",
+    "ranges": {
+      "general": {
+        "min": 4.0,
+        "max": 11.0
+      }
+    }
+  },
+  "Platelets": {
+    "canonical_name": "platelets",
+    "aliases": [
+      "platelets",
+      "platelet count"
+    ],
+    "unit": "10^3/uL",
+    "ranges": {
+      "general": {
+        "min": 150.0,
+        "max": 450.0
+      }
+    }
+  }
+}

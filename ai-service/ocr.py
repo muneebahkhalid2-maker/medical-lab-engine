@@ -15,13 +15,51 @@ class OCREngine:
 
     def perform_ocr(self, image_path: str, doc_id: str) -> str:
         """
-        Extracts text, confidence, and bounding boxes.
-        Saves raw OCR data to JSON. Auto-rotates if confidence is too low.
+        Extracts text, confidence, and page metadata from PDF or Image documents.
+        Saves raw OCR data to JSON.
         """
         print(f"Running OCR on {image_path}...")
         extracted_data = []
 
-        if self.reader is not None:
+        # 1. PDF Text Extraction
+        if image_path.lower().endswith('.pdf'):
+            try:
+                import pdfplumber
+                with pdfplumber.open(image_path) as pdf:
+                    for page_idx, page in enumerate(pdf.pages):
+                        text = page.extract_text()
+                        if text:
+                            for line in text.split('\n'):
+                                line_clean = line.strip()
+                                if line_clean:
+                                    extracted_data.append({
+                                        "text": line_clean,
+                                        "confidence": 0.99,
+                                        "page": page_idx + 1,
+                                        "bounding_box": [0, 0, 100, 20]
+                                    })
+            except Exception as pdf_err:
+                print(f"pdfplumber extraction failed: {pdf_err}, trying pypdf...")
+                try:
+                    import pypdf
+                    reader = pypdf.PdfReader(image_path)
+                    for page_idx, page in enumerate(reader.pages):
+                        text = page.extract_text()
+                        if text:
+                            for line in text.split('\n'):
+                                line_clean = line.strip()
+                                if line_clean:
+                                    extracted_data.append({
+                                        "text": line_clean,
+                                        "confidence": 0.99,
+                                        "page": page_idx + 1,
+                                        "bounding_box": [0, 0, 100, 20]
+                                    })
+                except Exception as pypdf_err:
+                    print(f"pypdf extraction error: {pypdf_err}")
+
+        # 2. Image OCR Execution
+        if not extracted_data and self.reader is not None and not image_path.lower().endswith('.pdf'):
             try:
                 import cv2
                 img = cv2.imread(image_path)
@@ -44,15 +82,9 @@ class OCREngine:
             except Exception as err:
                 print(f"OCR execution warning: {err}")
 
+        # NO HARDCODED DUMMY FALLBACK DATA!
         if not extracted_data:
-            print("Using structured raw OCR payload for document extraction.")
-            extracted_data = [
-                {"text": "PATIENT: Jane Doe", "confidence": 0.98, "page": 1, "bounding_box": [10, 10, 100, 20]},
-                {"text": "LABORATORY REPORT", "confidence": 0.99, "page": 1, "bounding_box": [10, 40, 200, 20]},
-                {"text": "Hemoglobin 14.5 g/dL (13.0-17.0)", "confidence": 0.95, "page": 1, "bounding_box": [10, 70, 300, 20]},
-                {"text": "WBC 7.2 10^3/uL (4.5-11.0)", "confidence": 0.96, "page": 1, "bounding_box": [10, 100, 300, 20]},
-                {"text": "Platelets 250 10^3/uL (150-450)", "confidence": 0.97, "page": 1, "bounding_box": [10, 130, 300, 20]}
-            ]
+            print(f"[OCR] Warning: No text lines could be extracted from {image_path}")
 
         output_file = os.path.join(self.output_dir, f"{doc_id}.json")
         with open(output_file, 'w', encoding='utf-8') as f:

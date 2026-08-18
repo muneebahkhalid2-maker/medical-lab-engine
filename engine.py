@@ -1,4 +1,5 @@
 import json
+import argparse
 import sys
 from pathlib import Path
 from typing import Dict, Any, List, Optional, Tuple
@@ -7,6 +8,7 @@ BASE_DIR = Path(__file__).parent
 TRUSTED_DB_PATH = BASE_DIR / "reference_ranges.json"
 LAB_CONFIG_DB_PATH = BASE_DIR / "lab_config_ranges.json"
 RESEARCH_FALLBACK_DB_PATH = BASE_DIR / "research_fallback_ranges.json"
+DEFAULT_TEST_DATA_PATH = BASE_DIR / "test_data.json"
 
 
 def normalize_sex(raw_sex: Any) -> str:
@@ -43,7 +45,7 @@ def normalize_unit(unit_str: Any) -> str:
 
 class MedicalLabStatusEngine:
     """
-    Deterministic Medical Laboratory Test Analysis & Reference Range Engine.
+    Deterministic Medical Laboratory Test Analysis Engine.
     Implements 4-tier reference range lookup priority, demographic matching (sex/unit),
     validation rules, item-level status evaluation, and overall report aggregation.
     """
@@ -72,31 +74,18 @@ class MedicalLabStatusEngine:
         """
         Tier 1 Priority: Extract reference range printed directly on patient report item.
         Supports:
-        - "reference_range" / "referenceRange": "11.5-15.5" or {"min": 11.5, "max": 15.5} or {"low": 11.5, "high": 15.5} or {"raw": "11.5-15.5"}
+        - "reference_range": "11.5-15.5" or {"min": 11.5, "max": 15.5}
         - "printed_range": "11.5-15.5" or {"min": 11.5, "max": 15.5}
         - "custom_range": {"min": 11.5, "max": 15.5}
         - "ref_min": 11.5, "ref_max": 15.5
         """
-        for key in ["reference_range", "referenceRange", "printed_range", "custom_range"]:
+        for key in ["reference_range", "printed_range", "custom_range"]:
             val = item.get(key)
-            if isinstance(val, dict):
-                if "min" in val and "max" in val and val["min"] is not None and val["max"] is not None:
-                    try:
-                        return (float(val["min"]), float(val["max"]))
-                    except (ValueError, TypeError):
-                        pass
-                if "low" in val and "high" in val and val["low"] is not None and val["high"] is not None:
-                    try:
-                        return (float(val["low"]), float(val["high"]))
-                    except (ValueError, TypeError):
-                        pass
-                if "raw" in val and isinstance(val["raw"], str) and "-" in val["raw"]:
-                    parts = val["raw"].split("-")
-                    if len(parts) == 2:
-                        try:
-                            return (float(parts[0].strip()), float(parts[1].strip()))
-                        except (ValueError, TypeError):
-                            pass
+            if isinstance(val, dict) and "min" in val and "max" in val:
+                try:
+                    return (float(val["min"]), float(val["max"]))
+                except (ValueError, TypeError):
+                    pass
             elif isinstance(val, str) and "-" in val:
                 parts = val.split("-")
                 if len(parts) == 2:
@@ -120,22 +109,10 @@ class MedicalLabStatusEngine:
         Looks up demographic-specific range for a test within a single database dictionary.
         Returns (min_val, max_val, failure_reason) tuple.
         """
-        test_name_clean = test_name.strip().lower()
-        matched_entry = None
-
-        for db_key, entry in db.items():
-            if db_key.strip().lower() == test_name_clean:
-                matched_entry = entry
-                break
-            aliases = entry.get("aliases", [])
-            if any(alias.strip().lower() == test_name_clean for alias in aliases):
-                matched_entry = entry
-                break
-
-        if not matched_entry:
+        if test_name not in db:
             return None, None, f"Test '{test_name}' not in database"
 
-        entry = matched_entry
+        entry = db[test_name]
 
         # Unit Matching Check
         db_unit = entry.get("unit", "")
@@ -182,8 +159,8 @@ class MedicalLabStatusEngine:
 
         Returns (min_val, max_val, tier_source, failure_reason).
         """
-        test_name = item.get("test_name") or item.get("testName") or item.get("name") or ""
-        unit = item.get("unit") or ""
+        test_name = item.get("test_name", "")
+        unit = item.get("unit", "")
 
         # Tier 1: Printed on Patient Report
         printed = self.extract_printed_report_range(item)
@@ -211,11 +188,11 @@ class MedicalLabStatusEngine:
 
     def process_test_item(self, item: Dict[str, Any], sex: str, extraction_verified: bool = True) -> Dict[str, Any]:
         """
-        Processes an individual lab test item through validation, range lookup, and status determination.
+        Processes an individual lab test item through STEPS 2, 3, 4, 5.
         """
         processed = dict(item)
 
-        test_name = item.get("test_name") or item.get("testName") or item.get("name")
+        test_name = item.get("test_name")
         result_raw = item.get("result")
         unit_raw = item.get("unit")
 
@@ -271,8 +248,9 @@ class MedicalLabStatusEngine:
 
     def analyze_report(self, input_data: Any) -> Dict[str, Any]:
         """
-        Executes complete deterministic lab status analysis workflow.
+        Executes complete deterministic lab status analysis workflow (STEPS 1 - 6).
         """
+        # STEP 1: Receive JSON input
         if isinstance(input_data, list):
             meta = {}
             items = input_data
@@ -283,19 +261,10 @@ class MedicalLabStatusEngine:
             return {"overall_status": "INCOMPLETE", "error": "Invalid input JSON structure"}
 
         # Extract and normalize patient sex (never infer sex from name or ID)
-        raw_sex = meta.get("sex") or (input_data.get("patient", {}).get("sex") if isinstance(input_data.get("patient"), dict) else None)
-        patient_sex = normalize_sex(raw_sex)
+        patient_sex = normalize_sex(meta.get("sex"))
 
         # Check extraction verification flag
-        extraction_status = meta.get("extraction_status") or input_data.get("extraction_status")
-        if "extraction_verified" in meta:
-            extraction_verified = bool(meta["extraction_verified"])
-        elif "extraction_verified" in input_data:
-            extraction_verified = bool(input_data["extraction_verified"])
-        elif extraction_status == "unverified":
-            extraction_verified = False
-        else:
-            extraction_verified = True
+        extraction_verified = meta.get("extraction_verified", True)
 
         evaluated_results = []
         statuses = []
@@ -305,7 +274,7 @@ class MedicalLabStatusEngine:
             evaluated_results.append(eval_item)
             statuses.append(eval_item.get("status"))
 
-        # Determine Overall Report Status
+        # STEP 6: Determine Overall Report Status
         if "INCOMPLETE" in statuses or not statuses:
             overall_status = "INCOMPLETE"
         elif "NEEDS_REVIEW" in statuses or not extraction_verified:
@@ -318,7 +287,38 @@ class MedicalLabStatusEngine:
         report = dict(meta)
         report["sex"] = patient_sex
         report["results"] = evaluated_results
-        report["tests"] = evaluated_results
         report["overall_status"] = overall_status
 
         return report
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Deterministic Medical Laboratory Test Analysis Engine")
+    parser.add_argument(
+        "input_file",
+        nargs="?",
+        type=str,
+        default=str(DEFAULT_TEST_DATA_PATH),
+        help="Path to input JSON report file (default: test_data.json)",
+    )
+    args = parser.parse_args()
+
+    input_path = Path(args.input_file)
+    if not input_path.exists():
+        print(f"Error: Input file '{input_path}' not found.", file=sys.stderr)
+        sys.exit(1)
+
+    try:
+        with open(input_path, "r", encoding="utf-8") as f:
+            input_data = json.load(f)
+    except Exception as e:
+        print(f"Error parsing JSON input: {e}", file=sys.stderr)
+        sys.exit(1)
+
+    engine = MedicalLabStatusEngine()
+    report = engine.analyze_report(input_data)
+    print(json.dumps(report, indent=2))
+
+
+if __name__ == "__main__":
+    main()

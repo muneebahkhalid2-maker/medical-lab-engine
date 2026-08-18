@@ -50,7 +50,7 @@ export default function DocumentsList() {
       setLoading(true);
       const res = await fetch('http://localhost:5000/api/documents', {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token') || ''}`
+          'Authorization': `Bearer ${localStorage.getItem('token') || 'demo-token'}`
         }
       });
       if (!res.ok) throw new Error('API server unavailable');
@@ -68,7 +68,7 @@ export default function DocumentsList() {
     }
   };
 
-  const filteredDocuments = documents.filter(doc => 
+  const filteredDocuments = documents.filter(doc =>
     doc.originalFileName.toLowerCase().includes(searchTerm.toLowerCase()) ||
     (doc.uploadedBy?.name || '').toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -103,16 +103,16 @@ export default function DocumentsList() {
         <div className="p-4 border-b border-slate-200/60 bg-white/50 flex items-center justify-between">
           <div className="relative max-w-sm w-full">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
-            <input 
-              type="text" 
-              placeholder="Search documents..." 
+            <input
+              type="text"
+              placeholder="Search documents..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full pl-10 pr-4 py-2 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 bg-white shadow-sm"
             />
           </div>
         </div>
-        
+
         {loading ? (
           <div className="p-12 text-center text-slate-500">Loading documents...</div>
         ) : filteredDocuments.length === 0 ? (
@@ -154,13 +154,13 @@ export default function DocumentsList() {
                     </td>
                     <td className="px-6 py-4 text-right">
                       {doc.verificationStatus === 'PENDING' ? (
-                         <button onClick={() => navigate(`/verification?documentId=${doc._id}`)} className="btn-secondary px-3 py-1.5 rounded-lg text-sm inline-flex items-center gap-1.5 font-semibold">
-                           Verify Data
-                         </button>
+                        <button onClick={() => navigate(`/verification?documentId=${doc._id}`)} className="btn-secondary px-3 py-1.5 rounded-lg text-sm inline-flex items-center gap-1.5 font-semibold">
+                          Verify Data
+                        </button>
                       ) : (
-                         <button onClick={() => navigate(`/verification?documentId=${doc._id}`)} className="text-brand-600 hover:text-brand-800 font-semibold text-sm inline-flex items-center gap-1">
-                           <Eye className="h-4 w-4" /> View
-                         </button>
+                        <button onClick={() => navigate(`/verification?documentId=${doc._id}`)} className="text-brand-600 hover:text-brand-800 font-semibold text-sm inline-flex items-center gap-1">
+                          <Eye className="h-4 w-4" /> View
+                        </button>
                       )}
                     </td>
                   </tr>

@@ -3,6 +3,8 @@ import mongoose from 'mongoose';
 import Document from '../models/Document';
 import Patient from '../models/Patient';
 import Extraction from '../models/Extraction';
+import Analysis from '../models/Analysis';
+import { StatusEngine } from '../analysis/StatusEngine';
 import { uploadToCloudinary } from '../config/cloudinary';
 import axios from 'axios';
 import path from 'path';
@@ -189,18 +191,71 @@ export const extractDocumentDetails = async (req: Request, res: Response) => {
 
       // Clear & create Extraction documents
       await Extraction.deleteMany({ documentId: doc._id });
+      const analysisResults: any[] = [];
+
       if (extractedPayload.tests && Array.isArray(extractedPayload.tests)) {
         for (const t of extractedPayload.tests) {
+          const testName = t.testName || t.test_name || 'Unknown Test';
+          const rawVal = String(t.result !== undefined ? t.result : (t.value !== undefined ? t.value : ''));
+          const unit = t.unit || t.normalizedUnit || '';
+          const refRangeStr = t.reference_range || t.referenceRange || '';
+          const confidence = t.confidence !== undefined ? t.confidence : (t.extraction_confidence || 0.9);
+
           await Extraction.create({
             documentId: doc._id,
             fieldType: 'LAB_RESULT',
-            fieldName: t.testName || t.test_name,
-            rawValue: String(t.result),
-            normalizedValue: String(t.result),
-            confidence: t.confidence || 0.9,
-            aiValue: String(t.result),
+            fieldName: testName,
+            rawValue: rawVal,
+            normalizedValue: rawVal,
+            unit: unit,
+            referenceRange: refRangeStr,
+            confidence: confidence,
+            aiValue: rawVal,
             verificationStatus: 'PENDING'
           });
+
+          // Parse reference low & high for StatusEngine
+          let low: number | undefined;
+          let high: number | undefined;
+          if (refRangeStr) {
+            const rangeMatch = String(refRangeStr).match(/(\d+(?:\.\d+)?)\s*[-–—]\s*(\d+(?:\.\d+)?)/);
+            if (rangeMatch) {
+              low = parseFloat(rangeMatch[1]);
+              high = parseFloat(rangeMatch[2]);
+            }
+          }
+          if (low === undefined && high === undefined) {
+            if (testName.toLowerCase().includes('hemoglobin') || testName.toLowerCase().includes('hgb')) { low = 12.1; high = 17.2; }
+            else if (testName.toLowerCase().includes('wbc') || testName.toLowerCase().includes('white blood')) { low = 4.0; high = 11.0; }
+            else if (testName.toLowerCase().includes('platelet')) { low = 150; high = 450; }
+            else if (testName.toLowerCase().includes('rbc') || testName.toLowerCase().includes('red blood')) { low = 4.2; high = 6.1; }
+            else if (testName.toLowerCase().includes('glucose')) { low = 70; high = 99; }
+          }
+
+          const calculatedStatus = t.status || StatusEngine.analyzeResult(rawVal, low, high);
+
+          analysisResults.push({
+            testName,
+            result: rawVal,
+            unit,
+            referenceLow: low,
+            referenceHigh: high,
+            status: calculatedStatus
+          });
+        }
+
+        // Auto-create Analysis record
+        if (analysisResults.length > 0) {
+          const overallStatus = StatusEngine.determineOverallStatus(analysisResults);
+          await Analysis.deleteMany({ documentId: doc._id });
+          await Analysis.create({
+            documentId: doc._id,
+            results: analysisResults,
+            overallStatus,
+            engineVersion: '1.0.0'
+          });
+          doc.analysisStatus = 'COMPLETED';
+          await doc.save();
         }
       }
     }

@@ -1,0 +1,20 @@
+
+PATIENT REPORT
+Patient Name: Marcus Brody
+Age: 64
+Sex: Male
+Date: 2026-08-14
+Laboratory: Clinical Diagnostics Lab
+
+TEST NAME                    RESULT    UNIT       REFERENCE RANGE
+-----------------------------------------------------------------
+Serum Total Bilirubin        06        µmol/L     2-17 µmol/L
+Serum ALT                    22        U/L        up to 42 U/L
+Troponin I HS                0.02      ng/mL      0.02-0.06 ng/mL
+Urea                         42        mg/dL      18-42 mg/dL
+Serum Creatinine             1.6       mg/dL      0.7-1.2 mg/dL
+Serum Sodium                 139       mmol/L     135-150 mmol/L
+Serum Potassium              4.6       mmol/L     3.4-5.0 mmol/L
+Serum Cholesterol            99        mg/dL      0-200 mg/dL
+Serum Triglycerides          69        mg/dL      0-150 mg/dL
+HbA1c                        6.1       %          4.2-6.5 %

@@ -1,0 +1,29 @@
+{
+  "patient_id": "PAT-999",
+  "patient_name": "Incomplete Extraction Case",
+  "sex": "female",
+  "extraction_verified": true,
+  "report_type": "Incomplete Extraction Payload",
+  "lab_results": [
+    {
+      "test_name": "Hemoglobin",
+      "result": 14.0,
+      "unit": "g/dL"
+    },
+    {
+      "test_name": "WBC",
+      "result": null,
+      "unit": "10^3/uL"
+    },
+    {
+      "test_name": "Platelets",
+      "result": 250.0,
+      "unit": ""
+    },
+    {
+      "test_name": "Red Blood Cell Count",
+      "result": 4.8,
+      "unit": "10^12/L"
+    }
+  ]
+}

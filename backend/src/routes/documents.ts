@@ -1,12 +1,12 @@
 import express from 'express';
-import { 
-  uploadDocument, 
-  getDocuments, 
-  getDocument, 
+import {
+  uploadDocument,
+  getDocuments,
+  getDocument,
   extractDocumentDetails,
   verifyDocumentData,
-  processDocument, 
-  getExtractions 
+  processDocument,
+  getExtractions
 } from '../controllers/documents';
 import { uploadMiddleware } from '../middlewares/upload';
 import { requireAuth } from '../middlewares/auth';

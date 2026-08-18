@@ -41,7 +41,7 @@ def extract_document(request: ExtractRequest):
         if metadata["document_format"] == "image":
             processed_img_path = preprocessor.process_image(file_path, doc_id)
         else:
-            raise HTTPException(status_code=400, detail="Only image formats are fully supported in this V1 demo.")
+            processed_img_path = file_path
 
         # 3. OCR Layer
         ocr_engine = OCREngine()

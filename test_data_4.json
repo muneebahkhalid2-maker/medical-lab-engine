@@ -1,0 +1,24 @@
+{
+  "patient_id": "PAT-1004",
+  "patient_name": "Robert Brown",
+  "sex": "male",
+  "extraction_verified": true,
+  "report_type": "Thyroid & Cardiac Biomarkers",
+  "lab_results": [
+    {
+      "test_name": "Troponin I HS",
+      "result": 0.035,
+      "unit": "ng/mL"
+    },
+    {
+      "test_name": "TSH",
+      "result": 2.4,
+      "unit": "mIU/L"
+    },
+    {
+      "test_name": "Hemoglobin",
+      "result": 15.0,
+      "unit": "g/dL"
+    }
+  ]
+}

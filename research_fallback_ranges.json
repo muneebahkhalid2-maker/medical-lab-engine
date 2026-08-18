@@ -1,0 +1,173 @@
+{
+  "Ferritin": {
+    "unit": "ug/L",
+    "ranges": {
+      "general": {
+        "min": 15.0,
+        "max": 150.0
+      }
+    }
+  },
+  "Glikozile Hemoglobin (HbA1c)": {
+    "unit": "%",
+    "ranges": {
+      "general": {
+        "min": 4.0,
+        "max": 6.0
+      }
+    }
+  },
+  "Total IgE": {
+    "unit": "KU/L",
+    "ranges": {
+      "general": {
+        "min": 0.1,
+        "max": 100.0
+      }
+    }
+  },
+  "İnsülin": {
+    "unit": "mU/L",
+    "ranges": {
+      "general": {
+        "min": 2.6,
+        "max": 24.9
+      }
+    }
+  },
+  "Serbest T4": {
+    "unit": "ng/dL",
+    "ranges": {
+      "general": {
+        "min": 0.87,
+        "max": 1.7
+      }
+    }
+  },
+  "pH (Strip)": {
+    "unit": "-",
+    "ranges": {
+      "general": {
+        "min": 5.0,
+        "max": 9.0
+      }
+    }
+  },
+  "Dansite (Strip)": {
+    "unit": "-",
+    "ranges": {
+      "general": {
+        "min": 1.01,
+        "max": 1.03
+      }
+    }
+  },
+  "Trombosit": {
+    "unit": "10^3/uL",
+    "ranges": {
+      "general": {
+        "min": 150.0,
+        "max": 450.0
+      }
+    }
+  },
+  "Lökosit": {
+    "unit": "10^3/uL",
+    "ranges": {
+      "general": {
+        "min": 5.0,
+        "max": 10.6
+      }
+    }
+  },
+  "Hemoglobin": {
+    "unit": "g/dL",
+    "ranges": {
+      "general": {
+        "min": 12.0,
+        "max": 15.0
+      }
+    }
+  },
+  "Eritrosit": {
+    "unit": "10^6/uL",
+    "ranges": {
+      "general": {
+        "min": 3.8,
+        "max": 5.2
+      }
+    }
+  },
+  "RDW-SD": {
+    "unit": "fL",
+    "ranges": {
+      "general": {
+        "min": 36.4,
+        "max": 46.3
+      }
+    }
+  },
+  "RDW": {
+    "unit": "%",
+    "ranges": {
+      "general": {
+        "min": 11.5,
+        "max": 14.5
+      }
+    }
+  },
+  "PDW": {
+    "unit": "fL",
+    "ranges": {
+      "general": {
+        "min": 9.8,
+        "max": 16.1
+      }
+    }
+  },
+  "PCT": {
+    "unit": "%",
+    "ranges": {
+      "general": {
+        "min": 0.17,
+        "max": 0.38
+      }
+    }
+  },
+  "Nötrofil%": {
+    "unit": "%",
+    "ranges": {
+      "general": {
+        "min": 50.0,
+        "max": 70.0
+      }
+    }
+  },
+  "Monosit%": {
+    "unit": "%",
+    "ranges": {
+      "general": {
+        "min": 2.0,
+        "max": 11.0
+      }
+    }
+  },
+  "Lenfosit%": {
+    "unit": "%",
+    "ranges": {
+      "general": {
+        "min": 18.0,
+        "max": 42.0
+      }
+    }
+  },
+  "Hematokrit": {
+    "unit": "%",
+    "ranges": {
+      "general": {
+        "min": 35.0,
+        "max": 49.0
+      }
+    }
+  }
+}

@@ -18,9 +18,11 @@ import {
   Phone,
   MapPin,
   Calendar,
-  UserCheck
+  UserCheck,
+  Trash2
 } from 'lucide-react';
 import axios from 'axios';
+import FileUploader from '../../components/FileUploader';
 
 const API_BASE = '/api';
 
@@ -138,6 +140,23 @@ export default function PatientIntake() {
       setSuccessMsg('Document added to upload list.');
     } finally {
       setUploading(false);
+    }
+  };
+
+  const handleDeleteUploadedDocument = async (docToDelete, index) => {
+    setUploadedDocuments((prev) => prev.filter((d, i) => (d._id ? d._id !== docToDelete._id : i !== index)));
+    if (activeDocument && (activeDocument._id === docToDelete._id || activeDocument.originalFileName === docToDelete.originalFileName)) {
+      setActiveDocument(null);
+      setExtractedData(null);
+      setEditableTests([]);
+    }
+    setSuccessMsg(`Document "${docToDelete.originalFileName}" removed successfully.`);
+    try {
+      if (docToDelete._id && !docToDelete._id.startsWith('doc-')) {
+        await axios.delete(`${API_BASE}/documents/${docToDelete._id}`);
+      }
+    } catch (err) {
+      console.warn('Backend delete error (local list updated):', err);
     }
   };
 
@@ -491,26 +510,14 @@ export default function PatientIntake() {
             </div>
 
             <form onSubmit={handleFileUpload} className="space-y-4">
-              <div className="border-2 border-dashed border-slate-200 hover:border-brand-500 rounded-2xl p-8 text-center transition-colors bg-slate-50/50">
-                <input
-                  type="file"
-                  id="intake-file-upload"
-                  accept=".pdf,.doc,.docx,.png,.jpg,.jpeg"
-                  onChange={(e) => setSelectedFile(e.target.files[0])}
-                  className="hidden"
-                />
-                <label htmlFor="intake-file-upload" className="cursor-pointer space-y-3 block">
-                  <div className="h-12 w-12 bg-brand-100 text-brand-600 rounded-full flex items-center justify-center mx-auto">
-                    <FileText className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-slate-800">
-                      {selectedFile ? selectedFile.name : 'Click to select or drag and drop document'}
-                    </p>
-                    <p className="text-xs text-slate-400 mt-1">Supports PDF, Word (.doc/.docx), JPEG, and PNG up to 20MB</p>
-                  </div>
-                </label>
-              </div>
+              <FileUploader
+                selectedFile={selectedFile}
+                onFileSelect={(file) => setSelectedFile(file)}
+                onFileRemove={() => setSelectedFile(null)}
+                acceptedExtensions={['.pdf', '.png', '.jpg', '.jpeg', '.doc', '.docx']}
+                maxSizeMB={20}
+                disabled={uploading}
+              />
 
               <div className="flex justify-end gap-3">
                 <button
@@ -553,11 +560,20 @@ export default function PatientIntake() {
 
                     <div className="flex items-center gap-2">
                       <button
+                        type="button"
                         onClick={() => handleExtractDetails(doc)}
-                        className="px-4 py-2 bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-700 hover:to-indigo-700 text-white text-xs font-bold rounded-lg shadow transition-all flex items-center gap-1.5"
+                        className="px-4 py-2 bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-700 hover:to-indigo-700 text-white text-xs font-bold rounded-lg shadow transition-all flex items-center gap-1.5 cursor-pointer"
                       >
                         <Sparkles className="h-3.5 w-3.5" />
                         Extract Details
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => handleDeleteUploadedDocument(doc, idx)}
+                        title="Delete this uploaded document"
+                        className="p-2 text-blue-600 hover:text-red-600 bg-blue-50/60 hover:bg-red-50 border border-blue-200 hover:border-red-200 rounded-lg transition-all duration-150 cursor-pointer shadow-xs"
+                      >
+                        <Trash2 className="h-4 w-4" />
                       </button>
                     </div>
                   </div>

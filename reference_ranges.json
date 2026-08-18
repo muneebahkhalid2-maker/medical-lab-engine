@@ -126,5 +126,81 @@
     "ranges": {
       "general": { "min": 70.0, "max": 100.0 }
     }
+  },
+  "Red Blood Cell Count": {
+    "canonical_name": "rbc",
+    "aliases": ["red blood cell count", "rbc", "rbc count", "total rbc"],
+    "unit": "10^12/L",
+    "ranges": {
+      "male": { "min": 4.5, "max": 6.0 },
+      "female": { "min": 3.9, "max": 5.6 },
+      "general": { "min": 3.9, "max": 6.0 }
+    }
+  },
+  "Packed Cell Volume": {
+    "canonical_name": "pcv",
+    "aliases": ["packed cell volume", "pcv", "hematocrit", "hct"],
+    "unit": "%",
+    "ranges": {
+      "male": { "min": 40.0, "max": 54.0 },
+      "female": { "min": 39.0, "max": 52.0 },
+      "general": { "min": 39.0, "max": 54.0 }
+    }
+  },
+  "Mean Corpuscular Hemoglobin": {
+    "canonical_name": "mch",
+    "aliases": ["mean corpuscular hemoglobin", "mch"],
+    "unit": "pg",
+    "ranges": {
+      "general": { "min": 27.0, "max": 32.0 }
+    }
+  },
+  "MCHC": {
+    "canonical_name": "mchc",
+    "aliases": ["mchc", "mean corpuscular hemoglobin concentration"],
+    "unit": "g/dL",
+    "ranges": {
+      "general": { "min": 31.5, "max": 34.5 }
+    }
+  },
+  "Neutrophils": {
+    "canonical_name": "neutrophils",
+    "aliases": ["neutrophils", "neutrophils %", "neutrophil count"],
+    "unit": "%",
+    "ranges": {
+      "general": { "min": 40.0, "max": 70.0 }
+    }
+  },
+  "Lymphocytes": {
+    "canonical_name": "lymphocytes",
+    "aliases": ["lymphocytes", "lymphocytes %", "lymphocyte count"],
+    "unit": "%",
+    "ranges": {
+      "general": { "min": 20.0, "max": 40.0 }
+    }
+  },
+  "Monocytes": {
+    "canonical_name": "monocytes",
+    "aliases": ["monocytes", "monocytes %", "monocyte count"],
+    "unit": "%",
+    "ranges": {
+      "general": { "min": 0.0, "max": 10.0 }
+    }
+  },
+  "Eosinophils": {
+    "canonical_name": "eosinophils",
+    "aliases": ["eosinophils", "eosinophils %", "eosinophil count"],
+    "unit": "%",
+    "ranges": {
+      "general": { "min": 0.0, "max": 6.0 }
+    }
+  },
+  "Total Leukocyte Count": {
+    "canonical_name": "tlc",
+    "aliases": ["total leukocyte count", "tlc", "total wbc"],
+    "unit": "10^9/L",
+    "ranges": {
+      "general": { "min": 4.0, "max": 11.0 }
+    }
   }
 }

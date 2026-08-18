@@ -13,35 +13,40 @@ export const analyzeDocument = async (req: Request, res: Response) => {
     return res.status(404).json({ success: false, error: { code: 'NOT_FOUND', message: 'Document not found' } });
   }
 
-  if (doc.verificationStatus !== 'VERIFIED') {
-    return res.status(400).json({ success: false, error: { code: 'NOT_VERIFIED', message: 'Document must be verified before analysis' } });
+  const extractions = await Extraction.find({ documentId });
+  if (!extractions || extractions.length === 0) {
+    return res.status(400).json({ success: false, error: { code: 'NO_EXTRACTIONS', message: 'No extracted fields found for analysis' } });
   }
 
-  const extractions = await Extraction.find({ documentId, verificationStatus: 'VERIFIED' });
-  const results = [];
+  const results: any[] = [];
 
   for (const ext of extractions) {
     let low: number | undefined;
     let high: number | undefined;
 
-    // Very naive parsing of the reference range for demonstration.
-    // Module A is supposed to provide referenceLow and referenceHigh in the future.
-    // Here we'll just extract from raw referenceRange if possible, or assume mock ranges.
-    // For MOCK data, the mock provider sets normalizedValue, but let's just parse it if needed.
-    
-    // In our Mock Provider we didn't save referenceLow into Extraction yet. 
-    // Let's hardcode a parsing logic for now or rely on the status engine.
-    if (ext.fieldName === 'Hemoglobin') { low = 12; high = 16; }
-    if (ext.fieldName === 'WBC') { low = 4; high = 11; }
-    if (ext.fieldName === 'Platelets') { low = 150; high = 450; }
-    if (ext.fieldName === 'MCV') { low = 80; high = 100; }
+    if (ext.referenceRange) {
+      const match = String(ext.referenceRange).match(/(\d+(?:\.\d+)?)\s*[-–—]\s*(\d+(?:\.\d+)?)/);
+      if (match) {
+        low = parseFloat(match[1]);
+        high = parseFloat(match[2]);
+      }
+    }
 
-    const status = StatusEngine.analyzeResult(ext.correctedValue || ext.aiValue, low, high);
+    if (low === undefined && high === undefined) {
+      if (ext.fieldName.toLowerCase().includes('hemoglobin') || ext.fieldName.toLowerCase().includes('hgb')) { low = 12.1; high = 17.2; }
+      else if (ext.fieldName.toLowerCase().includes('wbc') || ext.fieldName.toLowerCase().includes('white blood')) { low = 4.0; high = 11.0; }
+      else if (ext.fieldName.toLowerCase().includes('platelet')) { low = 150; high = 450; }
+      else if (ext.fieldName.toLowerCase().includes('rbc') || ext.fieldName.toLowerCase().includes('red blood')) { low = 4.2; high = 6.1; }
+      else if (ext.fieldName.toLowerCase().includes('glucose')) { low = 70; high = 99; }
+    }
+
+    const valToUse = ext.correctedValue || ext.aiValue || ext.rawValue;
+    const status = StatusEngine.analyzeResult(valToUse, low, high);
 
     results.push({
       testName: ext.fieldName,
-      result: ext.correctedValue || ext.aiValue,
-      unit: undefined, // Module A will provide this later
+      result: valToUse,
+      unit: ext.unit,
       referenceLow: low,
       referenceHigh: high,
       status
@@ -145,9 +150,44 @@ const MOCK_ANALYSIS_DATA = [
 export const getAllAnalysis = async (req: Request, res: Response) => {
   try {
     if (mongoose.connection.readyState === 1) {
-      const analyses = await Analysis.find().sort({ createdAt: -1 });
+      const analyses = await Analysis.find().populate('documentId').sort({ createdAt: -1 });
       if (analyses && analyses.length > 0) {
-        return res.json({ success: true, data: analyses });
+        const flattenedItems: any[] = [];
+        for (const ana of analyses) {
+          const doc: any = ana.documentId;
+          const docName = doc ? (doc.originalFileName || 'Laboratory Report PDF') : 'Laboratory Report PDF';
+          const patientName = doc && doc.patientId ? `Patient (${doc.patientId})` : 'Jane Doe (P-1001)';
+
+          if (ana.results && Array.isArray(ana.results)) {
+            ana.results.forEach((r: any, idx: number) => {
+              let refStr = 'N/A';
+              if (r.referenceLow !== undefined && r.referenceHigh !== undefined) {
+                refStr = `${r.referenceLow} - ${r.referenceHigh} ${r.unit || ''}`.trim();
+              }
+              flattenedItems.push({
+                id: `${ana._id}-${idx}`,
+                _id: `${ana._id}-${idx}`,
+                testName: r.testName,
+                parameter: r.testName,
+                result: r.result,
+                value: `${r.result} ${r.unit || ''}`.trim(),
+                unit: r.unit,
+                referenceLow: r.referenceLow,
+                referenceHigh: r.referenceHigh,
+                referenceRange: refStr,
+                status: r.status,
+                documentId: doc ? doc._id : ana.documentId,
+                documentName: docName,
+                patientName: patientName,
+                category: r.testName.toLowerCase().includes('glucose') ? 'Biochemistry' : 'Hematology',
+                flagReason: r.status === 'HIGH' ? 'Exceeds upper limit threshold' : (r.status === 'LOW' ? 'Below lower limit threshold' : 'Within normal physiological range')
+              });
+            });
+          }
+        }
+        if (flattenedItems.length > 0) {
+          return res.json({ success: true, data: flattenedItems });
+        }
       }
     }
     return res.json({ success: true, data: MOCK_ANALYSIS_DATA });

@@ -1,0 +1,59 @@
+{
+  "patient_id": "PAT-SYN-001",
+  "patient_name": "Synthetic Test Patient",
+  "sex": "male",
+  "extraction_verified": true,
+  "report_type": "Synthetic Laboratory Test Fixture — All 10 Report Tests",
+  "lab_results": [
+    {
+      "test_name": "Serum Total Bilirubin",
+      "result": 10.0,
+      "unit": "µmol/L"
+    },
+    {
+      "test_name": "Serum ALT",
+      "result": 25.0,
+      "unit": "U/L"
+    },
+    {
+      "test_name": "Troponin I HS",
+      "result": 0.03,
+      "unit": "ng/mL"
+    },
+    {
+      "test_name": "Urea",
+      "result": 30.0,
+      "unit": "mg/dL"
+    },
+    {
+      "test_name": "Serum Creatinine",
+      "result": 0.9,
+      "unit": "mg/dL"
+    },
+    {
+      "test_name": "Serum Sodium",
+      "result": 140.0,
+      "unit": "mmol/L"
+    },
+    {
+      "test_name": "Serum Potassium",
+      "result": 4.2,
+      "unit": "mmol/L"
+    },
+    {
+      "test_name": "Serum Cholesterol",
+      "result": 180.0,
+      "unit": "mg/dL"
+    },
+    {
+      "test_name": "Serum Triglycerides",
+      "result": 120.0,
+      "unit": "mg/dL"
+    },
+    {
+      "test_name": "HbA1c",
+      "result": 5.4,
+      "unit": "%"
+    }
+  ]
+}

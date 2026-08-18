@@ -1,0 +1,39 @@
+{
+  "patient_id": "PAT-1003",
+  "patient_name": "Alice Johnson",
+  "sex": "female",
+  "extraction_verified": true,
+  "report_type": "Hepatic & Lipid Profile",
+  "lab_results": [
+    {
+      "test_name": "Serum Total Bilirubin",
+      "result": 8.5,
+      "unit": "µmol/L"
+    },
+    {
+      "test_name": "Serum ALT",
+      "result": 22.0,
+      "unit": "U/L"
+    },
+    {
+      "test_name": "Serum Cholesterol",
+      "result": 175.0,
+      "unit": "mg/dL"
+    },
+    {
+      "test_name": "Serum Triglycerides",
+      "result": 115.0,
+      "unit": "mg/dL"
+    },
+    {
+      "test_name": "Blood Glucose",
+      "result": 88.0,
+      "unit": "mg/dL"
+    },
+    {
+      "test_name": "HbA1c",
+      "result": 5.2,
+      "unit": "%"
+    }
+  ]
+}

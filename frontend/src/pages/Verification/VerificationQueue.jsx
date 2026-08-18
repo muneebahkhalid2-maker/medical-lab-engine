@@ -72,15 +72,15 @@ export default function VerificationQueue() {
       setLoading(true);
       const [docRes, extRes] = await Promise.all([
         fetch(`http://localhost:5000/api/documents/${documentId}`, {
-          headers: { 'Authorization': `Bearer ${localStorage.getItem('token') || ''}` }
+          headers: { 'Authorization': `Bearer ${localStorage.getItem('token') || 'demo-token'}` }
         }),
         fetch(`http://localhost:5000/api/documents/${documentId}/extractions`, {
-          headers: { 'Authorization': `Bearer ${localStorage.getItem('token') || ''}` }
+          headers: { 'Authorization': `Bearer ${localStorage.getItem('token') || 'demo-token'}` }
         })
       ]);
 
       if (!docRes.ok || !extRes.ok) throw new Error('Using demo verification queue');
-      
+
       const docData = await docRes.json();
       const extData = await extRes.json();
 
@@ -117,12 +117,12 @@ export default function VerificationQueue() {
         if (save) {
           saveExtraction(id, e.tempValue);
         }
-        return { 
-          ...e, 
-          isEditing: !e.isEditing, 
+        return {
+          ...e,
+          isEditing: !e.isEditing,
           correctedValue: save ? e.tempValue : e.correctedValue,
           verificationStatus: save ? 'VERIFIED' : e.verificationStatus,
-          tempValue: save ? e.tempValue : (e.correctedValue || e.aiValue) 
+          tempValue: save ? e.tempValue : (e.correctedValue || e.aiValue)
         };
       }
       return e;
@@ -135,7 +135,7 @@ export default function VerificationQueue() {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token') || ''}`
+          'Authorization': `Bearer ${localStorage.getItem('token') || 'demo-token'}`
         },
         body: JSON.stringify({ correctedValue: value })
       });
@@ -149,7 +149,7 @@ export default function VerificationQueue() {
     try {
       await fetch(`http://localhost:5000/api/extractions/document/${documentId}/verify-all`, {
         method: 'POST',
-        headers: { 'Authorization': `Bearer ${localStorage.getItem('token') || ''}` }
+        headers: { 'Authorization': `Bearer ${localStorage.getItem('token') || 'demo-token'}` }
       });
     } catch {
       // Ignore API error in offline mode
@@ -172,7 +172,7 @@ export default function VerificationQueue() {
             Reviewing extractions for <span className="font-semibold text-brand-700">{document?.originalFileName}</span>
           </p>
         </div>
-        <button 
+        <button
           onClick={handleVerifyAll}
           disabled={saving || verifiedCount === extractions.length}
           className="btn-primary px-6 py-2.5 rounded-xl flex items-center justify-center gap-2 disabled:opacity-50"
@@ -191,28 +191,36 @@ export default function VerificationQueue() {
               Document Preview
             </span>
             <span className="text-xs font-semibold px-2.5 py-1 bg-white rounded-lg border border-slate-200 text-slate-600">
-              PDF Render View
+              {document?.documentType || 'PDF'} Render View
             </span>
           </div>
-          <div className="flex-1 bg-slate-200/50 flex flex-col items-center justify-center p-6 text-center">
-             <div className="bg-white shadow-lg w-full h-full max-w-md rounded-xl p-8 border border-slate-300 flex flex-col items-center justify-center text-slate-500 space-y-4">
+          <div className="flex-1 bg-slate-200/50 flex flex-col items-center justify-center p-4 text-center">
+            {document?.cloudinaryUrl ? (
+              <iframe
+                src={document.cloudinaryUrl}
+                className="w-full h-full rounded-xl border border-slate-300 bg-white"
+                title="PDF Document Viewer"
+              />
+            ) : (
+              <div className="bg-white shadow-lg w-full h-full max-w-md rounded-xl p-8 border border-slate-300 flex flex-col items-center justify-center text-slate-500 space-y-4">
                 <FileText className="h-16 w-16 text-brand-400" />
                 <div>
                   <p className="font-bold text-slate-800 text-base">{document?.originalFileName}</p>
                   <p className="text-xs text-slate-400 mt-1">Laboratory Report PDF Document</p>
                 </div>
                 <div className="bg-slate-50 p-4 rounded-xl border border-slate-100 text-xs text-slate-600 text-left w-full space-y-1">
-                  <p><strong>Patient:</strong> Marcus Brody (P-1002)</p>
-                  <p><strong>Lab Provider:</strong> Quest Diagnostics</p>
-                  <p><strong>Date:</strong> 2026-08-14</p>
+                  <p><strong>Document ID:</strong> {document?._id}</p>
+                  <p><strong>Status:</strong> {document?.verificationStatus || 'PENDING'}</p>
+                  <p><strong>Uploaded:</strong> {new Date(document?.createdAt || Date.now()).toLocaleDateString()}</p>
                 </div>
-             </div>
+              </div>
+            )}
           </div>
         </div>
 
         {/* Extraction List */}
         <div className="glass-panel rounded-2xl flex flex-col overflow-hidden h-[650px] shadow-sm">
-           <div className="bg-slate-100/70 p-4 border-b border-slate-200/60 font-semibold text-slate-700 flex justify-between items-center">
+          <div className="bg-slate-100/70 p-4 border-b border-slate-200/60 font-semibold text-slate-700 flex justify-between items-center">
             <span>Extracted Data Fields</span>
             <span className="text-xs font-bold text-brand-700 bg-brand-50 px-3 py-1 rounded-lg border border-brand-100">
               {verifiedCount} / {extractions.length} Verified
@@ -228,15 +236,15 @@ export default function VerificationQueue() {
                     {field.verificationStatus}
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-3 mt-2">
                   <div className="flex-1">
                     <label className="text-xs text-slate-500 font-medium block mb-1">
                       AI Extracted Value <span className="text-emerald-600 font-semibold">(Conf: {(field.confidence * 100).toFixed(0)}%)</span>
                     </label>
                     {field.isEditing ? (
-                      <input 
-                        type="text" 
+                      <input
+                        type="text"
                         value={field.tempValue}
                         onChange={(e) => handleEditChange(field._id, e.target.value)}
                         className="w-full px-3 py-1.5 border-2 border-brand-500 rounded-xl text-sm font-semibold focus:outline-none bg-brand-50/30"
@@ -247,7 +255,7 @@ export default function VerificationQueue() {
                       </div>
                     )}
                   </div>
-                  
+
                   <div className="flex items-center gap-1 pt-5">
                     {field.isEditing ? (
                       <>

@@ -1,0 +1,143 @@
+{
+  "patient_id": "PAT-M01",
+  "patient_name": "John Doe",
+  "sex": "male",
+  "extraction_verified": true,
+  "lab_results": [
+    {
+      "test_name": "Hemoglobin",
+      "result": 14.5,
+      "unit": "g/dL"
+    },
+    {
+      "test_name": "Serum Total Bilirubin",
+      "result": 10.0,
+      "unit": "µmol/L"
+    },
+    {
+      "test_name": "Serum ALT",
+      "result": 25.0,
+      "unit": "U/L"
+    },
+    {
+      "test_name": "Troponin I HS",
+      "result": 0.03,
+      "unit": "ng/mL"
+    },
+    {
+      "test_name": "Urea",
+      "result": 30.0,
+      "unit": "mg/dL"
+    },
+    {
+      "test_name": "Serum Creatinine",
+      "result": 0.9,
+      "unit": "mg/dL"
+    },
+    {
+      "test_name": "Serum Sodium",
+      "result": 140.0,
+      "unit": "mmol/L"
+    },
+    {
+      "test_name": "Serum Potassium",
+      "result": 4.2,
+      "unit": "mmol/L"
+    },
+    {
+      "test_name": "Serum Cholesterol",
+      "result": 180.0,
+      "unit": "mg/dL"
+    },
+    {
+      "test_name": "Serum Triglycerides",
+      "result": 120.0,
+      "unit": "mg/dL"
+    },
+    {
+      "test_name": "HbA1c",
+      "result": 5.4,
+      "unit": "%"
+    },
+    {
+      "test_name": "Blood Glucose",
+      "result": 85.0,
+      "unit": "mg/dL"
+    },
+    {
+      "test_name": "WBC",
+      "result": 7.5,
+      "unit": "10^3/uL"
+    },
+    {
+      "test_name": "Platelets",
+      "result": 250.0,
+      "unit": "10^3/uL"
+    },
+    {
+      "test_name": "MCV",
+      "result": 88.0,
+      "unit": "fL"
+    },
+    {
+      "test_name": "Red Blood Cell Count",
+      "result": 5.0,
+      "unit": "10^12/L"
+    },
+    {
+      "test_name": "Packed Cell Volume",
+      "result": 45.0,
+      "unit": "%"
+    },
+    {
+      "test_name": "Mean Corpuscular Hemoglobin",
+      "result": 29.0,
+      "unit": "pg"
+    },
+    {
+      "test_name": "MCHC",
+      "result": 33.0,
+      "unit": "g/dL"
+    },
+    {
+      "test_name": "Neutrophils",
+      "result": 55.0,
+      "unit": "%"
+    },
+    {
+      "test_name": "Lymphocytes",
+      "result": 32.0,
+      "unit": "%"
+    },
+    {
+      "test_name": "Monocytes",
+      "result": 6.0,
+      "unit": "%"
+    },
+    {
+      "test_name": "Eosinophils",
+      "result": 3.0,
+      "unit": "%"
+    },
+    {
+      "test_name": "Total Leukocyte Count",
+      "result": 6.5,
+      "unit": "10^9/L"
+    },
+    {
+      "test_name": "Ferritin",
+      "result": 150.0,
+      "unit": "ug/L"
+    },
+    {
+      "test_name": "Serum Iron",
+      "result": 105.0,
+      "unit": "ug/dL"
+    },
+    {
+      "test_name": "TSH",
+      "result": 2.1,
+      "unit": "mIU/L"
+    }
+  ]
+}

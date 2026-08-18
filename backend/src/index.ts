@@ -28,14 +28,14 @@ app.use(cors({
   origin: (origin, callback) => {
     // Allow requests with no origin (e.g., mobile apps, curl, server-to-server)
     if (!origin) return callback(null, true);
-    
+
     // Check if origin is explicitly configured or matches local Vite dev ports (5170-5179)
     const isAllowed = allowedOrigins.includes(origin) || /^http:\/\/(localhost|127\.0\.0\.1):(517[0-9]|3000)$/.test(origin);
-    
+
     if (isAllowed) {
       return callback(null, true);
     }
-    
+
     return callback(new Error(`Origin ${origin} not allowed by CORS`));
   },
   credentials: true
@@ -83,7 +83,7 @@ app.get('/api/health', (req: Request, res: Response) => {
 app.post('/api/upload', upload.array('documents', 10), async (req: Request, res: Response) => {
   try {
     const files = req.files as Express.Multer.File[];
-    
+
     if (!files || files.length === 0) {
       return res.status(400).json({ error: 'No files uploaded' });
     }
@@ -104,7 +104,7 @@ app.post('/api/upload', upload.array('documents', 10), async (req: Request, res:
         });
 
         const data = aiResponse.data;
-        data.original_image_path = file.filename; 
+        data.original_image_path = file.filename;
         results.push(data);
       } catch (err: any) {
         console.error(`Extraction error for ${file.filename}:`, err.message);
@@ -120,9 +120,9 @@ app.post('/api/upload', upload.array('documents', 10), async (req: Request, res:
     res.json(results);
   } catch (error: any) {
     console.error('Server error during extraction:', error.message);
-    res.status(500).json({ 
-        error: 'Extraction failed.', 
-        details: error.message 
+    res.status(500).json({
+      error: 'Extraction failed.',
+      details: error.message
     });
   }
 });
@@ -134,13 +134,13 @@ app.use('/uploads', express.static(uploadDir));
 // Global error handler
 app.use((err: any, req: Request, res: Response, next: express.NextFunction) => {
   console.error(err);
-  res.status(500).json({ 
-    success: false, 
-    error: { 
-      code: 'SERVER_ERROR', 
+  res.status(500).json({
+    success: false,
+    error: {
+      code: 'SERVER_ERROR',
       message: 'An unexpected error occurred',
       details: process.env.NODE_ENV === 'development' ? err.message : undefined
-    } 
+    }
   });
 });
 
@@ -149,7 +149,7 @@ const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/medext
 
 const server = app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`);
-  
+
   mongoose.connect(MONGODB_URI, { serverSelectionTimeoutMS: 2000 })
     .then(() => {
       console.log('Connected to MongoDB (External)');

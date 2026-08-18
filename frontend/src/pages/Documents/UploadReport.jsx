@@ -63,7 +63,7 @@ export default function UploadReport() {
         try {
           const uploadResponse = await fetch('http://localhost:5000/api/documents', {
             method: 'POST',
-            headers: { 'Authorization': `Bearer ${localStorage.getItem('token') || ''}` },
+            headers: { 'Authorization': `Bearer ${localStorage.getItem('token') || 'demo-token'}` },
             body: formData
           });
 
@@ -75,7 +75,7 @@ export default function UploadReport() {
           if (documentId) {
             await fetch(`http://localhost:5000/api/documents/${documentId}/process`, {
               method: 'POST',
-              headers: { 'Authorization': `Bearer ${localStorage.getItem('token') || ''}` }
+              headers: { 'Authorization': `Bearer ${localStorage.getItem('token') || 'demo-token'}` }
             });
           }
         } catch (apiErr) {

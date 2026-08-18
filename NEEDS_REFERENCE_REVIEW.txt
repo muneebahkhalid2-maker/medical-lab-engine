@@ -1,0 +1,50 @@
+# NEEDS_REFERENCE_REVIEW.txt
+# Tests found in project data without a validated reference range in any tier.
+# Generated: 2026-08-17
+# =====================================================================
+
+# These tests appear in processed OCR lab reports (ai-service/processed/)
+# but do NOT have validated reference ranges in any of the 3 range databases.
+# They may have Tier 1 (printed on report) ranges, which work automatically.
+#
+# ACTION: Review each and add to the appropriate tier database if validated
+# clinical reference ranges can be established.
+
+# ─── STANDARD LABORATORY TESTS (CBC Sub-Tests) ─────────────────────────
+# Found in: WhatsApp Image 2026-08-11 at 3.14.51 PM (1).json
+# These are standard CBC components with well-known clinical ranges.
+# Recommendation: Add to reference_ranges.json (Tier 3) after confirmation.
+
+Total Leukocyte Count (TLC)       | unit: 10^9/L    | printed range: 4.0-11.0
+Red Blood Cell Count (RBC)        | unit: 10^12/L   | printed range: Male 4.5-6.0, Female 3.9-5.6
+Packed Cell Volume (PCV)          | unit: %          | printed range: Male 40-54, Female 39-52
+Mean Corpuscular Hemoglobin (MCH) | unit: pg         | printed range: 27-32
+MCHC                              | unit: g/dL       | printed range: 31.5-34.5
+Neutrophils                       | unit: %          | printed range: 40-70
+Lymphocytes                       | unit: %          | printed range: 20-40
+Monocytes                         | unit: %          | printed range: 0-10
+Eosinophils                       | unit: %          | printed range: 0-6
+
+# ─── OTHER TESTS ──────────────────────────────────────────────────────
+# Found in processed reports but missing unit or lacking validated range.
+
+Uric Acid                         | unit: UNKNOWN    | no validated range
+Thyroid Stimulating Hormone (TSH) | unit: UNKNOWN    | printed range: 0.4-5.0 (Note: TSH exists in lab_config_ranges.json with unit mIU/L)
+Creatinine (standalone)           | unit: UNKNOWN    | no unit in source (Note: "Serum Creatinine" exists in reference_ranges.json)
+
+# ─── ECHOCARDIOGRAPHY / IMAGING MEASUREMENTS ─────────────────────────
+# Found in: WhatsApp Image 2026-08-11 at 3.14.49 PM (1).json
+# These are cardiac imaging measurements, NOT standard laboratory tests.
+# They should NOT be added to reference_ranges.json.
+
+Aortic Root Diameter              | unit: mm         | imaging measurement
+Left Atrium End-Systolic Diameter | unit: mm         | imaging measurement
+Interventricular Septal Thickness | unit: mm         | imaging measurement
+LV Posterior Wall Thickness       | unit: mm         | imaging measurement
+LV End-Systolic Dimension         | unit: mm         | imaging measurement
+LV End-Diastolic Dimension        | unit: mm         | imaging measurement
+Fractional Shortening             | unit: %          | imaging measurement
+Right Ventricular Dimension       | unit: mm         | imaging measurement
+Mitral Valve E/A Ratio            | unit: -          | imaging measurement
+LV Ejection Fraction              | unit: %          | imaging measurement
+TAPSE                             | unit: mm         | imaging measurement

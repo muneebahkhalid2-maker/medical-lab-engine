@@ -16,6 +16,8 @@ export interface IExtraction extends Document {
   
   aiValue: string;
   correctedValue?: string;
+  unit?: string;
+  referenceRange?: string;
   
   verificationStatus: 'PENDING' | 'VERIFIED' | 'REJECTED';
   verifiedBy?: mongoose.Types.ObjectId;
@@ -42,6 +44,8 @@ const ExtractionSchema: Schema = new Schema(
     
     aiValue: { type: String, required: true },
     correctedValue: { type: String },
+    unit: { type: String },
+    referenceRange: { type: String },
     
     verificationStatus: { type: String, enum: ['PENDING', 'VERIFIED', 'REJECTED'], default: 'PENDING' },
     verifiedBy: { type: Schema.Types.ObjectId, ref: 'User' },

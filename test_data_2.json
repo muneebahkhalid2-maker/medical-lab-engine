@@ -1,0 +1,39 @@
+{
+  "patient_id": "PAT-1002",
+  "patient_name": "John Smith",
+  "sex": "male",
+  "extraction_verified": true,
+  "report_type": "Renal & Iron Function Panel",
+  "lab_results": [
+    {
+      "test_name": "Serum Creatinine",
+      "result": 0.95,
+      "unit": "mg/dL"
+    },
+    {
+      "test_name": "Urea",
+      "result": 28.0,
+      "unit": "mg/dL"
+    },
+    {
+      "test_name": "Serum Sodium",
+      "result": 142.0,
+      "unit": "mmol/L"
+    },
+    {
+      "test_name": "Serum Potassium",
+      "result": 4.1,
+      "unit": "mmol/L"
+    },
+    {
+      "test_name": "Ferritin",
+      "result": 250.0,
+      "unit": "ug/L"
+    },
+    {
+      "test_name": "Serum Iron",
+      "result": 110.0,
+      "unit": "ug/dL"
+    }
+  ]
+}

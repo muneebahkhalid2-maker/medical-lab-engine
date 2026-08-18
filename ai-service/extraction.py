@@ -103,33 +103,8 @@ class ExtractionEngine:
         try:
             print("Calling LLM for extraction...")
             if self.model is None or getattr(self.model, '_api_key', 'dummy_key') == "dummy_key":
-                print("Using fallback structured extraction response.")
-                extracted_json = {
-                    "document_id": doc_id,
-                    "document_type": "laboratory_report",
-                    "patient": {"name": "Jane Doe", "age": 35, "sex": "F"},
-                    "report": {"date": "2026-07-10", "laboratory": "Clinical Diagnostics Lab"},
-                    "tests": [
-                        {
-                            "testName": "Hemoglobin",
-                            "result": 14.5,
-                            "unit": "g/dL",
-                            "referenceRange": {"raw": "13.0-17.0", "low": 13.0, "high": 17.0}
-                        },
-                        {
-                            "testName": "WBC",
-                            "result": 7.2,
-                            "unit": "10^3/uL",
-                            "referenceRange": {"raw": "4.5-11.0", "low": 4.5, "high": 11.0}
-                        },
-                        {
-                            "testName": "Platelets",
-                            "result": 250,
-                            "unit": "10^3/uL",
-                            "referenceRange": {"raw": "150-450", "low": 150, "high": 450}
-                        }
-                    ]
-                }
+                print("Extracting laboratory tests directly from raw OCR text lines...")
+                extracted_json = self.parse_text_lines_deterministically(raw_ocr, doc_id)
             else:
                 response = self.model.generate_content(
                     prompt,
