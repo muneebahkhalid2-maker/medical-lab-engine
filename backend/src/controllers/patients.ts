@@ -36,6 +36,22 @@ const MOCK_PATIENTS = [
     reportsCount: 7,
     riskLevel: 'HIGH',
     primaryCondition: 'Elevated Hemoglobin & Glucose'
+  },
+  {
+    _id: '60c72b2f9b1d8b0015b6d913',
+    patientId: '145104',
+    name: 'M Afzal',
+    age: 64,
+    sex: 'Male',
+    contactPhone: '+92 (300) 555-0199',
+    emergencyContact: '+92 (321) 555-0144',
+    address: 'NHQ, Lahore Cantonment, Pakistan',
+    contactEmail: 'm.afzal@cardiac.org',
+    encounterStatus: 'DOCUMENTS_UPLOADED',
+    lastReportDate: '2026-08-08',
+    reportsCount: 3,
+    riskLevel: 'MEDIUM',
+    primaryCondition: 'Cardiac & Lipid Evaluation (Army Cardiac Center Lahore)'
   }
 ];
 

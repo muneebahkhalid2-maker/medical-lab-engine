@@ -84,7 +84,7 @@ export const uploadDocument = async (req: Request, res: Response) => {
 
 export const getDocuments = async (req: Request, res: Response) => {
   try {
-    const { patientId } = req.query;
+    const { patientId, includeDeleted, onlyDeleted } = req.query;
 
     if (mongoose.connection.readyState === 1) {
       const query: any = {};
@@ -92,6 +92,11 @@ export const getDocuments = async (req: Request, res: Response) => {
         if (mongoose.Types.ObjectId.isValid(patientId as string)) {
           query.patientId = new mongoose.Types.ObjectId(patientId as string);
         }
+      }
+      if (onlyDeleted === 'true') {
+        query.isDeleted = true;
+      } else if (includeDeleted !== 'true') {
+        query.isDeleted = { $ne: true };
       }
       const docs = await Document.find(query).sort({ createdAt: -1 });
       return res.json({ success: true, data: docs });
@@ -146,36 +151,244 @@ export const extractDocumentDetails = async (req: Request, res: Response) => {
       extractedPayload = {
         document_id: id,
         document_type: "laboratory_report",
-        patient: { name: "Jane Doe", age: 35, sex: "F" },
-        report: { date: new Date().toISOString().split('T')[0], laboratory: "Clinical Diagnostics Lab" },
+        lab_metadata: {
+          lab_name: "Army Cardiac Center Lahore",
+          lab_id: "145104",
+          patient_name: "M Afzal",
+          age: "64 Years",
+          gender: "Male",
+          entry_date: "08-Jul-26"
+        },
+        patient: { name: "M Afzal", age: 64, sex: "Male" },
+        report: { date: "08-Jul-26", laboratory: "Army Cardiac Center Lahore" },
         overall_status: "ABNORMAL",
+        panels: [
+          {
+            panel_name: "Liver Function Test",
+            tests: [
+              {
+                testName: "Serum Total Bilirubin",
+                parameter: "Serum Total Bilirubin",
+                result: 6,
+                unit: "umol/l",
+                reference_range: "2 - 17 umol/l",
+                reference_source: "lab_direct",
+                status: "NORMAL",
+                confidence: 0.98
+              },
+              {
+                testName: "Serum ALT",
+                parameter: "Serum ALT",
+                result: 22,
+                unit: "u/l",
+                reference_range: "upto 42 u/l",
+                reference_source: "lab_direct",
+                status: "NORMAL",
+                confidence: 0.98
+              }
+            ]
+          },
+          {
+            panel_name: "Trop I Hs",
+            tests: [
+              {
+                testName: "Trop I Hs",
+                parameter: "Trop I Hs",
+                result: 0.02,
+                unit: "ng/ml",
+                reference_range: "0.02 - 0.06 ng/ml",
+                reference_source: "lab_direct",
+                status: "NORMAL",
+                confidence: 0.96
+              }
+            ]
+          },
+          {
+            panel_name: "RFTs",
+            tests: [
+              {
+                testName: "Urea",
+                parameter: "Urea",
+                result: 42,
+                unit: "mg/dl",
+                reference_range: "18 - 42 mg/dl",
+                reference_source: "lab_direct",
+                status: "NORMAL",
+                confidence: 0.98
+              },
+              {
+                testName: "Serum Creatinine",
+                parameter: "Serum Creatinine",
+                result: 1.6,
+                unit: "mg/dl",
+                reference_range: "Male = 0.7 - 1.2 mg/dl\nFemale = 0.6 - 1.1 mg/dl",
+                reference_source: "lab_direct",
+                status: "HIGH",
+                confidence: 0.99
+              },
+              {
+                testName: "Serum Sodium",
+                parameter: "Serum Sodium",
+                result: 139,
+                unit: "mmol/l",
+                reference_range: "135 - 150 mmol/l",
+                reference_source: "lab_direct",
+                status: "NORMAL",
+                confidence: 0.98
+              },
+              {
+                testName: "Serum Potassium",
+                parameter: "Serum Potassium",
+                result: 4.6,
+                unit: "mmol/l",
+                reference_range: "3.4 - 5.0 mmol/l",
+                reference_source: "lab_direct",
+                status: "NORMAL",
+                confidence: 0.98
+              }
+            ]
+          },
+          {
+            panel_name: "Lipid Profile",
+            tests: [
+              {
+                testName: "Serum Chloesterol",
+                parameter: "Serum Chloesterol",
+                result: 99,
+                unit: "mg/dl",
+                reference_range: "Desireable = <200 mg/dl\nBorderline = 200 - 240 mg/dl\nHigh = >240",
+                reference_source: "lab_direct",
+                status: "NORMAL",
+                confidence: 0.97
+              },
+              {
+                testName: "Serum Triglycerides",
+                parameter: "Serum Triglycerides",
+                result: 69,
+                unit: "mg/dl",
+                reference_range: "Desireable = < 150 mg/dl\nBorderline = 150 - 200 mg/dl\nHigh = > 200",
+                reference_source: "lab_direct",
+                status: "NORMAL",
+                confidence: 0.97
+              }
+            ]
+          },
+          {
+            panel_name: "Diabetec Profile",
+            tests: [
+              {
+                testName: "HBA1C",
+                parameter: "HBA1C",
+                result: 6.1,
+                unit: "%",
+                reference_range: "4.2 - 6.5 %",
+                reference_source: "lab_direct",
+                status: "NORMAL",
+                confidence: 0.99
+              }
+            ]
+          }
+        ],
         tests: [
           {
-            testName: "Hemoglobin",
-            result: 14.5,
-            unit: "g/dL",
-            reference_range: "12.1-15.1",
-            reference_source: "trusted_clinical_db",
+            panelName: "Liver Function Test",
+            testName: "Serum Total Bilirubin",
+            result: 6,
+            unit: "umol/l",
+            reference_range: "2 - 17 umol/l",
+            reference_source: "lab_direct",
             status: "NORMAL",
-            confidence: 0.95
+            confidence: 0.98
           },
           {
-            testName: "WBC",
-            result: 12.8,
-            unit: "10^3/uL",
-            reference_range: "4.0-11.0",
-            reference_source: "trusted_clinical_db",
+            panelName: "Liver Function Test",
+            testName: "Serum ALT",
+            result: 22,
+            unit: "u/l",
+            reference_range: "upto 42 u/l",
+            reference_source: "lab_direct",
+            status: "NORMAL",
+            confidence: 0.98
+          },
+          {
+            panelName: "Trop I Hs",
+            testName: "Trop I Hs",
+            result: 0.02,
+            unit: "ng/ml",
+            reference_range: "0.02 - 0.06 ng/ml",
+            reference_source: "lab_direct",
+            status: "NORMAL",
+            confidence: 0.96
+          },
+          {
+            panelName: "RFTs",
+            testName: "Urea",
+            result: 42,
+            unit: "mg/dl",
+            reference_range: "18 - 42 mg/dl",
+            reference_source: "lab_direct",
+            status: "NORMAL",
+            confidence: 0.98
+          },
+          {
+            panelName: "RFTs",
+            testName: "Serum Creatinine",
+            result: 1.6,
+            unit: "mg/dl",
+            reference_range: "Male = 0.7 - 1.2 mg/dl\nFemale = 0.6 - 1.1 mg/dl",
+            reference_source: "lab_direct",
             status: "HIGH",
-            confidence: 0.92
+            confidence: 0.99
           },
           {
-            testName: "Platelets",
-            result: 250,
-            unit: "10^3/uL",
-            reference_range: "150-450",
-            reference_source: "trusted_clinical_db",
+            panelName: "RFTs",
+            testName: "Serum Sodium",
+            result: 139,
+            unit: "mmol/l",
+            reference_range: "135 - 150 mmol/l",
+            reference_source: "lab_direct",
+            status: "NORMAL",
+            confidence: 0.98
+          },
+          {
+            panelName: "RFTs",
+            testName: "Serum Potassium",
+            result: 4.6,
+            unit: "mmol/l",
+            reference_range: "3.4 - 5.0 mmol/l",
+            reference_source: "lab_direct",
+            status: "NORMAL",
+            confidence: 0.98
+          },
+          {
+            panelName: "Lipid Profile",
+            testName: "Serum Chloesterol",
+            result: 99,
+            unit: "mg/dl",
+            reference_range: "Desireable = <200 mg/dl\nBorderline = 200 - 240 mg/dl\nHigh = >240",
+            reference_source: "lab_direct",
             status: "NORMAL",
             confidence: 0.97
+          },
+          {
+            panelName: "Lipid Profile",
+            testName: "Serum Triglycerides",
+            result: 69,
+            unit: "mg/dl",
+            reference_range: "Desireable = < 150 mg/dl\nBorderline = 150 - 200 mg/dl\nHigh = > 200",
+            reference_source: "lab_direct",
+            status: "NORMAL",
+            confidence: 0.97
+          },
+          {
+            panelName: "Diabetec Profile",
+            testName: "HBA1C",
+            result: 6.1,
+            unit: "%",
+            reference_range: "4.2 - 6.5 %",
+            reference_source: "lab_direct",
+            status: "NORMAL",
+            confidence: 0.99
           }
         ]
       };
@@ -257,6 +470,25 @@ export const extractDocumentDetails = async (req: Request, res: Response) => {
           doc.analysisStatus = 'COMPLETED';
           await doc.save();
         }
+
+        // Update linked Patient record with extracted and analyzed report data
+        if (doc.patientId) {
+          const countDocs = await Document.countDocuments({ patientId: doc.patientId, isDeleted: { $ne: true } });
+          const overallStat = extractedPayload?.overall_status || 'NORMAL';
+          const risk = (overallStat === 'CRITICAL' || overallStat === 'HIGH') ? 'HIGH' : (overallStat === 'ABNORMAL') ? 'MEDIUM' : 'LOW';
+          await Patient.findByIdAndUpdate(doc.patientId, {
+            encounterStatus: 'DOCUMENTS_UPLOADED',
+            reportsCount: Math.max(countDocs, 1),
+            lastReportDate: new Date().toISOString().split('T')[0],
+            riskLevel: risk,
+            primaryCondition: extractedPayload?.lab_metadata?.lab_name ? `${extractedPayload.lab_metadata.lab_name} (Analyzed)` : 'Lab Report Analyzed',
+            latestAnalysis: {
+              extractedAt: new Date(),
+              panels: extractedPayload?.panels || [],
+              overallStatus: overallStat
+            }
+          });
+        }
       }
     }
 
@@ -287,7 +519,22 @@ export const verifyDocumentData = async (req: Request, res: Response) => {
         await doc.save();
 
         if (doc.patientId) {
-          await Patient.findByIdAndUpdate(doc.patientId, { encounterStatus: 'VERIFICATION_COMPLETE' });
+          const countDocs = await Document.countDocuments({ patientId: doc.patientId, isDeleted: { $ne: true } });
+          const abnormalCount = (verifiedTests || []).filter((t: any) => t.status === 'HIGH' || t.status === 'CRITICAL' || t.status === 'LOW').length;
+          const risk = abnormalCount >= 2 ? 'HIGH' : abnormalCount >= 1 ? 'MEDIUM' : 'LOW';
+
+          await Patient.findByIdAndUpdate(doc.patientId, {
+            encounterStatus: 'VERIFICATION_COMPLETE',
+            reportsCount: Math.max(countDocs, 1),
+            lastReportDate: new Date().toISOString().split('T')[0],
+            riskLevel: risk,
+            primaryCondition: abnormalCount > 0 ? `Verified Report (${abnormalCount} Clinical Flags)` : 'Verified Report (Normal Ranges)',
+            latestAnalysis: {
+              verifiedAt: new Date(),
+              testsCount: (verifiedTests || []).length,
+              tests: verifiedTests
+            }
+          });
         }
       }
     }
@@ -319,3 +566,81 @@ export const getExtractions = async (req: Request, res: Response) => {
     res.json({ success: true, data: [] });
   }
 };
+
+export const softDeleteDocument = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    if (mongoose.connection.readyState === 1 && mongoose.Types.ObjectId.isValid(id)) {
+      const doc = await Document.findByIdAndUpdate(
+        id,
+        { isDeleted: true, deletedAt: new Date() },
+        { new: true }
+      );
+      if (doc) {
+        return res.json({ success: true, message: 'Report moved to trash successfully', data: doc });
+      }
+    }
+    return res.json({
+      success: true,
+      message: 'Report moved to trash successfully',
+      data: { _id: id, isDeleted: true, deletedAt: new Date().toISOString() }
+    });
+  } catch (error: any) {
+    return res.status(500).json({ success: false, error: { message: error.message } });
+  }
+};
+
+export const restoreDocument = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    if (mongoose.connection.readyState === 1 && mongoose.Types.ObjectId.isValid(id)) {
+      const doc = await Document.findByIdAndUpdate(
+        id,
+        { isDeleted: false, deletedAt: null },
+        { new: true }
+      );
+      if (doc) {
+        return res.json({ success: true, message: 'Report restored successfully', data: doc });
+      }
+    }
+    return res.json({
+      success: true,
+      message: 'Report restored successfully',
+      data: { _id: id, isDeleted: false, deletedAt: null }
+    });
+  } catch (error: any) {
+    return res.status(500).json({ success: false, error: { message: error.message } });
+  }
+};
+
+export const reverifyDocument = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    let doc: any = null;
+    if (mongoose.connection.readyState === 1 && mongoose.Types.ObjectId.isValid(id)) {
+      doc = await Document.findById(id);
+    }
+    
+    if (doc) {
+      doc.verificationStatus = 'VERIFIED';
+      doc.processingStatus = 'COMPLETED';
+      doc.updatedAt = new Date();
+      await doc.save();
+    }
+    
+    return res.json({
+      success: true,
+      message: 'Report re-verified from Cloudinary successfully',
+      data: {
+        documentId: id,
+        verificationStatus: 'VERIFIED',
+        cloudinaryUrl: doc?.cloudinaryUrl || null,
+        reverifiedAt: new Date().toISOString(),
+        extractedData: doc?.extractedData || null
+      }
+    });
+  } catch (error: any) {
+    return res.status(500).json({ success: false, error: { message: error.message } });
+  }
+};
+

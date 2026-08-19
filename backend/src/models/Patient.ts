@@ -12,6 +12,11 @@ export interface IPatient extends MongooseDocument {
   emergencyContact?: string;
   address?: string;
   encounterStatus: 'REGISTERED' | 'DOCUMENTS_UPLOADED' | 'VERIFICATION_COMPLETE';
+  reportsCount?: number;
+  lastReportDate?: string;
+  riskLevel?: 'LOW' | 'MEDIUM' | 'HIGH';
+  primaryCondition?: string;
+  latestAnalysis?: any;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -32,7 +37,12 @@ const PatientSchema: Schema = new Schema(
       type: String, 
       enum: ['REGISTERED', 'DOCUMENTS_UPLOADED', 'VERIFICATION_COMPLETE'], 
       default: 'REGISTERED' 
-    }
+    },
+    reportsCount: { type: Number, default: 0 },
+    lastReportDate: { type: String },
+    riskLevel: { type: String, enum: ['LOW', 'MEDIUM', 'HIGH'], default: 'LOW' },
+    primaryCondition: { type: String },
+    latestAnalysis: { type: Schema.Types.Mixed }
   },
   { timestamps: true }
 );

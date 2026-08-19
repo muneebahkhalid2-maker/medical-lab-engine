@@ -66,6 +66,7 @@ const AI_SERVICE_URL = process.env.AI_SERVICE_URL || 'http://127.0.0.1:8000';
 // API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/documents', documentRoutes);
+app.use('/api/reports', documentRoutes);
 app.use('/api/extractions', extractionRoutes);
 app.use('/api/analysis', analysisRoutes);
 app.use('/api/patients', patientRoutes);

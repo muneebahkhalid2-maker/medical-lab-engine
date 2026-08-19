@@ -27,6 +27,9 @@ export interface IDoc extends MongooseDocument {
   uploadedBy: mongoose.Types.ObjectId;
   assignedTo?: mongoose.Types.ObjectId;
   
+  isDeleted?: boolean;
+  deletedAt?: Date;
+
   errorMessage?: string;
   createdAt: Date;
   updatedAt: Date;
@@ -59,6 +62,9 @@ const DocumentSchema: Schema = new Schema(
     uploadedBy: { type: Schema.Types.ObjectId, ref: 'User', required: true },
     assignedTo: { type: Schema.Types.ObjectId, ref: 'User' },
     
+    isDeleted: { type: Boolean, default: false },
+    deletedAt: { type: Date, default: null },
+
     errorMessage: { type: String }
   },
   { timestamps: true }

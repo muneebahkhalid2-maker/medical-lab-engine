@@ -6,7 +6,10 @@ import {
   extractDocumentDetails,
   verifyDocumentData,
   processDocument,
-  getExtractions
+  getExtractions,
+  softDeleteDocument,
+  restoreDocument,
+  reverifyDocument
 } from '../controllers/documents';
 import { uploadMiddleware } from '../middlewares/upload';
 import { requireAuth } from '../middlewares/auth';
@@ -31,5 +34,9 @@ router.post('/:id/extract', extractDocumentDetails);
 router.post('/:id/verify', verifyDocumentData);
 router.post('/:id/process', processDocument);
 router.get('/:id/extractions', getExtractions);
+router.delete('/:id', softDeleteDocument);
+router.patch('/:id/restore', restoreDocument);
+router.post('/:id/reverify', reverifyDocument);
 
 export default router;
+
