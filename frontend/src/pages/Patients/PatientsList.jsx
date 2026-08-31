@@ -23,6 +23,51 @@ import axios from 'axios';
 
 const MOCK_PATIENTS = [
   {
+    _id: '60c72b2f9b1d8b0015b6d914',
+    patientId: 'P-1004',
+    name: 'Areeba Shahid',
+    age: 24,
+    gender: 'Female',
+    sex: 'Female',
+    phone: '+92 (300) 9988776',
+    contactPhone: '+92 (300) 9988776',
+    email: 'areeba.shahid@example.com',
+    contactEmail: 'areeba.shahid@example.com',
+    address: 'Rawalpindi Cantonment, Pakistan',
+    lastReportDate: '31-Aug-2026',
+    reportsCount: 1,
+    riskLevel: 'MEDIUM',
+    primaryCondition: 'Lymphocytosis & Microcytic Anemia (AFIP / CMH Report)',
+    encounterStatus: 'VERIFICATION_COMPLETE',
+    extractedRecords: [
+      { panel: 'Chemical Pathology - LFT', test: 'Total Bilirubin', result: '14', unit: 'umol/L', range: 'Upto 20.5 umol/L', status: 'NORMAL' },
+      { panel: 'Chemical Pathology - LFT', test: 'ALT / SGPT', result: '31', unit: 'U/L', range: 'Adults upto 42 U/L', status: 'NORMAL' },
+      { panel: 'Chemical Pathology - LFT', test: 'Alkaline Phosphatase (ALP)', result: '221.2', unit: 'U/L', range: '110 - 310 U/L', status: 'NORMAL' },
+      { panel: 'Chemical Pathology - RFT', test: 'Blood Urea', result: '3.9', unit: 'mmol/L', range: '2.5 - 7.1 mmol/L', status: 'NORMAL' },
+      { panel: 'Chemical Pathology - RFT', test: 'Serum Creatinine', result: '29', unit: 'umol/L', range: '26 - 60 umol/L', status: 'NORMAL' },
+      { panel: 'Chemical Pathology - RFT', test: 'Serum Sodium (Na+)', result: '139', unit: 'mmol/L', range: '135 - 148 mmol/L', status: 'NORMAL' },
+      { panel: 'Chemical Pathology - RFT', test: 'Serum Potassium (K+)', result: '4.6', unit: 'mmol/L', range: '3.5 - 5.1 mmol/L', status: 'NORMAL' },
+      { panel: 'Clinical Pathology - Urine RE', test: 'Urine Colour', result: 'Pale Yellow', unit: 'N/A', range: 'Pale Yellow', status: 'NORMAL' },
+      { panel: 'Clinical Pathology - Urine RE', test: 'Specific Gravity', result: '1.015', unit: 'N/A', range: '1.005 - 1.030', status: 'NORMAL' },
+      { panel: 'Clinical Pathology - Urine RE', test: 'Reaction (pH)', result: 'Acidic', unit: 'N/A', range: 'Acidic', status: 'NORMAL' },
+      { panel: 'Clinical Pathology - Urine RE', test: 'Protein / Albumin', result: 'Nil', unit: 'N/A', range: 'Nil', status: 'NORMAL' },
+      { panel: 'Clinical Pathology - Urine RE', test: 'Glucose / Sugar', result: 'Nil', unit: 'N/A', range: 'Nil', status: 'NORMAL' },
+      { panel: 'Clinical Pathology - Urine RE', test: 'Pus Cells / WBC', result: '0 - 2', unit: '/HPF', range: '0 - 5 /HPF', status: 'NORMAL' },
+      { panel: 'Clinical Pathology - Urine RE', test: 'Red Blood Cells (RBCs)', result: 'Nil', unit: '/HPF', range: '0 - 2 /HPF', status: 'NORMAL' },
+      { panel: 'Clinical Pathology - Urine RE', test: 'Epithelial Cells', result: 'Few', unit: '/HPF', range: 'Few /HPF', status: 'NORMAL' },
+      { panel: 'Hematology - CBC', test: 'Hemoglobin (Hb)', result: '12.4', unit: 'g/dL', range: '12.0 - 14.0 g/dL', status: 'NORMAL' },
+      { panel: 'Hematology - CBC', test: 'Total Leukocyte Count (TLC)', result: '6.9', unit: 'x10^9/L', range: '4.0 - 11.0 x10^9/L', status: 'NORMAL' },
+      { panel: 'Hematology - CBC', test: 'Neutrophils', result: '40', unit: '%', range: '40 - 75 %', status: 'NORMAL' },
+      { panel: 'Hematology - CBC', test: 'Lymphocytes', result: '52', unit: '%', range: '20 - 45 %', status: 'HIGH' },
+      { panel: 'Hematology - CBC', test: 'Eosinophils', result: '05', unit: '%', range: '2 - 10 %', status: 'NORMAL' },
+      { panel: 'Hematology - CBC', test: 'Monocytes', result: '03', unit: '%', range: '1 - 6 %', status: 'NORMAL' },
+      { panel: 'Hematology - CBC', test: 'Basophils', result: '00', unit: '%', range: '0 - 1 %', status: 'NORMAL' },
+      { panel: 'Hematology - CBC', test: 'Platelet Count', result: '294', unit: 'x10^9/L', range: '150 - 450 x10^9/L', status: 'NORMAL' },
+      { panel: 'Hematology - CBC', test: 'Mean Corpuscular Volume (MCV)', result: '65.8', unit: 'fL', range: '76.0 - 96.0 fL', status: 'LOW' },
+      { panel: 'Hematology - CBC', test: 'Hematocrit (PCV)', result: '35.1', unit: '%', range: '36.0 - 46.0 %', status: 'LOW' }
+    ]
+  },
+  {
     _id: '60c72b2f9b1d8b0015b6d913',
     patientId: '145104',
     name: 'M Afzal',
@@ -120,6 +165,8 @@ const MOCK_PATIENTS = [
   }
 ];
 
+import { getAllPatients, registerNewPatient, onPatientsUpdated } from '../../services/patientService';
+
 export default function PatientsList() {
   const [patients, setPatients] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -144,28 +191,22 @@ export default function PatientsList() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchPatients();
+    loadPatients();
+    const unsubscribe = onPatientsUpdated((updatedList) => {
+      if (Array.isArray(updatedList) && updatedList.length > 0) {
+        setPatients(updatedList);
+      }
+    });
+    return () => unsubscribe();
   }, []);
 
-  const fetchPatients = async () => {
+  const loadPatients = async () => {
     try {
       setLoading(true);
-      const res = await axios.get('/api/patients');
-      if (res.data && res.data.success && Array.isArray(res.data.data) && res.data.data.length > 0) {
-        const dbPatients = res.data.data;
-        const merged = [...dbPatients];
-        // Ensure M Afzal and mock directory records are present if not in DB
-        MOCK_PATIENTS.forEach(mockP => {
-          if (!merged.some(p => (p.patientId === mockP.patientId || p.name?.toLowerCase() === mockP.name?.toLowerCase()))) {
-            merged.push(mockP);
-          }
-        });
-        setPatients(merged);
-      } else {
-        setPatients(MOCK_PATIENTS);
-      }
-    } catch {
-      setPatients(MOCK_PATIENTS);
+      const data = await getAllPatients();
+      setPatients(data);
+    } catch (err) {
+      console.warn('Failed to load patients:', err);
     } finally {
       setLoading(false);
     }
@@ -179,50 +220,17 @@ export default function PatientsList() {
     setModalSuccess('');
 
     try {
-      const res = await axios.post('/api/patients', {
-        name: newPatient.name,
-        age: Number(newPatient.age) || 30,
-        sex: newPatient.sex,
-        phone: newPatient.phone,
-        email: newPatient.email,
-        address: newPatient.address
-      });
-
-      if (res.data && res.data.success) {
-        const created = res.data.data;
-        setPatients(prev => [created, ...prev]);
-        setModalSuccess('Patient profile created successfully in database!');
-        setTimeout(() => {
-          setShowAddModal(false);
-          setModalSuccess('');
-          setNewPatient({ name: '', age: '', sex: 'Female', phone: '', email: '', address: '' });
-        }, 1200);
-      }
-    } catch (err) {
-      console.warn('Backend save notice, creating local record:', err);
-      const localCreated = {
-        _id: 'p-' + Date.now(),
-        patientId: `P-${Math.floor(1000 + Math.random() * 9000)}`,
-        name: newPatient.name,
-        age: Number(newPatient.age) || 30,
-        sex: newPatient.sex,
-        gender: newPatient.sex,
-        phone: newPatient.phone,
-        email: newPatient.email,
-        address: newPatient.address,
-        lastReportDate: 'Today',
-        reportsCount: 0,
-        riskLevel: 'LOW',
-        primaryCondition: 'New Registration',
-        encounterStatus: 'REGISTERED'
-      };
-      setPatients(prev => [localCreated, ...prev]);
-      setModalSuccess('Patient profile created successfully!');
+      const created = await registerNewPatient(newPatient);
+      setPatients(prev => [created, ...prev.filter(p => p.patientId !== created.patientId)]);
+      setModalSuccess('Patient profile created & saved successfully across system!');
       setTimeout(() => {
         setShowAddModal(false);
         setModalSuccess('');
         setNewPatient({ name: '', age: '', sex: 'Female', phone: '', email: '', address: '' });
-      }, 1200);
+      }, 1000);
+    } catch (err) {
+      console.error('Error creating patient:', err);
+      setModalError('Failed to save patient profile. Please try again.');
     } finally {
       setSubmitting(false);
     }
