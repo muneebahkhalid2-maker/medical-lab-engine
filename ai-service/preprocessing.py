@@ -1,16 +1,19 @@
 import os
 import shutil
+import importlib
 
+cv2 = None
+np = None
 try:
-    import cv2
-    import numpy as np
-except Exception as e:
+    cv2 = importlib.import_module("cv2")
+    np = importlib.import_module("numpy")
+except Exception:
     cv2 = None
     np = None
 
 try:
     from PIL import Image, ImageEnhance, ImageFilter
-except Exception as e:
+except Exception:
     Image = None
     ImageEnhance = None
     ImageFilter = None

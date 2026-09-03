@@ -1,11 +1,13 @@
 import json
 import os
 import re
+import importlib
 from typing import Dict, Any, List, Optional
 
+genai = None
 try:
-    import google.generativeai as genai
-except Exception as e:
+    genai = importlib.import_module("google.generativeai")
+except Exception:
     genai = None
 
 
@@ -322,6 +324,8 @@ class ExtractionEngine:
             with open(output_file, 'w', encoding='utf-8') as f:
                 json.dump(extracted_json, f, indent=2)
             return output_file
+
+        full_text = "\n".join([item.get('text', '').strip() for item in raw_ocr if item.get('text', '').strip()])
 
         prompt = f"""You are a specialized Medical OCR Engine. Extract EVERY single test parameter listed from top to bottom without truncation. 
 - Parse all sections (CBC, LFT, RFT, Urine Routine, DLC, etc.).
