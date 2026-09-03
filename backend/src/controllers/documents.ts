@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import mongoose from 'mongoose';
+import fs from 'fs';
 import Document from '../models/Document';
 import Patient from '../models/Patient';
 import Extraction from '../models/Extraction';
@@ -133,9 +134,20 @@ export const extractDocumentDetails = async (req: Request, res: Response) => {
       doc = await Document.findById(id);
     }
 
-    const filePath = doc ? doc.storagePath : path.join(__dirname, '../../uploads', id);
+    let filePath = '';
+    if (doc) {
+      if (doc.storagePath && fs.existsSync(doc.storagePath)) {
+        filePath = doc.storagePath;
+      } else if (doc.cloudinaryUrl) {
+        filePath = doc.cloudinaryUrl;
+      } else {
+        filePath = path.join(__dirname, '../../uploads', id);
+      }
+    } else {
+      filePath = path.join(__dirname, '../../uploads', id);
+    }
 
-    console.log(`[AI Extraction] Triggering AI Service extraction for doc: ${id} at ${AI_SERVICE_URL}`);
+    console.log(`[AI Extraction] Triggering AI Service extraction for doc: ${id} (file: ${filePath}) at ${AI_SERVICE_URL}`);
 
     // Call Python FastAPI AI Service
     let extractedPayload: any = null;

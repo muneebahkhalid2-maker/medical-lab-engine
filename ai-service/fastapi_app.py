@@ -26,6 +26,32 @@ def extract_document(request: ExtractRequest):
     file_path = request.file_path
     doc_id = request.doc_id
 
+    # If file_path is a remote URL (e.g. Cloudinary), download it first
+    if file_path.startswith("http://") or file_path.startswith("https://"):
+        try:
+            import requests
+            os.makedirs("downloads", exist_ok=True)
+            ext = ".jpg"
+            if ".pdf" in file_path.lower():
+                ext = ".pdf"
+            elif ".docx" in file_path.lower():
+                ext = ".docx"
+            elif ".png" in file_path.lower():
+                ext = ".png"
+            elif ".jpeg" in file_path.lower():
+                ext = ".jpeg"
+            downloaded_path = os.path.join("downloads", f"{doc_id}{ext}")
+            resp = requests.get(file_path, timeout=45)
+            if resp.status_code == 200:
+                with open(downloaded_path, "wb") as f:
+                    f.write(resp.content)
+                file_path = downloaded_path
+            else:
+                raise HTTPException(status_code=400, detail=f"Failed to download remote file from Cloudinary: HTTP {resp.status_code}")
+        except Exception as dl_err:
+            print(f"[AI Service] Remote download notice: {dl_err}")
+            raise HTTPException(status_code=400, detail=f"Error downloading remote file: {dl_err}")
+
     if not os.path.exists(file_path):
         raise HTTPException(status_code=404, detail=f"File not found: {file_path}")
 
