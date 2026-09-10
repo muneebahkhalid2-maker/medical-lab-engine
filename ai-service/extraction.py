@@ -161,26 +161,26 @@ class ExtractionEngine:
         # 2. Exhaustive Test Parameters Extraction
         tests = []
         known_test_keywords = [
-            'bilirubin', 'alt', 'sgpt', 'ast', 'sgot', 'alp', 'alkaline phosphatase',
-            'urea', 'creatinine', 'uric acid', 'sodium', 'potassium', 'chloride', 'calcium',
-            'cholesterol', 'triglycerides', 'hdl', 'ldl', 'vldl', 'lipid profile',
-            'hba1c', 'glucose', 'fasting blood sugar', 'random blood sugar',
-            'trop i', 'troponin', 'ck-mb', 'cpk',
-            'hemoglobin', 'hb', 'tlc', 'total leukocyte count', 'wbc', 'rbc', 'hematocrit', 'pcv',
-            'mcv', 'mch', 'mchc', 'rdw', 'platelet', 'neutrophils', 'lymphocytes',
-            'monocytes', 'eosinophils', 'basophils', 'esr',
-            'colour', 'sp gravity', 'specific gravity', 'reaction', 'ph', 'protein', 'albumin',
-            'sugar', 'pus cells', 'rbcs', 'epithelial cells', 'casts', 'crystals', 'others',
-            'blood group', 'rh factor', 'hcg', 'gravindex', 'tsh', 'ft4', 'ft3'
+            r'bilirubin', r'alt', r'sgpt', r'ast', r'sgot', r'alp', r'alkaline\s*phosphatase',
+            r'urea', r'creatinine', r'uric\s*acid', r'sodium', r'potassium', r'chloride', r'calcium',
+            r'cholesterol', r'triglycerides?', r'hdl', r'ldl', r'vldl', r'lipid\s*profile',
+            r'hba1c', r'glucose', r'fasting\s*blood\s*sugar', r'random\s*blood\s*sugar',
+            r'trop\s*i', r'troponin', r'ck-mb', r'cpk',
+            r'hemoglobin', r'hb', r'tlc', r'total\s*leukocyte\s*count', r'wbcs?', r'rbcs?', r'hematocrit', r'pcv',
+            r'mcv', r'mch', r'mchc', r'rdw', r'platelets?', r'neutrophils?', r'lymphocytes?',
+            r'monocytes?', r'eosinophils?', r'basophils?', r'esr',
+            r'colour', r'sp\s*gravity', r'specific\s*gravity', r'reaction', r'ph', r'protein', r'albumin',
+            r'sugar', r'pus\s*cells?', r'epithelial\s*cells?', r'casts?', r'crystals?', r'others?',
+            r'blood\s*group', r'rh\s*factor', r'hcg', r'gravindex', r'tsh', r'ft4', r'ft3'
         ]
 
         unit_patterns = [
-            r'(umol\/l|u\/l|ng\/ml|mg\/dl|mmol\/l|%|fl|pg|g\/dl|x\s*10\^?[0-9]+\/l|\/hpf|g\/l|miu\/ml|uu\/ml)',
+            r'(umol\/l|u\/l|ng\/ml|mg\/dl|mmol\/l|%|fl|pg|g\/dl|10\^?[0-9]+\/ul|x\s*10\^?[0-9]+\/l|\/hpf|g\/l|miu\/ml|uu\/ml)',
         ]
 
         # Scan all lines for clinical items
         for i, line in enumerate(lines):
-            is_test_line = any(re.search(rf'\b{re.escape(kw)}\b', line, re.IGNORECASE) for kw in known_test_keywords)
+            is_test_line = any(re.search(rf'\b{kw}\b', line, re.IGNORECASE) for kw in known_test_keywords)
             if not is_test_line:
                 continue
 
@@ -292,48 +292,85 @@ class ExtractionEngine:
             "extracted_tests": tests
         }
 
-    def extract_medical_data(self, raw_ocr_path: str, doc_id: str) -> str:
+    def _call_gemini_rest(self, prompt: str, image_path: Optional[str] = None) -> Optional[Dict[str, Any]]:
+        api_key = os.environ.get("GEMINI_API_KEY", "").strip()
+        if not api_key or api_key == "dummy_key":
+            return None
+
+        import requests
+        import base64
+
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={api_key}"
+        headers = {"Content-Type": "application/json"}
+        parts = []
+
+        if image_path and os.path.exists(image_path):
+            try:
+                with open(image_path, "rb") as img_f:
+                    b64 = base64.b64encode(img_f.read()).decode("utf-8")
+                mime = "image/png" if image_path.endswith(".png") else "image/jpeg"
+                parts.append({
+                    "inline_data": {
+                        "mime_type": mime,
+                        "data": b64
+                    }
+                })
+                print(f"[ExtractionEngine] Attached preprocessed multimodal image: {image_path}")
+            except Exception as e:
+                print(f"[ExtractionEngine] Image encoding notice: {e}")
+
+        parts.append({"text": prompt})
+
+        payload = {
+            "contents": [{"parts": parts}],
+            "generationConfig": {
+                "temperature": 0.0,
+                "maxOutputTokens": 8192,
+                "responseMimeType": "application/json"
+            }
+        }
+
+        try:
+            print("[ExtractionEngine] Calling Gemini 1.5 Flash REST API (temperature=0.0, max_output_tokens=8192)...")
+            resp = requests.post(url, json=payload, headers=headers, timeout=60)
+            if resp.status_code == 200:
+                data = resp.json()
+                candidates = data.get("candidates", [])
+                if candidates:
+                    text = candidates[0].get("content", {}).get("parts", [{}])[0].get("text", "")
+                    return self._clean_and_parse_json(text)
+            else:
+                print(f"[ExtractionEngine] Gemini REST API notice (HTTP {resp.status_code}): {resp.text[:200]}")
+        except Exception as err:
+            print(f"[ExtractionEngine] Gemini REST API call notice: {err}")
+
+        return None
+
+    def extract_medical_data(self, raw_ocr_path: str, doc_id: str, image_path: Optional[str] = None) -> str:
         """
         Exhaustively parses OCR text into comprehensive structured JSON.
         Uses Gemini Vision/Text LLM with temperature=0.0 and max_output_tokens=8192.
         Never truncates or slices the extracted array.
         """
-        with open(raw_ocr_path, 'r', encoding='utf-8') as f:
-            raw_ocr = json.load(f)
-
-        if not raw_ocr:
-            print(f"[ExtractionEngine] Warning: raw_ocr is empty for {doc_id}")
-            extracted_json = {
-                "document_id": doc_id,
-                "document_type": "laboratory_report",
-                "patient_info": {
-                    "patient_name": "Not Available",
-                    "age": "Not Available",
-                    "gender": "Not Available",
-                    "lab_name": "Not Available",
-                    "lab_id": "Not Available",
-                    "report_date": "Not Available"
-                },
-                "patient": {"name": None, "age": None, "sex": None},
-                "report": {"date": None, "laboratory": None},
-                "overall_status": "Not Available",
-                "tests": [],
-                "extracted_tests": []
-            }
-            output_file = os.path.join(self.output_dir, f"{doc_id}.json")
-            with open(output_file, 'w', encoding='utf-8') as f:
-                json.dump(extracted_json, f, indent=2)
-            return output_file
+        raw_ocr = []
+        if os.path.exists(raw_ocr_path):
+            try:
+                with open(raw_ocr_path, 'r', encoding='utf-8') as f:
+                    raw_ocr = json.load(f)
+            except Exception:
+                raw_ocr = []
 
         full_text = "\n".join([item.get('text', '').strip() for item in raw_ocr if item.get('text', '').strip()])
 
-        prompt = f"""You are a specialized Medical OCR Engine. Extract EVERY single test parameter listed from top to bottom without truncation. 
-- Parse all sections (CBC, LFT, RFT, Urine Routine, DLC, etc.).
-- Do NOT truncate output or stop early. Parse all tests until the end of the document.
-- Never invent reference ranges. If a result or range is missing/faint, set its field to 'Not Available'.
-- Output strictly in valid JSON format with keys: `patient_info`, `overall_status`, and `extracted_tests` array.
+        prompt = f"""You are a High-Precision Medical Document Parser. You are analyzing an auto-enhanced laboratory report.
 
-JSON Output Schema:
+STRICT INSTRUCTIONS:
+1. Parse every single row from top to bottom (CBC, LFT, RFT, Urine Routine, Thyroid, Lipid Profile, etc.).
+2. Pay extreme attention to numbers, decimal points, and small-font characters (e.g., 0.6 vs 1.8, mg/dL vs mmol/L).
+3. Extract 100% of visible parameters. Do not truncate output or limit extraction to 10 tests.
+4. If a specific character remains unreadable after enhancement, set that specific field to 'Not Available' instead of dropping the test row.
+
+Output strictly in valid JSON format adhering to the following schema:
 {{
   "patient_info": {{
     "patient_name": "Extracted Name or Not Available",
@@ -346,7 +383,7 @@ JSON Output Schema:
   "overall_status": "ABNORMAL | NORMAL | Not Available",
   "extracted_tests": [
     {{
-      "category": "Panel/Category Name (e.g. Liver Function Test, CBC, Urine Routine) or General",
+      "category": "Panel/Category Name (e.g. Complete Blood Count, Liver Function Test, Renal Function Test, Urine Routine, Thyroid) or General",
       "test_name": "Exact Test Name printed on report",
       "result_value": "Numerical/Text Result or Not Available",
       "unit": "Measurement Unit or Not Available",
@@ -357,19 +394,20 @@ JSON Output Schema:
 }}
 
 DOCUMENT OCR TEXT:
-{full_text}
+{full_text if full_text else "Extract directly from attached multimodal report image."}
 """
 
         extracted_json = None
-        has_valid_api_key = (
-            self.model is not None and 
-            os.environ.get("GEMINI_API_KEY") and 
-            os.environ.get("GEMINI_API_KEY") != "dummy_key"
-        )
+        has_valid_api_key = bool(os.environ.get("GEMINI_API_KEY") and os.environ.get("GEMINI_API_KEY") != "dummy_key")
 
+        # 1. Try Direct REST Gemini API (with optional Vision Image attachment)
         if has_valid_api_key:
+            extracted_json = self._call_gemini_rest(prompt, image_path=image_path)
+
+        # 2. Try SDK Gemini Model if available
+        if not extracted_json and self.model is not None and has_valid_api_key:
             try:
-                print("[ExtractionEngine] Calling Gemini Vision/Text LLM with max_output_tokens=8192, temperature=0.0...")
+                print("[ExtractionEngine] Calling Gemini SDK Model...")
                 response = self.model.generate_content(
                     prompt,
                     generation_config=genai.types.GenerationConfig(
@@ -380,13 +418,33 @@ DOCUMENT OCR TEXT:
                 )
                 extracted_json = self._clean_and_parse_json(response.text)
             except Exception as llm_err:
-                print(f"[ExtractionEngine] LLM extraction error: {llm_err}")
+                print(f"[ExtractionEngine] LLM SDK extraction notice: {llm_err}")
                 extracted_json = None
 
-        # Fallback to exhaustive deterministic OCR table parser if LLM is unavailable or failed
+        # 3. Fallback to exhaustive deterministic OCR table parser if LLM is unavailable or failed
         if not extracted_json or not isinstance(extracted_json, dict):
-            print("[ExtractionEngine] Running exhaustive deterministic grounding parser...")
-            extracted_json = self.parse_text_lines_deterministically(raw_ocr, doc_id)
+            if raw_ocr:
+                print("[ExtractionEngine] Running exhaustive deterministic grounding parser...")
+                extracted_json = self.parse_text_lines_deterministically(raw_ocr, doc_id)
+            else:
+                print(f"[ExtractionEngine] Warning: raw_ocr is empty and no LLM response for {doc_id}")
+                extracted_json = {
+                    "document_id": doc_id,
+                    "document_type": "laboratory_report",
+                    "patient_info": {
+                        "patient_name": "Not Available",
+                        "age": "Not Available",
+                        "gender": "Not Available",
+                        "lab_name": "Not Available",
+                        "lab_id": "Not Available",
+                        "report_date": "Not Available"
+                    },
+                    "patient": {"name": None, "age": None, "sex": None},
+                    "report": {"date": None, "laboratory": None},
+                    "overall_status": "Not Available",
+                    "tests": [],
+                    "extracted_tests": []
+                }
 
         # Standardize and retain ALL tests in the extracted array (NO slicing/capping)
         raw_tests_list = (

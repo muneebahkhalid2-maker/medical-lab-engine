@@ -545,102 +545,30 @@ export default function PatientIntake() {
     setErrorMsg('');
     setCurrentStep(3);
 
+    // Clear stale extractions before new extraction starts
+    setExtractedData(null);
+    setEditableTests([]);
+    localStorage.removeItem(INTAKE_STORAGE_KEY);
+
     const isRealBackendDoc = doc && doc._id && /^[0-9a-fA-F]{24}$/.test(doc._id) && !doc._id.startsWith('doc-');
 
-    // Standard comprehensive 25-parameter clinical dataset for preview documents or fallbacks
-    const fallbackReportData = {
-      lab_metadata: {
-        lab_name: 'Armed Forces Institute of Pathology (AFIP) / Combined Military Hospital',
-        lab_id: 'LAB-2026-904',
-        patient_name: registeredPatient?.name || selectedExistingPatient?.name || 'Areeba Shahid',
-        age: registeredPatient?.age || selectedExistingPatient?.age || '24',
-        gender: registeredPatient?.sex || selectedExistingPatient?.sex || 'Female',
-        entry_date: new Date().toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' })
-      },
-      overall_status: 'ABNORMAL',
-      panels: [
-        {
-          panel_name: 'Chemical Pathology - Liver Function Tests (LFT)',
-          tests: [
-            { parameter: 'Serum Total Bilirubin', result: '14', unit: 'umol/L', reference_range: 'Upto 20.5 umol/L', status: 'NORMAL', reference_source: 'lab_direct' },
-            { parameter: 'Serum ALT (SGPT)', result: '31', unit: 'U/L', reference_range: 'Adults upto 42 U/L', status: 'NORMAL', reference_source: 'lab_direct' },
-            { parameter: 'Serum Alkaline Phosphatase (ALP)', result: '221.2', unit: 'U/L', reference_range: '110 - 310 U/L', status: 'NORMAL', reference_source: 'lab_direct' }
-          ]
-        },
-        {
-          panel_name: 'Chemical Pathology - Renal Function Tests (RFT)',
-          tests: [
-            { parameter: 'Blood Urea', result: '3.9', unit: 'mmol/L', reference_range: '2.5 - 7.1 mmol/L', status: 'NORMAL', reference_source: 'lab_direct' },
-            { parameter: 'Serum Creatinine', result: '29', unit: 'umol/L', reference_range: '26 - 60 umol/L', status: 'NORMAL', reference_source: 'lab_direct' },
-            { parameter: 'Serum Sodium (Na+)', result: '139', unit: 'mmol/L', reference_range: '135 - 148 mmol/L', status: 'NORMAL', reference_source: 'lab_direct' },
-            { parameter: 'Serum Potassium (K+)', result: '4.6', unit: 'mmol/L', reference_range: '3.5 - 5.1 mmol/L', status: 'NORMAL', reference_source: 'lab_direct' }
-          ]
-        },
-        {
-          panel_name: 'Clinical Pathology - Urine Examination (Routine)',
-          tests: [
-            { parameter: 'Urine Colour', result: 'Pale Yellow', unit: 'Not Available', reference_range: 'Pale Yellow', status: 'NORMAL', reference_source: 'lab_direct' },
-            { parameter: 'Specific Gravity', result: '1.015', unit: 'Not Available', reference_range: '1.005 - 1.030', status: 'NORMAL', reference_source: 'lab_direct' },
-            { parameter: 'Reaction (pH)', result: 'Acidic', unit: 'Not Available', reference_range: 'Acidic', status: 'NORMAL', reference_source: 'lab_direct' },
-            { parameter: 'Protein / Albumin', result: 'Nil', unit: 'Not Available', reference_range: 'Nil', status: 'NORMAL', reference_source: 'lab_direct' },
-            { parameter: 'Glucose / Sugar', result: 'Nil', unit: 'Not Available', reference_range: 'Nil', status: 'NORMAL', reference_source: 'lab_direct' },
-            { parameter: 'Pus Cells / WBC', result: '0 - 2', unit: '/HPF', reference_range: '0 - 5 /HPF', status: 'NORMAL', reference_source: 'lab_direct' },
-            { parameter: 'Red Blood Cells (RBCs)', result: 'Nil', unit: '/HPF', reference_range: '0 - 2 /HPF', status: 'NORMAL', reference_source: 'lab_direct' },
-            { parameter: 'Epithelial Cells', result: 'Few', unit: '/HPF', reference_range: 'Few /HPF', status: 'NORMAL', reference_source: 'lab_direct' }
-          ]
-        },
-        {
-          panel_name: 'Hematology - Complete Blood Count (CBC & DLC)',
-          tests: [
-            { parameter: 'Hemoglobin (Hb)', result: '12.4', unit: 'g/dL', reference_range: '12.0 - 14.0 g/dL', status: 'NORMAL', reference_source: 'lab_direct' },
-            { parameter: 'Total Leukocyte Count (TLC/WBC)', result: '6.9', unit: 'x10^9/L', reference_range: '4.0 - 11.0 x10^9/L', status: 'NORMAL', reference_source: 'lab_direct' },
-            { parameter: 'Neutrophils', result: '40', unit: '%', reference_range: '40 - 75 %', status: 'NORMAL', reference_source: 'lab_direct' },
-            { parameter: 'Lymphocytes', result: '52', unit: '%', reference_range: '20 - 45 %', status: 'HIGH', reference_source: 'lab_direct' },
-            { parameter: 'Eosinophils', result: '05', unit: '%', reference_range: '2 - 10 %', status: 'NORMAL', reference_source: 'lab_direct' },
-            { parameter: 'Monocytes', result: '03', unit: '%', reference_range: '1 - 6 %', status: 'NORMAL', reference_source: 'lab_direct' },
-            { parameter: 'Basophils', result: '00', unit: '%', reference_range: '0 - 1 %', status: 'NORMAL', reference_source: 'lab_direct' },
-            { parameter: 'Platelet Count', result: '294', unit: 'x10^9/L', reference_range: '150 - 450 x10^9/L', status: 'NORMAL', reference_source: 'lab_direct' },
-            { parameter: 'Mean Corpuscular Volume (MCV)', result: '65.8', unit: 'fL', reference_range: '76.0 - 96.0 fL', status: 'LOW', reference_source: 'lab_direct' },
-            { parameter: 'Hematocrit (PCV)', result: '35.1', unit: '%', reference_range: '36.0 - 46.0 %', status: 'LOW', reference_source: 'lab_direct' }
-          ]
-        }
-      ]
-    };
-
-    const applyFallback = () => {
-      setExtractedData(fallbackReportData);
-      const fallbackTests = [];
-      fallbackReportData.panels.forEach(p => {
-        p.tests.forEach(t => {
-          fallbackTests.push({
-            panelName: p.panel_name,
-            testName: t.parameter,
-            result: t.result,
-            unit: t.unit,
-            reference_range: t.reference_range,
-            reference_source: t.reference_source,
-            status: t.status
-          });
-        });
-      });
-      setEditableTests(fallbackTests);
-    };
-
-    if (!isRealBackendDoc) {
-      // Direct load clinical template without making failing 404 network request
-      setTimeout(() => {
-        applyFallback();
-        setExtracting(false);
-      }, 400);
-      return;
-    }
-
     try {
-      const res = await axios.post(`${API_BASE}/documents/${doc._id}/extract`);
+      let res;
+      if (isRealBackendDoc) {
+        res = await axios.post(`${API_BASE}/documents/${doc._id}/extract`);
+      } else {
+        // For temporary preview documents, attempt extraction if a storagePath or cloudinaryUrl exists
+        res = await axios.post(`${API_BASE}/documents/extract`, {
+          documentId: doc._id,
+          filePath: doc.storagePath || doc.cloudinaryUrl
+        });
+      }
+
       if (res.data && res.data.success) {
-        const payload = res.data.data.extractedData || res.data.data;
+        const payload = res.data.data?.extractedData || res.data.data || {};
         setExtractedData(payload);
         let allTests = [];
+
         if (payload.extracted_tests && Array.isArray(payload.extracted_tests) && payload.extracted_tests.length > 0) {
           allTests = payload.extracted_tests.map(t => ({
             panelName: t.category || t.panelName || 'General Panel',
@@ -651,7 +579,7 @@ export default function PatientIntake() {
             reference_source: t.reference_source || 'lab_direct',
             status: t.status || 'NORMAL'
           }));
-        } else if (payload.panels && Array.isArray(payload.panels)) {
+        } else if (payload.panels && Array.isArray(payload.panels) && payload.panels.length > 0) {
           payload.panels.forEach(p => {
             (p.tests || []).forEach(t => {
               allTests.push({
@@ -665,7 +593,7 @@ export default function PatientIntake() {
               });
             });
           });
-        } else if (payload.tests && Array.isArray(payload.tests)) {
+        } else if (payload.tests && Array.isArray(payload.tests) && payload.tests.length > 0) {
           allTests = payload.tests.map(t => ({
             panelName: t.category || t.panelName || 'General Panel',
             testName: t.test_name || t.testName || t.parameter || 'Unknown Test',
@@ -676,27 +604,24 @@ export default function PatientIntake() {
             status: t.status || 'NORMAL'
           }));
         }
-        let allFallbackTests = [];
-        fallbackReportData.panels.forEach(p => {
-          (p.tests || []).forEach(t => {
-            allFallbackTests.push({
-              panelName: p.panel_name || 'Clinical Panel',
-              testName: t.parameter || t.testName || t.test_name || 'Unknown Test',
-              result: t.result !== undefined ? t.result : 'Not Available',
-              unit: t.unit || 'Not Available',
-              reference_range: t.reference_range || 'Not Available',
-              reference_source: t.reference_source || 'lab_direct',
-              status: t.status || 'NORMAL'
-            });
-          });
-        });
-        setEditableTests(allTests.length > 0 ? allTests : allFallbackTests);
+
+        if (allTests.length > 0) {
+          setEditableTests(allTests);
+          setSuccessMsg(`Extracted ${allTests.length} clinical parameters directly from the document.`);
+        } else {
+          setEditableTests([]);
+          setErrorMsg('No readable clinical parameters were detected in this document. Please click "Run AI Extraction Now" or re-upload a clearer scan.');
+        }
       } else {
-        applyFallback();
+        setExtractedData(null);
+        setEditableTests([]);
+        setErrorMsg('Extraction service returned no parameters. Please check document quality and re-run extraction.');
       }
     } catch (err) {
-      console.warn('AI Extraction notice, loading verification template:', err);
-      applyFallback();
+      console.error('AI Extraction error:', err);
+      setExtractedData(null);
+      setEditableTests([]);
+      setErrorMsg(err.response?.data?.error?.message || err.message || 'AI Extraction failed. Please re-upload or click "Run AI Extraction Now".');
     } finally {
       setExtracting(false);
     }
@@ -1596,8 +1521,23 @@ export default function PatientIntake() {
             <form onSubmit={handleFileUpload} className="space-y-4">
               <FileUploader
                 selectedFile={selectedFile}
-                onFileSelect={(file) => setSelectedFile(file)}
-                onFileRemove={() => setSelectedFile(null)}
+                onFileSelect={(file) => {
+                  setSelectedFile(file);
+                  try {
+                    localStorage.removeItem(INTAKE_STORAGE_KEY);
+                  } catch (e) {}
+                  setExtractedData(null);
+                  setEditableTests([]);
+                  setActiveDocument(null);
+                }}
+                onFileRemove={() => {
+                  setSelectedFile(null);
+                  try {
+                    localStorage.removeItem(INTAKE_STORAGE_KEY);
+                  } catch (e) {}
+                  setExtractedData(null);
+                  setEditableTests([]);
+                }}
                 acceptedExtensions={['.pdf', '.png', '.jpg', '.jpeg', '.doc', '.docx']}
                 maxSizeMB={20}
                 disabled={uploading}

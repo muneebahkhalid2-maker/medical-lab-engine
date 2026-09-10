@@ -56,10 +56,11 @@ export const uploadDocument = async (req: Request, res: Response) => {
       }
     } else {
       // Memory fallback for mock database state
+      const generatedPatientId = patientId || `P-${Math.floor(1000 + Math.random() * 9000)}`;
       newDoc = {
         _id: new mongoose.Types.ObjectId().toString(),
         organizationId: DEFAULT_ORG_ID,
-        patientId: patientId || 'P-1001',
+        patientId: generatedPatientId,
         originalFileName: req.file.originalname,
         storedFileName: req.file.filename,
         mimeType: req.file.mimetype,
@@ -125,7 +126,7 @@ export const getDocument = async (req: Request, res: Response) => {
 };
 
 export const extractDocumentDetails = async (req: Request, res: Response) => {
-  const { id } = req.params;
+  const id = req.params.id || req.body.documentId || req.body.id || `doc-${Date.now()}`;
   const AI_SERVICE_URL = process.env.AI_SERVICE_URL || 'http://127.0.0.1:8000';
 
   try {
@@ -134,16 +135,16 @@ export const extractDocumentDetails = async (req: Request, res: Response) => {
       doc = await Document.findById(id);
     }
 
-    let filePath = '';
+    let filePath = req.body.filePath || req.body.filepath || '';
     if (doc) {
       if (doc.storagePath && fs.existsSync(doc.storagePath)) {
         filePath = doc.storagePath;
       } else if (doc.cloudinaryUrl) {
         filePath = doc.cloudinaryUrl;
-      } else {
+      } else if (!filePath) {
         filePath = path.join(__dirname, '../../uploads', id);
       }
-    } else {
+    } else if (!filePath) {
       filePath = path.join(__dirname, '../../uploads', id);
     }
 

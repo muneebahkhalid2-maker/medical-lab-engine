@@ -29,6 +29,7 @@ router.use(optionalAuth);
 router.post('/upload', uploadMiddleware.single('document'), uploadDocument);
 router.post('/', uploadMiddleware.single('document'), uploadDocument);
 router.get('/', getDocuments);
+router.post('/extract', extractDocumentDetails);
 router.get('/:id', getDocument);
 router.post('/:id/extract', extractDocumentDetails);
 router.post('/:id/verify', verifyDocumentData);

@@ -39,5 +39,15 @@ yarn-debug.log*
 yarn-error.log*
 # Uploads & Temp Test files
 backend/uploads/
+ai-service/preprocessed_test/
 ai-service/processed_test/
 ai-service/raw_ocr_test/
+ai-service/preprocessed_test/**
+ai-service/processed_test/**
+ai-service/raw_ocr_test/**
+ai-service/preprocessed/*.png
+ai-service/processed/sample_*.json
+ai-service/processed/fastapi_test_doc.json
+ai-service/raw_ocr/sample_*.json
+ai-service/raw_ocr/fastapi_test_doc*.json
+ai-service/raw_ocr/*_retry.json

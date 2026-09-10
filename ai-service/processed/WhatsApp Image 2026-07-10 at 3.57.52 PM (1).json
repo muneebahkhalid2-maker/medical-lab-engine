@@ -1,15 +1,26 @@
 {
   "document_id": "WhatsApp Image 2026-07-10 at 3.57.52 PM (1)",
   "document_type": "laboratory_report",
+  "patient_info": {
+    "patient_name": "Not Available",
+    "age": "Not Available",
+    "gender": "Not Available",
+    "lab_name": "Not Available",
+    "lab_id": "Not Available",
+    "report_date": "Not Available"
+  },
   "patient": {
-    "name": "M Afrol",
-    "age": 60,
-    "sex": "male"
+    "name": null,
+    "age": null,
+    "sex": null
   },
   "report": {
-    "date": "2023-11-02",
-    "laboratory": "Bahawalpur Heart Center"
+    "date": null,
+    "laboratory": null
   },
-  "tests": [],
-  "extraction_status": "unverified"
+  "overall_status": "INCOMPLETE",
+  "extracted_tests": [],
+  "sex": "unspecified",
+  "results": [],
+  "tests": []
 }

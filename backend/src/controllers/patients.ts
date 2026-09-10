@@ -129,8 +129,11 @@ export const getPatientById = async (req: Request, res: Response) => {
         return res.json({ success: true, data: patient });
       }
     }
-    const found = MOCK_PATIENTS.find(p => p._id === id || p.patientId === id) || MOCK_PATIENTS[0];
-    return res.json({ success: true, data: found });
+    const found = MOCK_PATIENTS.find(p => p._id === id || p.patientId === id);
+    if (found) {
+      return res.json({ success: true, data: found });
+    }
+    return res.status(404).json({ success: false, error: { code: 'NOT_FOUND', message: 'Patient not found' } });
   } catch (error: any) {
     return res.status(500).json({ success: false, error: { message: error.message } });
   }

@@ -1,83 +1,58 @@
 import os
 import json
 import argparse
-from ingestion import DocumentIngestion
-from preprocessing import Preprocessor
-from ocr import OCREngine
-from extraction import ExtractionEngine
-from reference_range_system.engine import MedicalLabStatusEngine
-from anomaly import AnomalyDetector
+
+from ocr_service import OCRProcessingService
 
 def main():
-    parser = argparse.ArgumentParser(description="Medical Document Extraction & Clinical Intelligence Pipeline")
-    parser.add_argument("file_path", help="Path to the medical document")
+    parser = argparse.ArgumentParser(
+        description="High-Precision Medical Document Enhancement, OCR & Extraction Pipeline"
+    )
+    parser.add_argument("file_path", help="Path to the medical document (PDF, PNG, JPG, JPEG, DOCX)")
+    parser.add_argument("--confidence", type=float, default=0.65, help="Minimum OCR confidence threshold before retry")
     args = parser.parse_args()
 
     file_path = args.file_path
     if not os.path.exists(file_path):
-        print(f"File not found: {file_path}")
+        print(f"Error: File not found: {file_path}")
         return
 
-    # Derive a simple document ID from the filename
     doc_id = os.path.splitext(os.path.basename(file_path))[0]
-    print(f"Starting pipeline for Document ID: {doc_id}")
-
-    # 1. Ingestion
-    print("\n--- Step 1: Ingestion ---")
-    ingestor = DocumentIngestion(file_path)
-    metadata = ingestor.get_metadata()
-    print(f"Metadata: {metadata}")
-
-    # 2. Preprocessing
-    print("\n--- Step 2: Preprocessing ---")
-    preprocessor = Preprocessor()
-    if metadata["document_format"] == "image":
-        processed_img_path = preprocessor.process_image(file_path, doc_id)
-        print(f"Preprocessed image saved to: {processed_img_path}")
-    else:
-        print("Only image formats are fully supported in this V1 demo.")
-        return
-
-    # 3. OCR Layer
-    print("\n--- Step 3: OCR Layer ---")
-    ocr_engine = OCREngine()
-    raw_ocr_path = ocr_engine.perform_ocr(processed_img_path, doc_id)
-
-    # 4. LLM Extraction
-    print("\n--- Step 4: LLM Extraction ---")
-    if not os.environ.get("GEMINI_API_KEY"):
-         print("WARNING: GEMINI_API_KEY environment variable not set. Extraction will use fallback data.")
     
-    extractor = ExtractionEngine()
-    processed_json_path = extractor.extract_medical_data(raw_ocr_path, doc_id)
+    ocr_service = OCRProcessingService()
 
-    if processed_json_path and os.path.exists(processed_json_path):
-        # 5. Reference Range Model & Status Evaluation
-        print("\n--- Step 5: Reference Range Model & Status Evaluation ---")
-        try:
-            with open(processed_json_path, 'r', encoding='utf-8') as f:
-                extracted_data = json.load(f)
+    try:
+        result = ocr_service.run_pipeline(
+            file_path=file_path,
+            doc_id=doc_id,
+            confidence_threshold=args.confidence
+        )
 
-            status_engine = MedicalLabStatusEngine()
-            evaluated_data = status_engine.analyze_report(extracted_data)
+        extracted_tests = result.get("extracted_tests", [])
+        overall_status = result.get("overall_status", "UNKNOWN")
+        patient_info = result.get("patient_info", {})
+        preprocessing_meta = result.get("preprocessing_metadata", {})
 
-            with open(processed_json_path, 'w', encoding='utf-8') as f:
-                json.dump(evaluated_data, f, indent=2)
+        print("\n=======================================================")
+        print("EXTRACTION & CLINICAL INTELLIGENCE SUMMARY")
+        print("=======================================================")
+        print(f"Document ID:      {doc_id}")
+        print(f"Patient Name:     {patient_info.get('patient_name')}")
+        print(f"Age / Gender:     {patient_info.get('age')} / {patient_info.get('gender')}")
+        print(f"Overall Status:   {overall_status}")
+        print(f"Tests Extracted:  {len(extracted_tests)}")
+        print(f"Enhanced DPI:     {preprocessing_meta.get('dpi_rendered', 300)} DPI")
+        print(f"Retry Executed:   {preprocessing_meta.get('retry_executed', False)}")
+        print(f"Avg OCR Conf:     {preprocessing_meta.get('ocr_quality', {}).get('average_confidence', 'N/A')}")
+        print("=======================================================\n")
 
-            print(f"Reference Range Engine complete! Overall status: {evaluated_data.get('overall_status')}")
-        except Exception as err:
-            print(f"Error during Reference Range Model evaluation: {err}")
+        print(f"Results saved to: processed/{doc_id}.json")
+        print("Verification command: streamlit run app.py")
 
-        # 6. Anomaly Detection
-        print("\n--- Step 6: Anomaly Detection ---")
-        anomaly_detector = AnomalyDetector()
-        anomaly_detector.detect_anomalies(doc_id)
-        
-        print("\nPipeline completed successfully in complete order!")
-        print(f"To verify, run: streamlit run app.py")
-        print(f"And enter Document ID: {doc_id}")
-    else:
-        print("\nPipeline failed during extraction.")
+    except Exception as err:
+        import traceback
+        print(f"\nPipeline error during execution: {err}")
+        traceback.print_exc()
 
 if __name__ == "__main__":
     main()
