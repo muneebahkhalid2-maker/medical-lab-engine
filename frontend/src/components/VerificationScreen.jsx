@@ -28,7 +28,7 @@ const VerificationScreen = ({ data: initialData, onComplete }) => {
   const handleSave = async () => {
     setIsSaving(true);
     try {
-      await axios.post('http://localhost:5000/api/verify', data);
+      await axios.post('/api/verify', data);
       onComplete(); // Go back to start
     } catch (err) {
       console.error("Failed to save verified data", err);
@@ -39,7 +39,7 @@ const VerificationScreen = ({ data: initialData, onComplete }) => {
   };
 
   const imageUrl = data.original_image_path 
-    ? `http://localhost:5000/api/uploads/${data.original_image_path}` 
+    ? `/api/uploads/${data.original_image_path}` 
     : null;
 
   return (

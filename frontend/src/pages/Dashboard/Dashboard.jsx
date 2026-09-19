@@ -37,7 +37,7 @@ export default function Dashboard() {
   const fetchRecentDocs = async () => {
     try {
       setLoading(true);
-      const res = await fetch('http://localhost:5000/api/documents', {
+      const res = await fetch('/api/documents', {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token') || ''}`
         }

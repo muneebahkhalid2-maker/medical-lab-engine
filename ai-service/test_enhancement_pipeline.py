@@ -21,6 +21,10 @@ class TestEnhancementAndOCR(unittest.TestCase):
         os.makedirs("preprocessed_test", exist_ok=True)
         os.makedirs("raw_ocr_test", exist_ok=True)
         os.makedirs("processed_test", exist_ok=True)
+        arr = np.random.randint(140, 180, (400, 400), dtype=np.uint8)
+        arr[100:110, 50:200] = 30
+        arr[200:210, 50:200] = 40
+        Image.fromarray(arr).save(os.path.join("preprocessed_test", "synthetic_test.png"))
 
     def test_image_enhancement_opencv_pipeline(self):
         """Test OpenCV CLAHE, adaptive thresholding, and sharpness kernel execution."""
@@ -41,6 +45,7 @@ class TestEnhancementAndOCR(unittest.TestCase):
             is_retry=False
         )
 
+        self.assertIsInstance(enhanced_path, str)
         self.assertTrue(os.path.exists(enhanced_path))
         # Ensure image was upscaled for OCR
         enhanced_img = Image.open(enhanced_path)
@@ -56,6 +61,7 @@ class TestEnhancementAndOCR(unittest.TestCase):
             dpi=400,
             is_retry=True
         )
+        self.assertIsInstance(retry_path, str)
         self.assertTrue(os.path.exists(retry_path))
         retry_img = Image.open(retry_path)
         self.assertGreaterEqual(max(retry_img.size), 2200)

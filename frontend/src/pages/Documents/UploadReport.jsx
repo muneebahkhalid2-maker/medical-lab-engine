@@ -61,7 +61,7 @@ export default function UploadReport() {
         setUploadProgress(baseProgress + 20);
 
         try {
-          const uploadResponse = await fetch('http://localhost:5000/api/documents', {
+          const uploadResponse = await fetch('/api/documents', {
             method: 'POST',
             headers: { 'Authorization': `Bearer ${localStorage.getItem('token') || 'demo-token'}` },
             body: formData
@@ -73,7 +73,7 @@ export default function UploadReport() {
           setUploadProgress(baseProgress + 60);
 
           if (documentId) {
-            await fetch(`http://localhost:5000/api/documents/${documentId}/process`, {
+            await fetch(`/api/documents/${documentId}/process`, {
               method: 'POST',
               headers: { 'Authorization': `Bearer ${localStorage.getItem('token') || 'demo-token'}` }
             });

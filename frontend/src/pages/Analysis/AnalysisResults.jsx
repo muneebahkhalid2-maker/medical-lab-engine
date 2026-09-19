@@ -82,7 +82,7 @@ export default function AnalysisResults() {
   const fetchAnalysis = async () => {
     try {
       setLoading(true);
-      const res = await fetch('http://localhost:5000/api/analysis', {
+      const res = await fetch('/api/analysis', {
         headers: { 'Authorization': `Bearer ${localStorage.getItem('token') || 'demo-token'}` }
       });
       if (!res.ok) throw new Error('API unavailable');

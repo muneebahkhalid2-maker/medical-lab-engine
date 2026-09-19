@@ -2,20 +2,28 @@ import json
 import os
 import zipfile
 import xml.etree.ElementTree as ET
-from typing import Union, List, Dict, Any, Tuple
+from typing import Union, List, Dict, Any, Tuple, Optional
 
 class OCREngine:
     def __init__(self, output_dir="raw_ocr"):
         self.output_dir = output_dir
         os.makedirs(self.output_dir, exist_ok=True)
         self.reader = None
+        self._init_reader()
+
+    def _init_reader(self):
+        """Initializes or re-initializes EasyOCR reader safely."""
+        if self.reader is not None:
+            return self.reader
         try:
             import easyocr
-            print("Initializing EasyOCR...")
+            print("[OCREngine] Initializing EasyOCR Reader (English)...")
             self.reader = easyocr.Reader(['en'], gpu=False, verbose=False)
+            print("[OCREngine] EasyOCR Reader initialized successfully.")
         except Exception as e:
-            print(f"EasyOCR initialization notice: {e}")
+            print(f"[OCREngine] EasyOCR initialization notice: {e}")
             self.reader = None
+        return self.reader
 
     def _extract_docx(self, docx_path: str) -> list:
         """Extracts text and table rows from a .docx file without external dependencies."""
@@ -44,12 +52,76 @@ class OCREngine:
     def _ocr_single_image(self, image_path: str, page_num: int = 1) -> List[Dict[str, Any]]:
         """Runs OCR on a single image file and returns structured text tokens and line detections."""
         page_results = []
-        if self.reader is not None:
+        if not os.path.exists(image_path):
+            return page_results
+
+        # 1. High-Performance Native Windows OCR (Windows 10/11 Media OCR)
+        try:
+            import winocr
+            from PIL import Image
+            with Image.open(image_path) as pil_img:
+                ocr_dict = winocr.recognize_pil_sync(pil_img, lang="en")
+            
+            lines = ocr_dict.get("lines", [])
+            for l_idx, line_obj in enumerate(lines):
+                line_text = line_obj.get("text", "").strip()
+                if not line_text:
+                    continue
+                words = line_obj.get("words", [])
+                if words:
+                    first_box = words[0].get("bounding_rect", {})
+                    last_box = words[-1].get("bounding_rect", {})
+                    x = int(first_box.get("x", 0))
+                    y = int(first_box.get("y", l_idx * 20))
+                    w = int(last_box.get("x", 0) + last_box.get("width", 100) - x)
+                    h = int(max(w_obj.get("bounding_rect", {}).get("height", 20) for w_obj in words))
+                else:
+                    x, y, w, h = 0, l_idx * 20, 100, 20
+
+                page_results.append({
+                    "text": line_text,
+                    "confidence": 0.97,
+                    "page": page_num,
+                    "bounding_box": [x, y, w, h]
+                })
+
+            if page_results:
+                print(f"[OCREngine] Windows Native OCR extracted {len(page_results)} lines from page {page_num}")
+                return page_results
+        except Exception as win_err:
+            print(f"[OCREngine] Windows Native OCR notice: {win_err}")
+
+        # 2. PyTesseract Fallback
+        try:
+            import pytesseract
+            from PIL import Image
+            with Image.open(image_path) as pil_img:
+                data = pytesseract.image_to_data(pil_img, output_type=pytesseract.Output.DICT)
+            n_boxes = len(data.get("text", []))
+            for i in range(n_boxes):
+                text_clean = data["text"][i].strip()
+                if not text_clean:
+                    continue
+                conf = float(data["conf"][i]) / 100.0 if float(data["conf"][i]) > 0 else 0.85
+                page_results.append({
+                    "text": text_clean,
+                    "confidence": round(conf, 4),
+                    "page": page_num,
+                    "bounding_box": [data["left"][i], data["top"][i], data["width"][i], data["height"][i]]
+                })
+            if page_results:
+                return page_results
+        except Exception as tesseract_err:
+            pass
+
+        # 3. EasyOCR Fallback
+        reader = self._init_reader()
+        if reader is not None:
             try:
                 import cv2
                 img = cv2.imread(image_path)
                 if img is not None:
-                    results = self.reader.readtext(img)
+                    results = reader.readtext(img)
                     for (bbox, text, prob) in results:
                         text_clean = text.strip()
                         if not text_clean:
@@ -71,68 +143,105 @@ class OCREngine:
                 print(f"[OCREngine] EasyOCR execution warning on {image_path}: {err}")
         return page_results
 
-    def perform_ocr(self, target_input: Union[str, List[str]], doc_id: str) -> str:
+    def perform_ocr(self, target_input: Union[str, List[str]], doc_id: str, original_file_path: Optional[str] = None) -> str:
         """
-        Extracts text, confidence scores, and bounding boxes from PDF, DOCX, or enhanced images.
+        Extracts text, confidence scores, and bounding boxes from PDF, DOCX, plain text, or enhanced images.
         Saves raw OCR data to JSON and returns file path.
         """
         extracted_data = []
 
-        # Case 1: Input is a list of enhanced page images (from PDF multi-page preprocessing)
-        if isinstance(target_input, list):
-            print(f"[OCREngine] Running multi-page OCR across {len(target_input)} enhanced pages...")
-            for page_idx, img_path in enumerate(target_input):
-                page_data = self._ocr_single_image(img_path, page_num=page_idx + 1)
-                extracted_data.extend(page_data)
+        # Check if original file is PDF or DOCX or plain text first for highest precision native text extraction
+        source_path = original_file_path or (target_input if isinstance(target_input, str) else None)
+        if source_path and os.path.exists(source_path):
+            lower_source = source_path.lower()
 
-        # Case 2: Input is a single string file path
-        elif isinstance(target_input, str):
-            image_path = target_input
-            print(f"[OCREngine] Running OCR/Text extraction on {image_path}...")
-
-            # 2a. DOCX Extraction
-            if image_path.lower().endswith('.docx') or image_path.lower().endswith('.doc'):
-                extracted_data = self._extract_docx(image_path)
-
-            # 2b. PDF Native Text Extraction fallback
-            elif image_path.lower().endswith('.pdf'):
+            # 1. Native PDF Extraction (with text file fallback if PDF syntax fails)
+            if lower_source.endswith('.pdf'):
                 try:
                     import pdfplumber
-                    with pdfplumber.open(image_path) as pdf:
+                    with pdfplumber.open(source_path) as pdf:
                         for page_idx, page in enumerate(pdf.pages):
                             text = page.extract_text()
                             if text:
-                                for line in text.split('\n'):
+                                for line_idx, line in enumerate(text.split('\n')):
                                     line_clean = line.strip()
                                     if line_clean:
                                         extracted_data.append({
                                             "text": line_clean,
                                             "confidence": 0.99,
                                             "page": page_idx + 1,
-                                            "bounding_box": [0, 0, 100, 20]
+                                            "bounding_box": [0, line_idx * 20, 100, 20]
                                         })
                 except Exception as pdf_err:
-                    print(f"[OCREngine] pdfplumber fallback: {pdf_err}, trying pypdf...")
+                    print(f"[OCREngine] pdfplumber notice: {pdf_err}, trying pypdf/text fallback...")
                     try:
                         import pypdf
-                        reader = pypdf.PdfReader(image_path)
+                        reader = pypdf.PdfReader(source_path)
                         for page_idx, page in enumerate(reader.pages):
                             text = page.extract_text()
                             if text:
-                                for line in text.split('\n'):
+                                for line_idx, line in enumerate(text.split('\n')):
                                     line_clean = line.strip()
                                     if line_clean:
                                         extracted_data.append({
                                             "text": line_clean,
                                             "confidence": 0.99,
                                             "page": page_idx + 1,
-                                            "bounding_box": [0, 0, 100, 20]
+                                            "bounding_box": [0, line_idx * 20, 100, 20]
                                         })
                     except Exception as pypdf_err:
-                        print(f"[OCREngine] pypdf extraction error: {pypdf_err}")
+                        # Fallback for plain-text reports saved with .pdf extension
+                        try:
+                            with open(source_path, 'r', encoding='utf-8', errors='ignore') as f:
+                                raw_txt = f.read()
+                                if any(kw in raw_txt.lower() for kw in ['patient', 'test', 'result', 'report', 'hemoglobin', 'serum', 'lab', 'reference']):
+                                    for line_idx, line in enumerate(raw_txt.split('\n')):
+                                        line_clean = line.strip()
+                                        if line_clean:
+                                            extracted_data.append({
+                                                "text": line_clean,
+                                                "confidence": 0.98,
+                                                "page": 1,
+                                                "bounding_box": [0, line_idx * 20, 100, 20]
+                                            })
+                        except Exception:
+                            pass
 
-            # 2c. Image OCR Execution
-            if not extracted_data and not image_path.lower().endswith('.pdf') and not image_path.lower().endswith('.docx'):
+            # 2. DOCX Extraction
+            elif lower_source.endswith('.docx') or lower_source.endswith('.doc'):
+                extracted_data = self._extract_docx(source_path)
+
+            # 3. Plain Text File (.txt)
+            elif lower_source.endswith('.txt'):
+                try:
+                    with open(source_path, 'r', encoding='utf-8', errors='ignore') as f:
+                        for line_idx, line in enumerate(f):
+                            line_clean = line.strip()
+                            if line_clean:
+                                extracted_data.append({
+                                    "text": line_clean,
+                                    "confidence": 1.0,
+                                    "page": 1,
+                                    "bounding_box": [0, line_idx * 20, 100, 20]
+                                })
+                except Exception as txt_err:
+                    print(f"[OCREngine] Plain text read error: {txt_err}")
+
+            # 4. Direct Original Image OCR (Highest fidelity for uncompressed digital image scans)
+            elif any(lower_source.endswith(ext) for ext in ['.jpg', '.jpeg', '.png', '.webp', '.bmp', '.tiff']):
+                extracted_data = self._ocr_single_image(source_path, page_num=1)
+
+        # If native/original extraction didn't yield text or input is preprocessed images, execute image OCR
+        if not extracted_data:
+            if isinstance(target_input, list):
+                print(f"[OCREngine] Running multi-page OCR across {len(target_input)} enhanced pages...")
+                for page_idx, img_path in enumerate(target_input):
+                    page_data = self._ocr_single_image(img_path, page_num=page_idx + 1)
+                    extracted_data.extend(page_data)
+
+            elif isinstance(target_input, str):
+                image_path = target_input
+                print(f"[OCREngine] Running image OCR on {image_path}...")
                 extracted_data = self._ocr_single_image(image_path, page_num=1)
 
         if not extracted_data:

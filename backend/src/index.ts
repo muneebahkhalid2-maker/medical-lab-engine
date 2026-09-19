@@ -161,7 +161,7 @@ const server = app.listen(PORT, '0.0.0.0', () => {
         const { MongoMemoryServer } = require('mongodb-memory-server');
         const mongod = await MongoMemoryServer.create({
           binary: {
-            version: '4.4.29'
+            version: '7.0.14'
           }
         });
         const uri = mongod.getUri();

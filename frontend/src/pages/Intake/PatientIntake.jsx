@@ -485,6 +485,7 @@ export default function PatientIntake() {
     setUploading(true);
     setErrorMsg('');
 
+    const localPreviewUrl = URL.createObjectURL(selectedFile);
     const formData = new FormData();
     formData.append('document', selectedFile);
     if (registeredPatient) {
@@ -497,10 +498,13 @@ export default function PatientIntake() {
       });
 
       if (res.data && res.data.success) {
-        const newDoc = res.data.data;
+        const newDoc = {
+          ...res.data.data,
+          previewUrl: localPreviewUrl
+        };
         setUploadedDocuments((prev) => [newDoc, ...prev]);
         setSelectedFile(null);
-        setSuccessMsg('Document uploaded to Cloudinary successfully!');
+        setSuccessMsg('Document uploaded to Cloudinary / storage successfully!');
       }
     } catch (err) {
       console.error('Upload Error:', err);
@@ -508,8 +512,9 @@ export default function PatientIntake() {
       const fallbackDoc = {
         _id: 'doc-' + Date.now(),
         originalFileName: selectedFile.name,
-        documentType: selectedFile.type.includes('pdf') ? 'PDF' : 'IMAGE',
-        cloudinaryUrl: URL.createObjectURL(selectedFile),
+        documentType: selectedFile.type.includes('pdf') || selectedFile.name.toLowerCase().endsWith('.pdf') ? 'PDF' : 'IMAGE',
+        cloudinaryUrl: localPreviewUrl,
+        previewUrl: localPreviewUrl,
         storagePath: selectedFile.name,
         uploadStatus: 'UPLOADED',
         createdAt: new Date().toISOString()
@@ -569,12 +574,14 @@ export default function PatientIntake() {
         setExtractedData(payload);
         let allTests = [];
 
-        if (payload.extracted_tests && Array.isArray(payload.extracted_tests) && payload.extracted_tests.length > 0) {
-          allTests = payload.extracted_tests.map(t => ({
+        const rawTestsList = payload.extracted_tests || payload.tests || payload.results || [];
+
+        if (Array.isArray(rawTestsList) && rawTestsList.length > 0) {
+          allTests = rawTestsList.map(t => ({
             panelName: t.category || t.panelName || 'General Panel',
-            testName: t.test_name || t.testName || t.parameter || 'Unknown Test',
-            result: t.result_value !== undefined && t.result_value !== null ? t.result_value : (t.result !== undefined ? t.result : 'Not Available'),
-            unit: t.unit || 'Not Available',
+            testName: t.test_name || t.testName || t.parameter || t.name || 'Unknown Test',
+            result: t.result_value !== undefined && t.result_value !== null ? t.result_value : (t.result !== undefined ? t.result : (t.value !== undefined ? t.value : 'Not Available')),
+            unit: t.unit || t.normalizedUnit || 'Not Available',
             reference_range: t.reference_range || (typeof t.referenceRange === 'object' ? t.referenceRange?.raw : t.referenceRange) || 'Not Available',
             reference_source: t.reference_source || 'lab_direct',
             status: t.status || 'NORMAL'
@@ -584,8 +591,8 @@ export default function PatientIntake() {
             (p.tests || []).forEach(t => {
               allTests.push({
                 panelName: p.panel_name || p.panelName || 'Clinical Panel',
-                testName: t.parameter || t.testName || t.test_name || 'Unknown Test',
-                result: t.result !== undefined ? t.result : 'Not Available',
+                testName: t.parameter || t.testName || t.test_name || t.name || 'Unknown Test',
+                result: t.result !== undefined ? t.result : (t.result_value !== undefined ? t.result_value : 'Not Available'),
                 unit: t.unit || 'Not Available',
                 reference_range: t.reference_range || (typeof t.referenceRange === 'object' ? t.referenceRange?.raw : t.referenceRange) || 'Not Available',
                 reference_source: t.reference_source || 'lab_direct',
@@ -593,16 +600,6 @@ export default function PatientIntake() {
               });
             });
           });
-        } else if (payload.tests && Array.isArray(payload.tests) && payload.tests.length > 0) {
-          allTests = payload.tests.map(t => ({
-            panelName: t.category || t.panelName || 'General Panel',
-            testName: t.test_name || t.testName || t.parameter || 'Unknown Test',
-            result: t.result_value !== undefined && t.result_value !== null ? t.result_value : (t.result !== undefined ? t.result : 'Not Available'),
-            unit: t.unit || 'Not Available',
-            reference_range: t.reference_range || (typeof t.referenceRange === 'object' ? t.referenceRange?.raw : t.referenceRange) || 'Not Available',
-            reference_source: t.reference_source || 'lab_direct',
-            status: t.status || 'NORMAL'
-          }));
         }
 
         if (allTests.length > 0) {
@@ -1627,36 +1624,57 @@ export default function PatientIntake() {
                   <h3 className="font-bold text-sm text-slate-900 flex items-center gap-2">
                     <Eye className="h-4 w-4 text-brand-600" /> Original Document
                   </h3>
-                  {activeDocument?.cloudinaryUrl && (
+                  {(activeDocument?.previewUrl || activeDocument?.cloudinaryUrl) && (
                     <a
-                      href={activeDocument.cloudinaryUrl}
+                      href={activeDocument.previewUrl || activeDocument.cloudinaryUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs text-brand-600 hover:underline flex items-center gap-1"
+                      className="text-xs text-brand-600 hover:underline flex items-center gap-1 font-semibold"
                     >
                       Open Full Screen <ExternalLink className="h-3 w-3" />
                     </a>
                   )}
                 </div>
 
-                <div className="flex-1 bg-slate-100 rounded-xl mt-4 overflow-hidden flex items-center justify-center p-2 border border-slate-200">
-                  {activeDocument?.cloudinaryUrl ? (
-                    <img
-                      src={activeDocument.cloudinaryUrl}
-                      alt="Lab Report Preview"
-                      className="max-h-full max-w-full object-contain rounded-lg shadow-sm"
-                      onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src = 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&auto=format&fit=crop&q=60';
-                      }}
-                    />
-                  ) : (
-                    <div className="text-center p-6 text-slate-400">
-                      <FileText className="h-12 w-12 mx-auto mb-2 opacity-50" />
-                      <p className="text-xs font-semibold">Document Preview Active</p>
-                      <p className="text-[10px] text-slate-400 mt-1">{activeDocument?.originalFileName || 'Sample Report'}</p>
-                    </div>
-                  )}
+                <div className="flex-1 bg-slate-100 rounded-xl mt-4 overflow-hidden flex items-center justify-center p-2 border border-slate-200 min-h-[420px]">
+                  {(() => {
+                    const docUrl = activeDocument?.previewUrl || activeDocument?.cloudinaryUrl;
+                    const isPdfDoc = activeDocument?.documentType === 'PDF' || 
+                      (activeDocument?.originalFileName && activeDocument.originalFileName.toLowerCase().endsWith('.pdf')) ||
+                      (docUrl && docUrl.toLowerCase().includes('.pdf'));
+
+                    if (!docUrl) {
+                      return (
+                        <div className="text-center p-6 text-slate-400">
+                          <FileText className="h-12 w-12 mx-auto mb-2 opacity-50 text-blue-500" />
+                          <p className="text-xs font-semibold text-slate-700">Document Preview Active</p>
+                          <p className="text-[11px] text-slate-400 mt-1">{activeDocument?.originalFileName || 'Lab Report Document'}</p>
+                        </div>
+                      );
+                    }
+
+                    if (isPdfDoc) {
+                      return (
+                        <iframe
+                          src={docUrl}
+                          title="Lab Report PDF Preview"
+                          className="w-full h-full min-h-[450px] rounded-lg border-0 bg-white shadow-xs"
+                        />
+                      );
+                    }
+
+                    return (
+                      <img
+                        src={docUrl}
+                        alt="Lab Report Preview"
+                        className="max-h-full max-w-full object-contain rounded-lg shadow-sm"
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&auto=format&fit=crop&q=60';
+                        }}
+                      />
+                    );
+                  })()}
                 </div>
               </div>
 

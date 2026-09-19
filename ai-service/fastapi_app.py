@@ -3,6 +3,10 @@ import json
 # pyrefly: ignore [missing-import]
 import uvicorn
 import mimetypes
+from dotenv import load_dotenv
+
+load_dotenv(override=True)
+
 # pyrefly: ignore [missing-import]
 from fastapi import FastAPI, HTTPException
 # pyrefly: ignore [missing-import]
@@ -106,7 +110,18 @@ def extract_document(request: ExtractRequest):
             raise HTTPException(status_code=400, detail=f"Error downloading remote file: {dl_err}")
 
     if not os.path.exists(file_path):
-        raise HTTPException(status_code=404, detail=f"File not found: {file_path}")
+        # Try common medical document extensions (multer may strip them)
+        resolved = None
+        for ext in [".pdf", ".png", ".jpg", ".jpeg", ".webp", ".docx"]:
+            candidate = file_path + ext
+            if os.path.exists(candidate):
+                resolved = candidate
+                print(f"[FastAPI Extraction] Resolved extension-less path: {file_path} -> {resolved}")
+                break
+        if resolved:
+            file_path = resolved
+        else:
+            raise HTTPException(status_code=404, detail=f"File not found: {file_path}")
 
     try:
         # Run end-to-end enhanced pipeline with automated OpenCV pre-processing & safe retry

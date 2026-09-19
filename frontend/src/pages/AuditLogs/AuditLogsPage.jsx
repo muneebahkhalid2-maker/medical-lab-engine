@@ -67,7 +67,7 @@ export default function AuditLogsPage() {
   const fetchLogs = async () => {
     try {
       setLoading(true);
-      const res = await fetch('http://localhost:5000/api/audit-logs', {
+      const res = await fetch('/api/audit-logs', {
         headers: { 'Authorization': `Bearer ${localStorage.getItem('token') || ''}` }
       });
       if (!res.ok) throw new Error('API unavailable');

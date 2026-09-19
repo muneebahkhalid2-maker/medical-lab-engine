@@ -138,14 +138,38 @@ export const extractDocumentDetails = async (req: Request, res: Response) => {
     let filePath = req.body.filePath || req.body.filepath || '';
     if (doc) {
       if (doc.storagePath && fs.existsSync(doc.storagePath)) {
-        filePath = doc.storagePath;
-      } else if (doc.cloudinaryUrl) {
+        filePath = path.resolve(doc.storagePath);
+      } else if (doc.cloudinaryUrl && (doc.cloudinaryUrl.startsWith('http://') || doc.cloudinaryUrl.startsWith('https://'))) {
         filePath = doc.cloudinaryUrl;
+      } else if (doc.storedFileName) {
+        filePath = path.resolve(__dirname, '../../uploads', doc.storedFileName);
       } else if (!filePath) {
-        filePath = path.join(__dirname, '../../uploads', id);
+        filePath = path.resolve(__dirname, '../../uploads', id);
       }
-    } else if (!filePath) {
-      filePath = path.join(__dirname, '../../uploads', id);
+    } else if (filePath && !filePath.startsWith('http://') && !filePath.startsWith('https://')) {
+      if (!fs.existsSync(filePath)) {
+        const potentialUpload = path.resolve(__dirname, '../../uploads', path.basename(filePath));
+        if (fs.existsSync(potentialUpload)) {
+          filePath = potentialUpload;
+        }
+      }
+    }
+
+    if (!filePath) {
+      // Scan uploads directory for any file matching this doc ID (with any extension)
+      const uploadsDir = path.resolve(__dirname, '../../uploads');
+      if (fs.existsSync(uploadsDir)) {
+        const uploadedFiles = fs.readdirSync(uploadsDir);
+        const matchedFile = uploadedFiles.find(f => path.parse(f).name === id || f.startsWith(id));
+        if (matchedFile) {
+          filePath = path.resolve(uploadsDir, matchedFile);
+          console.log(`[AI Extraction] Resolved file by scanning uploads: ${filePath}`);
+        } else {
+          filePath = path.resolve(uploadsDir, id);
+        }
+      } else {
+        filePath = path.resolve(__dirname, '../../uploads', id);
+      }
     }
 
     console.log(`[AI Extraction] Triggering AI Service extraction for doc: ${id} (file: ${filePath}) at ${AI_SERVICE_URL}`);
@@ -188,12 +212,18 @@ export const extractDocumentDetails = async (req: Request, res: Response) => {
       await Extraction.deleteMany({ documentId: doc._id });
       const analysisResults: any[] = [];
 
-      if (extractedPayload.tests && Array.isArray(extractedPayload.tests)) {
-        for (const t of extractedPayload.tests) {
-          const testName = t.testName || t.test_name || 'Unknown Test';
-          const rawVal = String(t.result !== undefined ? t.result : (t.value !== undefined ? t.value : ''));
+      const rawTestsList = extractedPayload?.tests || extractedPayload?.results || extractedPayload?.extracted_tests || [];
+
+      if (Array.isArray(rawTestsList) && rawTestsList.length > 0) {
+        for (const t of rawTestsList) {
+          const testName = t.testName || t.test_name || t.parameter || t.name || 'Unknown Test';
+          const rawVal = String(t.result_value !== undefined && t.result_value !== null ? t.result_value : (t.result !== undefined ? t.result : (t.value !== undefined ? t.value : '')));
           const unit = t.unit || t.normalizedUnit || '';
-          const refRangeStr = t.reference_range || t.referenceRange || '';
+          let refRangeStr = '';
+          if (typeof t.reference_range === 'string') refRangeStr = t.reference_range;
+          else if (typeof t.referenceRange === 'string') refRangeStr = t.referenceRange;
+          else if (typeof t.referenceRange === 'object' && t.referenceRange) refRangeStr = t.referenceRange.raw || '';
+          else if (typeof t.reference_range === 'object' && t.reference_range) refRangeStr = t.reference_range.raw || '';
           const confidence = t.confidence !== undefined ? t.confidence : (t.extraction_confidence || 0.9);
 
           await Extraction.create({

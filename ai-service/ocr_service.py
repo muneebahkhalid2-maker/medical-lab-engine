@@ -68,7 +68,7 @@ class OCRProcessingService:
         )
 
         # Step 3: Pass 1 OCR Extraction
-        raw_ocr_path = self.ocr_engine.perform_ocr(enhanced_input, doc_id)
+        raw_ocr_path = self.ocr_engine.perform_ocr(enhanced_input, doc_id, original_file_path=file_path)
         quality_metrics = self.ocr_engine.compute_ocr_quality_metrics(raw_ocr_path)
         print(f"[OCR Service] Pass 1 Quality: {quality_metrics}")
 
@@ -79,6 +79,7 @@ class OCRProcessingService:
             quality_metrics.get("line_count", 0) == 0
         )
 
+        retry_input = None
         if needs_retry:
             print(f"\n[OCR Service] >>> LOW CONFIDENCE / FAINT TEXT DETECTED! <<<")
             print(f"[OCR Service] Triggering Safe Re-try with elevated contrast multiplier (1.8x) & DPI upscaling...")
@@ -91,7 +92,7 @@ class OCRProcessingService:
                 is_retry=True
             )
 
-            raw_ocr_path_retry = self.ocr_engine.perform_ocr(retry_input, f"{doc_id}_retry")
+            raw_ocr_path_retry = self.ocr_engine.perform_ocr(retry_input, f"{doc_id}_retry", original_file_path=file_path)
             retry_metrics = self.ocr_engine.compute_ocr_quality_metrics(raw_ocr_path_retry)
             print(f"[OCR Service] Pass 2 (Retry) Quality: {retry_metrics}")
 
@@ -101,8 +102,14 @@ class OCRProcessingService:
                 quality_metrics = retry_metrics
 
         # Step 5: High-Precision Medical Extraction
-        target_image = retry_input if (needs_retry and 'retry_input' in locals() and os.path.exists(retry_input)) else enhanced_input
-        processed_json_path = self.extraction_engine.extract_medical_data(raw_ocr_path, doc_id, image_path=target_image)
+        target_input = retry_input if (needs_retry and retry_input is not None) else enhanced_input
+        single_target_image: Optional[str] = None
+        if isinstance(target_input, list) and len(target_input) > 0:
+            single_target_image = target_input[0]
+        elif isinstance(target_input, str):
+            single_target_image = target_input
+
+        processed_json_path = self.extraction_engine.extract_medical_data(raw_ocr_path, doc_id, image_path=single_target_image)
         if not processed_json_path or not os.path.exists(processed_json_path):
             raise RuntimeError("Extraction engine failed to produce valid clinical output JSON.")
 
@@ -120,8 +127,9 @@ class OCRProcessingService:
                 dpi=400,
                 is_retry=True
             )
-            raw_ocr_path_retry = self.ocr_engine.perform_ocr(retry_input, f"{doc_id}_retry")
-            processed_json_path = self.extraction_engine.extract_medical_data(raw_ocr_path_retry, doc_id, image_path=retry_input)
+            raw_ocr_path_retry = self.ocr_engine.perform_ocr(retry_input, f"{doc_id}_retry", original_file_path=file_path)
+            single_emergency_image: Optional[str] = retry_input[0] if isinstance(retry_input, list) and len(retry_input) > 0 else (retry_input if isinstance(retry_input, str) else None)
+            processed_json_path = self.extraction_engine.extract_medical_data(raw_ocr_path_retry, doc_id, image_path=single_emergency_image)
             with open(processed_json_path, 'r', encoding='utf-8') as f:
                 extracted_data = json.load(f)
 

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = import.meta.env.VITE_API_BASE || '/api';
 const LOCAL_STORAGE_KEY = 'medlab_persistent_patients_v2';
 const EVENT_PATIENTS_UPDATED = 'medlab_patients_updated';
 

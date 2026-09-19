@@ -28,10 +28,10 @@ export default function VerificationQueue() {
       setLoading(true);
       setError(null);
       const [docRes, extRes] = await Promise.all([
-        fetch(`http://localhost:5000/api/documents/${documentId}`, {
+        fetch(`/api/documents/${documentId}`, {
           headers: { 'Authorization': `Bearer ${localStorage.getItem('token') || 'demo-token'}` }
         }),
-        fetch(`http://localhost:5000/api/documents/${documentId}/extractions`, {
+        fetch(`/api/documents/${documentId}/extractions`, {
           headers: { 'Authorization': `Bearer ${localStorage.getItem('token') || 'demo-token'}` }
         })
       ]);
@@ -92,7 +92,7 @@ export default function VerificationQueue() {
 
   const saveExtraction = async (id, value) => {
     try {
-      await fetch(`http://localhost:5000/api/extractions/${id}`, {
+      await fetch(`/api/extractions/${id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -109,7 +109,7 @@ export default function VerificationQueue() {
     if (!documentId || extractions.length === 0) return;
     setSaving(true);
     try {
-      await fetch(`http://localhost:5000/api/extractions/document/${documentId}/verify-all`, {
+      await fetch(`/api/extractions/document/${documentId}/verify-all`, {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${localStorage.getItem('token') || 'demo-token'}` }
       });

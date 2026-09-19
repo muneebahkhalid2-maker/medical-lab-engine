@@ -4,6 +4,12 @@ import re
 import importlib
 from typing import Dict, Any, List, Optional
 
+try:
+    from dotenv import load_dotenv
+    load_dotenv(override=True)
+except Exception:
+    pass
+
 genai = None
 try:
     genai = importlib.import_module("google.generativeai")
@@ -17,8 +23,16 @@ class ExtractionEngine:
         os.makedirs(self.output_dir, exist_ok=True)
         if genai is not None:
             try:
-                genai.configure(api_key=os.environ.get("GEMINI_API_KEY", "dummy_key"))
-                self.model = genai.GenerativeModel('gemini-1.5-flash')
+                api_key = os.environ.get("GEMINI_API_KEY", "")
+                if api_key and api_key != "dummy_key":
+                    genai.configure(api_key=api_key)
+                    # Try current active flash model
+                    try:
+                        self.model = genai.GenerativeModel('gemini-3.6-flash')
+                    except Exception:
+                        self.model = genai.GenerativeModel('gemini-flash-latest')
+                else:
+                    self.model = None
             except Exception as err:
                 print(f"[ExtractionEngine] GenAI init error: {err}")
                 self.model = None
@@ -33,7 +47,7 @@ class ExtractionEngine:
             return {"confidence": 0.85, "source": None}
 
         # Substring / exact search in raw OCR items
-        target = str(extracted_value).strip().lower()
+        target = extracted_value.strip().lower() if isinstance(extracted_value, str) else str(extracted_value).strip().lower()
         for item in raw_ocr:
             text = item.get('text', '').lower()
             if target in text or text in target:
@@ -94,9 +108,41 @@ class ExtractionEngine:
         """
         Exhaustive pure-grounding deterministic parser that extracts all clinical metadata
         and laboratory test parameters (CBC, DLC, LFT, RFT, Urine Routine, Lipid, etc.)
+        as well as procedure/cardiology/imaging findings (LMS, LAD, LCX, RCA, Conclusion, etc.)
         directly from raw OCR text without truncation or hardcoded limits.
         """
-        lines = [item.get('text', '').strip() for item in raw_ocr if item.get('text', '').strip()]
+        # 1. Spatial line reconstruction if bounding box exists
+        lines = []
+        has_bboxes = any('bounding_box' in item and len(item['bounding_box']) == 4 for item in raw_ocr)
+        if has_bboxes:
+            lines_clusters = []
+            sorted_items = sorted(
+                [it for it in raw_ocr if it.get('text', '').strip()],
+                key=lambda it: it.get('bounding_box', [0, 0, 0, 0])[1]
+            )
+            for item in sorted_items:
+                bbox = item.get('bounding_box', [0, 0, 0, 0])
+                y_mid = bbox[1] + bbox[3] / 2.0
+                placed = False
+                for cluster in lines_clusters:
+                    if abs(y_mid - cluster['mid_y']) <= 16:
+                        cluster['items'].append(item)
+                        cluster['mid_y'] = sum(it.get('bounding_box', [0, 0, 0, 0])[1] + it.get('bounding_box', [0, 0, 0, 0])[3]/2.0 for it in cluster['items']) / len(cluster['items'])
+                        placed = True
+                        break
+                if not placed:
+                    lines_clusters.append({'mid_y': y_mid, 'items': [item]})
+
+            lines_clusters.sort(key=lambda c: c['mid_y'])
+            for c in lines_clusters:
+                c['items'].sort(key=lambda it: it.get('bounding_box', [0, 0, 0, 0])[0])
+                reconstructed = " ".join(it['text'].strip() for it in c['items'] if it.get('text', '').strip())
+                if reconstructed:
+                    lines.append(reconstructed)
+
+        # Fallback to linear text list if spatial reconstruction didn't yield lines
+        if not lines:
+            lines = [item.get('text', '').strip() for item in raw_ocr if item.get('text', '').strip()]
 
         patient_name = None
         patient_age = None
@@ -105,23 +151,27 @@ class ExtractionEngine:
         lab_name = None
         lab_id = None
 
-        # 1. Header Metadata Extraction
-        for line in lines:
+        # 2. Header Metadata Extraction
+        for idx, line in enumerate(lines):
             # Patient Name
             if not patient_name:
                 name_match = re.search(
-                    r'(?:Name|Patient\s*Name)\s*[:\-]?\s*(?:[0-9]+\s+[A-Za-z0-9\/]+\s+)?([A-Za-z][A-Za-z\s\.\/]+?)(?=\s*\(|\s+Age|\s+NHQ|\s+Referred|\s*$)',
+                    r'(?:Name|Patient\s*Name)\s*[:\-]\s*(?:[0-9]+\s+[A-Za-z0-9\/]+\s+)?([A-Za-z][A-Za-z\s\.\/]+?)(?=\s*\(|\s+Age|\s+NHQ|\s+Referred|\s+Operator|\s+Ht|\s+I\.D|\s*$)',
                     line, re.IGNORECASE
                 )
                 if name_match:
                     candidate = name_match.group(1).strip()
-                    if len(candidate) > 2 and not any(k in candidate.lower() for k in ['department', 'pathology', 'hospital', 'center', 'specimen']):
+                    if len(candidate) > 2 and not any(k in candidate.lower() for k in ['department', 'pathology', 'hospital', 'center', 'specimen', 'operator', 'doctor', 'dr.']):
                         patient_name = candidate
+                elif re.match(r'^(?:Name|Patient\s*Name)\s*[:\-]?$', line.strip(), re.IGNORECASE) and idx + 1 < len(lines):
+                    next_cand = lines[idx + 1].strip()
+                    if len(next_cand) > 2 and not any(k in next_cand.lower() for k in ['department', 'pathology', 'hospital', 'center', 'specimen', 'operator', 'dr.']):
+                        patient_name = next_cand
 
             # Age & Gender
             if patient_age is None or patient_sex is None:
                 age_sex_match = re.search(
-                    r'Age(?:\/Sex)?\s*[:\-]?\s*([0-9]{1,3})\s*(?:Years|Yrs|Y)?\s*[-/]?\s*(Male|Female|M|F)?',
+                    r'Age(?:\/Sex)?\s*[:\-]?\s*([0-9]{1,3})\s*(?:Years|Yrs|Y)?\s*[-/\s]?\s*(Male|Female|M|F)?',
                     line, re.IGNORECASE
                 )
                 if age_sex_match:
@@ -136,7 +186,7 @@ class ExtractionEngine:
 
             # Lab Name
             if not lab_name:
-                if any(kw in line.lower() for kw in ['hospital', 'cardiac center', 'pathology', 'laboratory', 'heart center', 'medical college', 'afip', 'cmh', 'chughtai', 'aga khan', 'excel labs']):
+                if any(kw in line.lower() for kw in ['hospital', 'cardiac center', 'pathology', 'laboratory', 'heart center', 'medical college', 'afip', 'cmh', 'chughtai', 'aga khan', 'excel labs', 'diagnostics']):
                     if not any(stop in line.lower() for stop in ['department of', 'provisional', 'ent by', 'technician']):
                         lab_name = line.strip()
 
@@ -158,7 +208,7 @@ class ExtractionEngine:
                 if id_match:
                     lab_id = id_match.group(1).strip()
 
-        # 2. Exhaustive Test Parameters Extraction
+        # 3. Exhaustive Test Parameters Extraction
         tests = []
         known_test_keywords = [
             r'bilirubin', r'alt', r'sgpt', r'ast', r'sgot', r'alp', r'alkaline\s*phosphatase',
@@ -178,7 +228,7 @@ class ExtractionEngine:
             r'(umol\/l|u\/l|ng\/ml|mg\/dl|mmol\/l|%|fl|pg|g\/dl|10\^?[0-9]+\/ul|x\s*10\^?[0-9]+\/l|\/hpf|g\/l|miu\/ml|uu\/ml)',
         ]
 
-        # Scan all lines for clinical items
+        # Scan all lines for pathology lab items
         for i, line in enumerate(lines):
             is_test_line = any(re.search(rf'\b{kw}\b', line, re.IGNORECASE) for kw in known_test_keywords)
             if not is_test_line:
@@ -259,6 +309,53 @@ class ExtractionEngine:
                         "status": "NORMAL"
                     })
 
+        # 4. Procedure, Cardiology & Imaging Findings (e.g. Angiography, Ultrasound, ECG, Echo, X-Ray)
+        procedure_finding_headers = [
+            r'LMS', r'LAD', r'LCX', r'RCA', r'OM[0-9]?', r'PDA', r'PLB', r'Ramus',
+            r'Aorta', r'Mitral\s*Valve', r'Tricuspid', r'Pulmonary\s*Artery', r'Ejection\s*Fraction', r'EF',
+            r'Conclusion', r'Impression', r'Diagnosis', r'Management', r'Findings', r'Recommendation'
+        ]
+
+        for i, line in enumerate(lines):
+            for p_hdr in procedure_finding_headers:
+                p_match = re.match(rf'^({p_hdr})\s*:\s*(.*)', line, re.IGNORECASE)
+                if p_match:
+                    f_name = p_match.group(1).upper()
+                    f_val = p_match.group(2).strip()
+
+                    # If value is on the subsequent lines
+                    if not f_val or len(f_val) < 3:
+                        next_findings = []
+                        j = i + 1
+                        while j < len(lines):
+                            if any(re.match(rf'^{h}\s*:', lines[j], re.IGNORECASE) for h in procedure_finding_headers):
+                                break
+                            if any(stop in lines[j].lower() for stop in ['fcps', 'doctor', 'dr.', 'signed by']):
+                                break
+                            next_findings.append(lines[j])
+                            j += 1
+                        if next_findings:
+                            f_val = " ".join(next_findings).strip()
+
+                    if f_val and not any(t.get('testName', '').upper() == f_name for t in tests):
+                        is_abnormal = any(abn in f_val.lower() for abn in ['severe', 'moderate', 'mild', 'disease', 'stenosis', 'cad', 'lesion', 'occlusion', 'abnormal', 'infarct', 'ischemia'])
+                        tests.append({
+                            "category": "Procedure & Clinical Findings",
+                            "testName": f_name,
+                            "test_name": f_name,
+                            "result": f_val,
+                            "result_value": f_val,
+                            "unit": "Finding",
+                            "referenceRange": {
+                                "raw": "Normal vessel / No significant disease",
+                                "low": None,
+                                "high": None
+                            },
+                            "reference_range": "Normal vessel / No significant disease",
+                            "status": "ABNORMAL" if is_abnormal else "NORMAL"
+                        })
+                    break
+
         return {
             "document_id": doc_id,
             "document_type": "laboratory_report",
@@ -300,7 +397,7 @@ class ExtractionEngine:
         import requests
         import base64
 
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={api_key}"
+        models_to_try = ["gemini-3.6-flash", "gemini-flash-latest", "gemini-2.5-flash-lite"]
         headers = {"Content-Type": "application/json"}
         parts = []
 
@@ -330,19 +427,23 @@ class ExtractionEngine:
             }
         }
 
-        try:
-            print("[ExtractionEngine] Calling Gemini 1.5 Flash REST API (temperature=0.0, max_output_tokens=8192)...")
-            resp = requests.post(url, json=payload, headers=headers, timeout=60)
-            if resp.status_code == 200:
-                data = resp.json()
-                candidates = data.get("candidates", [])
-                if candidates:
-                    text = candidates[0].get("content", {}).get("parts", [{}])[0].get("text", "")
-                    return self._clean_and_parse_json(text)
-            else:
-                print(f"[ExtractionEngine] Gemini REST API notice (HTTP {resp.status_code}): {resp.text[:200]}")
-        except Exception as err:
-            print(f"[ExtractionEngine] Gemini REST API call notice: {err}")
+        for model_name in models_to_try:
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
+            try:
+                print(f"[ExtractionEngine] Calling {model_name} REST API (temperature=0.0, max_output_tokens=8192)...")
+                resp = requests.post(url, json=payload, headers=headers, timeout=60)
+                if resp.status_code == 200:
+                    data = resp.json()
+                    candidates = data.get("candidates", [])
+                    if candidates:
+                        text = candidates[0].get("content", {}).get("parts", [{}])[0].get("text", "")
+                        parsed = self._clean_and_parse_json(text)
+                        if parsed:
+                            return parsed
+                else:
+                    print(f"[ExtractionEngine] {model_name} REST API notice (HTTP {resp.status_code}): {resp.text[:200]}")
+            except Exception as err:
+                print(f"[ExtractionEngine] {model_name} REST API call notice: {err}")
 
         return None
 
@@ -405,7 +506,7 @@ DOCUMENT OCR TEXT:
             extracted_json = self._call_gemini_rest(prompt, image_path=image_path)
 
         # 2. Try SDK Gemini Model if available
-        if not extracted_json and self.model is not None and has_valid_api_key:
+        if not extracted_json and self.model is not None and genai is not None and has_valid_api_key:
             try:
                 print("[ExtractionEngine] Calling Gemini SDK Model...")
                 response = self.model.generate_content(
@@ -455,23 +556,34 @@ DOCUMENT OCR TEXT:
         )
 
         final_tests = []
-        patient_info = extracted_json.get("patient_info", {})
-        patient_name = patient_info.get("patient_name") or extracted_json.get("patient", {}).get("name")
-        patient_age = patient_info.get("age") or extracted_json.get("patient", {}).get("age")
-        patient_gender = patient_info.get("gender") or extracted_json.get("patient", {}).get("sex")
-        lab_name = patient_info.get("lab_name") or extracted_json.get("report", {}).get("laboratory")
-        lab_id = patient_info.get("lab_id") or extracted_json.get("lab_metadata", {}).get("lab_id")
-        report_date = patient_info.get("report_date") or extracted_json.get("report", {}).get("date")
+        _pi_raw = extracted_json.get("patient_info", {})
+        patient_info: Dict[str, Any] = _pi_raw if isinstance(_pi_raw, dict) else {}
+        _pt_raw = extracted_json.get("patient", {})
+        _pt: Dict[str, Any] = _pt_raw if isinstance(_pt_raw, dict) else {}
+        _rp_raw = extracted_json.get("report", {})
+        _rp: Dict[str, Any] = _rp_raw if isinstance(_rp_raw, dict) else {}
+        _lm_raw = extracted_json.get("lab_metadata", {})
+        _lm: Dict[str, Any] = _lm_raw if isinstance(_lm_raw, dict) else {}
+        patient_name = patient_info.get("patient_name") or _pt.get("name")
+        patient_age = patient_info.get("age") or _pt.get("age")
+        patient_gender = patient_info.get("gender") or _pt.get("sex")
+        lab_name = patient_info.get("lab_name") or _rp.get("laboratory")
+        lab_id = patient_info.get("lab_id") or _lm.get("lab_id")
+        report_date = patient_info.get("report_date") or _rp.get("date")
 
         for test in raw_tests_list:
-            tname = test.get("test_name") or test.get("testName") or test.get("name") or "Unknown Parameter"
+            if not isinstance(test, dict):
+                continue
+            tname: str = test.get("test_name") or test.get("testName") or test.get("name") or "Unknown Parameter"
             tval = test.get("result_value") if test.get("result_value") is not None else test.get("result")
-            tunit = test.get("unit") or "Not Available"
-            tref = test.get("reference_range") or test.get("referenceRange") or "Not Available"
-            if isinstance(tref, dict):
-                tref = tref.get("raw") or f"{tref.get('low', '')}-{tref.get('high', '')}"
-            tstatus = test.get("status") or "NORMAL"
-            tcat = test.get("category") or "General Laboratory Analysis"
+            tunit: str = test.get("unit") or "Not Available"
+            tref_raw = test.get("reference_range") or test.get("referenceRange") or "Not Available"
+            if isinstance(tref_raw, dict):
+                tref: str = tref_raw.get("raw") or f"{tref_raw.get('low', '')}-{tref_raw.get('high', '')}"
+            else:
+                tref = str(tref_raw)
+            tstatus: str = test.get("status") or "NORMAL"
+            tcat: str = test.get("category") or "General Laboratory Analysis"
 
             mapping = self._map_to_source(str(tval), raw_ocr)
 
@@ -483,11 +595,11 @@ DOCUMENT OCR TEXT:
                 "result_value": str(tval),
                 "unit": tunit,
                 "referenceRange": {
-                    "raw": str(tref),
+                    "raw": tref,
                     "low": None,
                     "high": None
                 },
-                "reference_range": str(tref),
+                "reference_range": tref,
                 "status": tstatus,
                 "confidence": mapping["confidence"],
                 "source": mapping["source"]
